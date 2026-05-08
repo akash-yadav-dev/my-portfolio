@@ -10,7 +10,10 @@
       "Bash(Sort-Object FullName)",
       "Bash(ConvertTo-Csv -NoTypeInformation)",
       "Bash(find d:\\\\\\\\portfolio -type f -o -type d)",
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "Bash(gh api *)",
+      "WebFetch(domain:api.github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)"
     ],
     "additionalDirectories": [
       "d:\\portfolio\\src\\app\\work"

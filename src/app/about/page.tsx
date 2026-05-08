@@ -23,9 +23,9 @@ export default function AboutPage() {
           className="font-display font-semibold tracking-tight m-0"
           style={{ fontSize: 'clamp(56px,9vw,112px)', lineHeight: '0.95', letterSpacing: '-0.04em' }}
         >
-          Generalist who
+          Full-stack engineer
           <br />
-          writes the schema first.
+          who ships.
         </h1>
       </section>
 
