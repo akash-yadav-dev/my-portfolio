@@ -1,0 +1,221 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Design tokens ───────────────────────────────────────── */
+:root {
+  --font-display: var(--font-inter-tight), "Inter Tight", system-ui, sans-serif;
+  --font-sans: var(--font-inter), "Inter", system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), "JetBrains Mono", ui-monospace, monospace;
+
+  /* Light theme */
+  --bg: oklch(0.985 0.005 100);
+  --bg-elev: oklch(1 0 0);
+  --bg-sunken: oklch(0.96 0.005 100);
+  --fg: oklch(0.18 0.01 260);
+  --fg-muted: oklch(0.45 0.01 260);
+  --fg-subtle: oklch(0.62 0.01 260);
+  --line: oklch(0.88 0.005 100);
+  --line-strong: oklch(0.78 0.005 100);
+
+  --accent: oklch(0.78 0.2 130);
+  --accent-fg: oklch(0.2 0.05 130);
+  --accent-soft: oklch(0.94 0.08 130);
+  --accent-hover: oklch(0.82 0.21 130);
+  --success: oklch(0.65 0.16 150);
+
+  --shadow-sm: 0 1px 2px oklch(0 0 0 / 0.04), 0 0 0 1px oklch(0 0 0 / 0.04);
+  --shadow-md: 0 4px 12px oklch(0 0 0 / 0.06), 0 0 0 1px oklch(0 0 0 / 0.04);
+  --shadow-lg: 0 24px 48px -12px oklch(0 0 0 / 0.18), 0 0 0 1px oklch(0 0 0 / 0.04);
+
+  /* Glass nav background — light mode */
+  --bg-glass: rgb(252 250 248 / 0.88);
+  /* Accent glow for buttons */
+  --accent-glow: 0 12px 24px -10px oklch(0.78 0.2 130 / 0.6);
+}
+
+[data-theme="dark"] {
+  --bg: oklch(0.15 0.012 265);
+  --bg-elev: oklch(0.19 0.012 265);
+  --bg-sunken: oklch(0.12 0.01 265);
+  --fg: oklch(0.97 0.005 100);
+  --fg-muted: oklch(0.68 0.01 260);
+  --fg-subtle: oklch(0.48 0.01 260);
+  --line: oklch(0.26 0.012 265);
+  --line-strong: oklch(0.38 0.012 265);
+
+  --accent: oklch(0.87 0.22 130);
+  --accent-fg: oklch(0.14 0.05 130);
+  --accent-soft: oklch(0.28 0.1 130);
+  --accent-hover: oklch(0.91 0.23 130);
+
+  --shadow-sm: 0 1px 2px oklch(0 0 0 / 0.4), 0 0 0 1px oklch(1 0 0 / 0.04);
+  --shadow-md: 0 4px 12px oklch(0 0 0 / 0.4), 0 0 0 1px oklch(1 0 0 / 0.04);
+  --shadow-lg: 0 24px 48px -12px oklch(0 0 0 / 0.65), 0 0 0 1px oklch(1 0 0 / 0.05);
+
+  /* Glass nav background — dark mode */
+  --bg-glass: rgb(28 26 38 / 0.88);
+  /* Accent glow — brighter in dark mode */
+  --accent-glow: 0 12px 24px -8px oklch(0.87 0.22 130 / 0.55);
+}
+
+/* ── Base ────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background-color 220ms ease, color 220ms ease;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* ── Animations ──────────────────────────────────────────── */
+@keyframes pulse-dot {
+  0%   { box-shadow: 0 0 0 0 oklch(0.78 0.2 130 / 0.6); }
+  70%  { box-shadow: 0 0 0 12px oklch(0.78 0.2 130 / 0); }
+  100% { box-shadow: 0 0 0 0 oklch(0.78 0.2 130 / 0); }
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* ── Cursor blink on accent word ─────────────────────────── */
+.cursor-blink::after {
+  content: '_';
+  animation: blink 1.1s steps(1) infinite;
+}
+
+/* ── Pulse availability dot ──────────────────────────────── */
+.pulse-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  animation: pulse-dot 2s ease-out infinite;
+}
+
+/* ── Work row hover accent bar ───────────────────────────── */
+.work-row-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  border-radius: 0 2px 2px 0;
+}
+
+.work-row:hover .work-row-bar {
+  transform: scaleY(1);
+}
+
+/* ── Staggered hero entry ────────────────────────────────── */
+@keyframes fade-up-in {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-reveal {
+  animation: fade-up-in 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.hero-reveal:nth-child(1) { animation-delay: 0ms; }
+.hero-reveal:nth-child(2) { animation-delay: 80ms; }
+.hero-reveal:nth-child(3) { animation-delay: 160ms; }
+.hero-reveal:nth-child(4) { animation-delay: 240ms; }
+.hero-reveal:nth-child(5) { animation-delay: 320ms; }
+
+/* ── Accent button glow on hover ─────────────────────────── */
+.btn-accent-primary:hover {
+  background: var(--accent-hover) !important;
+  box-shadow: var(--accent-glow);
+}
+
+/* ── Code block ──────────────────────────────────────────── */
+.code-block {
+  background: var(--bg-sunken);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.65;
+}
+.code-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-elev);
+  font-size: 11px;
+  color: var(--fg-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.code-dots { display: flex; gap: 6px; }
+.code-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--line-strong);
+}
+.code-body {
+  padding: 16px 0;
+  color: var(--fg);
+  overflow-x: auto;
+}
+.code-body pre { margin: 0; padding: 0 16px; }
+.code-ln { display: inline-block; width: 28px; color: var(--fg-subtle); user-select: none; }
+.syn-k { color: oklch(0.5 0.18 290); }
+.syn-s { color: oklch(0.5 0.16 150); }
+.syn-c { color: var(--fg-subtle); font-style: italic; }
+.syn-n { color: oklch(0.55 0.18 40); }
+.syn-f { color: oklch(0.5 0.18 250); }
+[data-theme="dark"] .syn-k { color: oklch(0.78 0.15 290); }
+[data-theme="dark"] .syn-s { color: oklch(0.78 0.14 150); }
+[data-theme="dark"] .syn-n { color: oklch(0.8 0.16 40); }
+[data-theme="dark"] .syn-f { color: oklch(0.78 0.15 250); }

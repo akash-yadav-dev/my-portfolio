@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"d:\\\\portfolio\\\\src\\\\app\\\\work\\\\[slug]\" \"d:\\\\portfolio\\\\src\\\\app\\\\about\" \"d:\\\\portfolio\\\\src\\\\app\\\\writing\" \"d:\\\\portfolio\\\\src\\\\app\\\\contact\" \"d:\\\\portfolio\\\\src\\\\components\\\\layout\" \"d:\\\\portfolio\\\\src\\\\components\\\\ui\" \"d:\\\\portfolio\\\\src\\\\components\\\\sections\" \"d:\\\\portfolio\\\\src\\\\lib\" \"d:\\\\portfolio\\\\src\\\\data\" \"d:\\\\portfolio\\\\public\\\\assets\")",
+      "Bash(Copy-Item \"d:\\\\portfolio\\\\assets\\\\brand-icon.png\" \"d:\\\\portfolio\\\\public\\\\assets\\\\brand-icon.png\")",
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "Bash(Get-ChildItem -Path \"d:\\\\portfolio\" -Recurse -Force)",
+      "Bash(Select-Object -Property FullName, PSIsContainer)",
+      "Bash(Sort-Object FullName)",
+      "Bash(ConvertTo-Csv -NoTypeInformation)",
+      "Bash(find d:\\\\\\\\portfolio -type f -o -type d)",
+      "Bash(npx tsc *)"
+    ],
+    "additionalDirectories": [
+      "d:\\portfolio\\src\\app\\work"
+    ]
+  }
+}
