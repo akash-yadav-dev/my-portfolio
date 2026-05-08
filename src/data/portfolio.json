@@ -1,0 +1,388 @@
+{
+  "portfolio": {
+    "summary": {
+      "name": "Akash Yadav",
+      "title": "Full Stack Software Engineer | Product-Focused Developer",
+      "bio": "Building production-grade applications using modern cloud-native technologies. Specialized in TypeScript/Next.js, Node.js backends, and scalable architectures. Track record shipping SaaS products, multi-platform systems, and AI-powered tools.",
+      "profileUrl": "https://github.com/akash-yadav-dev",
+      "portfolioSite": "https://akashdev.pro",
+      "specializations": [
+        "Next.js & React (SSR, App Router, SSG)",
+        "TypeScript / Node.js",
+        "Fullstack SaaS development",
+        "AI/ML integration (OpenAI, Whisper)",
+        "Database design (PostgreSQL, Prisma)",
+        "Workflow orchestration (Temporal, BullMQ)",
+        "Shopify app development",
+        "Go backend services",
+        "Docker & DevOps",
+        "Real-time features (WebSockets)",
+        "Payment processing (Stripe)",
+        "Clean Architecture & DDD"
+      ],
+      "totalProjects": 15,
+      "meaningfulProjects": 11,
+      "flagshipProjects": [
+        "PostQueue (TypeScript)",
+        "FAQFlow",
+        "Snipify",
+        "PixelForge",
+        "DimlyPDF"
+      ],
+      "yearsExperience": 3,
+      "lastUpdated": "2026-05-08"
+    },
+    "featuredProjects": [
+      {
+        "rank": 1,
+        "name": "PostQueue",
+        "description": "Production SaaS with multi-tenant support, RBAC, workflow orchestration",
+        "importance": "Flagship",
+        "techStack": ["NestJS 11", "Next.js 16", "TypeScript", "Temporal", "PostgreSQL"],
+        "link": "https://github.com/akash-yadav-dev/post-queue"
+      },
+      {
+        "rank": 2,
+        "name": "Snipify",
+        "description": "AI-powered SaaS converting YouTube to short-form clips with GPT-4 + Whisper",
+        "importance": "Flagship",
+        "techStack": ["Next.js 14", "OpenAI", "BullMQ", "Stripe", "Cloudflare R2"],
+        "link": "https://github.com/akash-yadav-dev/snipify"
+      },
+      {
+        "rank": 3,
+        "name": "FAQFlow",
+        "description": "Shopify app generating AI-powered FAQ widgets with GDPR compliance",
+        "importance": "Featured",
+        "techStack": ["Next.js 16", "Shopify", "Supabase", "OpenAI"],
+        "link": "https://github.com/akash-yadav-dev/faqflow"
+      },
+      {
+        "rank": 4,
+        "name": "MyTodo",
+        "description": "Comprehensive task management system with Clean Architecture and DDD",
+        "importance": "Featured",
+        "techStack": ["Go", "Next.js", "PostgreSQL", "Docker", "Kubernetes"],
+        "link": "https://github.com/akash-yadav-dev/mytodo"
+      },
+      {
+        "rank": 5,
+        "name": "PixelForge",
+        "description": "Client-side image processing with Web Workers and Canvas API",
+        "importance": "Featured",
+        "techStack": ["Next.js 14", "TypeScript", "Canvas API", "Web Workers"],
+        "link": "https://github.com/akash-yadav-dev/PixelForge"
+      }
+    ],
+    "allProjects": [
+      {
+        "id": "postqueue-ts",
+        "name": "PostQueue (TypeScript)",
+        "category": "Production SaaS",
+        "status": "Active",
+        "complexity": "Advanced",
+        "description": "Multi-tenant social publishing platform with 9-platform scheduling, RBAC, and Temporal-orchestrated workflows",
+        "techStack": ["NestJS 11", "Next.js 16", "TypeScript", "PostgreSQL", "Temporal", "Redis"],
+        "liveUrl": null,
+        "githubUrl": "https://github.com/akash-yadav-dev/post-queue",
+        "keyFeatures": [
+          "Multi-tenant workspace architecture",
+          "9-platform scheduling (Twitter, Instagram, LinkedIn, Facebook, TikTok, YouTube, Threads, Pinterest, Bluesky)",
+          "Role-based access control",
+          "Approval workflows",
+          "Real-time notifications",
+          "Temporal workflow orchestration"
+        ]
+      },
+      {
+        "id": "snipify",
+        "name": "Snipify",
+        "category": "Production SaaS",
+        "status": "Active",
+        "complexity": "Advanced",
+        "description": "AI-powered YouTube to short-form video SaaS with GPT-4 analysis and Whisper transcription",
+        "techStack": ["Next.js 14", "TypeScript", "OpenAI", "BullMQ", "Redis", "Stripe", "Cloudflare R2"],
+        "liveUrl": null,
+        "githubUrl": "https://github.com/akash-yadav-dev/snipify",
+        "keyFeatures": [
+          "YouTube video ingestion",
+          "AI clip detection (GPT-4)",
+          "Speech-to-text transcription (Whisper)",
+          "Automated caption rendering",
+          "Stripe credit-based pricing",
+          "BullMQ job queue pipeline"
+        ]
+      },
+      {
+        "id": "faqflow",
+        "name": "FAQFlow",
+        "category": "Production SaaS",
+        "status": "Active",
+        "complexity": "Advanced",
+        "description": "Shopify app that auto-generates AI-powered FAQ widgets with GDPR webhook compliance",
+        "techStack": ["Next.js 16", "TypeScript", "Shopify", "Supabase", "OpenAI"],
+        "liveUrl": null,
+        "githubUrl": "https://github.com/akash-yadav-dev/faqflow",
+        "keyFeatures": [
+          "Shopify OAuth integration",
+          "Theme App Embed widget injection",
+          "AI FAQ generation",
+          "GDPR webhook compliance",
+          "Multi-tenant store support",
+          "Cron job scheduling"
+        ]
+      },
+      {
+        "id": "pixelforge",
+        "name": "PixelForge",
+        "category": "Developer Tools",
+        "status": "Active",
+        "complexity": "Intermediate",
+        "description": "Fast client-side image processing platform with Web Workers and Canvas API",
+        "techStack": ["Next.js 14", "TypeScript", "Tailwind CSS", "Canvas API", "Web Workers"],
+        "liveUrl": null,
+        "githubUrl": "https://github.com/akash-yadav-dev/PixelForge",
+        "keyFeatures": [
+          "Image resizing to 50/100KB",
+          "JPG compression",
+          "WebP to JPG conversion",
+          "Image cropping",
+          "Web Worker support",
+          "Zero server uploads"
+        ]
+      },
+      {
+        "id": "dimlypdf",
+        "name": "DimlyPDF",
+        "category": "Developer Tools",
+        "status": "Production",
+        "complexity": "Intermediate",
+        "description": "Free client-side PDF dark mode converter using MuPDF WebAssembly",
+        "techStack": ["React 18", "TypeScript", "Vite", "MuPDF", "Tailwind CSS"],
+        "liveUrl": "https://dimlypdf.akashdev.pro/",
+        "githubUrl": "https://github.com/akash-yadav-dev/dimlypdf",
+        "keyFeatures": [
+          "4 dark mode themes",
+          "Text remains selectable",
+          "Preserves hyperlinks and bookmarks",
+          "100MB file support",
+          "100% client-side processing",
+          "Offline capable"
+        ]
+      },
+      {
+        "id": "thumbnail-downloader",
+        "name": "YouTube Thumbnail Downloader",
+        "category": "Developer Tools",
+        "status": "Production",
+        "complexity": "Intermediate",
+        "description": "Download YouTube thumbnails in all resolutions from any URL format",
+        "techStack": ["Next.js 15", "TypeScript", "Tailwind CSS 4", "Vercel Analytics"],
+        "liveUrl": null,
+        "githubUrl": "https://github.com/akash-yadav-dev/thumbnail-downloader",
+        "keyFeatures": [
+          "All resolutions support",
+          "All URL format support",
+          "One-click download",
+          "Dark/light theme",
+          "SEO-ready (JSON-LD, OG tags)",
+          "PWA manifest"
+        ]
+      },
+      {
+        "id": "unitcraft",
+        "name": "UnitCraft",
+        "category": "Developer Tools",
+        "status": "Production",
+        "complexity": "Beginner-Intermediate",
+        "description": "CSS unit converter (PX ↔ REM) with customizable base font size",
+        "techStack": ["React 18", "TypeScript", "Vite", "React Router", "Tailwind CSS"],
+        "liveUrl": "https://unitcraft-css.vercel.app",
+        "githubUrl": "https://github.com/akash-yadav-dev/UnitCraft",
+        "keyFeatures": [
+          "Real-time PX ↔ REM conversion",
+          "Customizable base font size",
+          "Dark mode support",
+          "Zero external dependencies for conversion",
+          "WCAG accessible",
+          "Keyboard navigation"
+        ]
+      },
+      {
+        "id": "mytodo",
+        "name": "MyTodo",
+        "category": "Monorepos & Platforms",
+        "status": "In Development",
+        "complexity": "Expert",
+        "description": "Production-grade Jira-like task management system with Clean Architecture",
+        "techStack": ["Go 1.25", "Next.js", "PostgreSQL", "Redis", "Docker", "Kubernetes"],
+        "liveUrl": null,
+        "githubUrl": "https://github.com/akash-yadav-dev/mytodo",
+        "keyFeatures": [
+          "Clean Architecture implementation",
+          "Multi-tenant organizations",
+          "Kanban boards and sprints",
+          "Custom workflows",
+          "Real-time notifications",
+          "GitHub/Slack integrations"
+        ]
+      },
+      {
+        "id": "postqueue-go",
+        "name": "PostQueue (Go Edition)",
+        "category": "Monorepos & Platforms",
+        "status": "In Development",
+        "complexity": "Advanced",
+        "description": "Golang monorepo implementation of PostQueue with Gin API and golang-migrate",
+        "techStack": ["Go 1.26", "Gin", "Next.js 16", "PostgreSQL", "Redis", "Docker"],
+        "liveUrl": null,
+        "githubUrl": "https://github.com/akash-yadav-dev/post-queue-golang",
+        "keyFeatures": [
+          "Go-based REST API",
+          "9 social platform adapters",
+          "JWT + Redis token revocation",
+          "Rate limiting",
+          "Database migrations",
+          "Kubernetes deployment"
+        ]
+      },
+      {
+        "id": "code-editor",
+        "name": "Custom Online Code Editor",
+        "category": "Developer Tools",
+        "status": "Learning",
+        "complexity": "Beginner-Intermediate",
+        "description": "Online IDE with Monaco Editor and Judge0 for multi-language code execution",
+        "techStack": ["React 18", "TypeScript", "Vite", "Monaco Editor", "Judge0 API"],
+        "liveUrl": null,
+        "githubUrl": "https://github.com/akash-yadav-dev/custom-online-code-editor",
+        "keyFeatures": [
+          "Monaco Editor with syntax highlighting",
+          "50+ language support",
+          "Real-time code execution",
+          "Error display",
+          "Responsive design",
+          "Theme customization"
+        ]
+      },
+      {
+        "id": "portfolio",
+        "name": "Akash Portfolio",
+        "category": "Personal Brand",
+        "status": "Production",
+        "complexity": "Intermediate",
+        "description": "Modern portfolio site with Next.js 14, Framer Motion, and dark mode",
+        "techStack": ["Next.js 14", "React 18", "TypeScript", "Tailwind CSS", "Framer Motion"],
+        "liveUrl": null,
+        "githubUrl": "https://github.com/akash-yadav-dev/my-portfolio",
+        "keyFeatures": [
+          "Next.js 14 App Router",
+          "Framer Motion animations",
+          "Dark mode support",
+          "Responsive design",
+          "Typed content source",
+          "Dynamic routes"
+        ]
+      },
+      {
+        "id": "quiz-app",
+        "name": "Quiz App",
+        "category": "Learning Projects",
+        "status": "Educational",
+        "complexity": "Beginner-Intermediate",
+        "description": "Full-stack quiz application with Express backend and React frontend",
+        "techStack": ["Node.js", "Express", "React 18", "PostgreSQL", "Prisma", "Zustand"],
+        "liveUrl": null,
+        "githubUrl": "https://github.com/akash-yadav-dev/quiz-app",
+        "keyFeatures": [
+          "User authentication",
+          "Quiz creation and taking",
+          "Result tracking",
+          "Zustand state management",
+          "Form validation",
+          "Responsive design"
+        ]
+      },
+      {
+        "id": "timetable-mgmt",
+        "name": "Timetable Management",
+        "category": "Learning Projects",
+        "status": "Educational",
+        "complexity": "Beginner",
+        "description": "Browser-based timetable builder with LocalStorage and PDF export",
+        "techStack": ["HTML5", "CSS", "Tailwind CSS", "Vanilla JavaScript"],
+        "liveUrl": null,
+        "githubUrl": "https://github.com/akash-yadav-dev/timetable-management",
+        "keyFeatures": [
+          "Teacher and subject management",
+          "Dynamic table generation",
+          "Inline cell editing",
+          "LocalStorage persistence",
+          "PDF export",
+          "Responsive design"
+        ]
+      }
+    ],
+    "technicalSkills": {
+      "frontend": {
+        "frameworks": ["Next.js 14-16", "React 18-19", "Vite", "React Router"],
+        "languages": ["TypeScript", "JavaScript"],
+        "styling": ["Tailwind CSS 3-4", "PostCSS"],
+        "stateManagement": ["React Query", "Zustand", "Context API"],
+        "libraries": ["Framer Motion", "Lucide React", "shadcn/ui"]
+      },
+      "backend": {
+        "nodejs": ["Next.js", "NestJS 11", "Express", "tRPC v11"],
+        "go": ["Gin", "Temporal", "Clean Architecture"],
+        "databases": ["PostgreSQL 15-16", "Prisma ORM", "Redis"],
+        "auth": ["JWT", "Clerk", "OAuth", "Passport.js"]
+      },
+      "devops": {
+        "platforms": ["Vercel", "Docker", "Kubernetes"],
+        "storage": ["Cloudflare R2", "AWS S3"],
+        "infrastructure": ["Docker Compose", "Terraform"]
+      },
+      "ai_ml": ["OpenAI API", "Whisper", "GPT-4"],
+      "payments": ["Stripe"],
+      "tools": ["Git", "ESLint", "Prettier", "Vitest", "TypeScript"]
+    },
+    "projectCategories": [
+      {
+        "name": "Production SaaS",
+        "description": "Multi-tenant, paid, revenue-generating applications",
+        "count": 3,
+        "projects": ["PostQueue (TypeScript)", "Snipify", "FAQFlow"]
+      },
+      {
+        "name": "Developer Tools",
+        "description": "Utilities and productivity tools for developers",
+        "count": 4,
+        "projects": [
+          "UnitCraft",
+          "DimlyPDF",
+          "YouTube Thumbnail Downloader",
+          "PixelForge",
+          "Custom Online Code Editor"
+        ]
+      },
+      {
+        "name": "Monorepos & Platforms",
+        "description": "Multi-component, scalable backend platforms",
+        "count": 3,
+        "projects": ["PostQueue (TypeScript)", "PostQueue (Go)", "MyTodo"]
+      },
+      {
+        "name": "Personal Brand",
+        "description": "Portfolio and personal projects",
+        "count": 1,
+        "projects": ["Akash Portfolio"]
+      },
+      {
+        "name": "Learning Projects",
+        "description": "Educational implementations",
+        "count": 2,
+        "projects": ["Quiz App", "Timetable Management"]
+      }
+    ]
+  }
+}
