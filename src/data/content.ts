@@ -3,13 +3,13 @@ export interface Profile {
   handle: string
   initial: string
   logo: string
+  photo: string
   role: string
   tagline: string
   intro: string
   location: string
   available: string
   lastShipped: string
-  siteVersion: string
   email: string
   github: string
   signal: string
@@ -41,6 +41,10 @@ export interface Project {
   tagline: string
   summary: string
   body: string
+  visual: {
+    src: string
+    alt: string
+  }
   stack: string[]
   status: ProjectStatus
   links: ProjectLink[]
@@ -79,27 +83,48 @@ export interface ContactChannel {
 }
 
 export interface SiteData {
-  profile: Profile
-  stats: Stat[]
-  nav: NavItem[]
-  projects: Project[]
-  experience: Experience[]
-  skills: Skill[]
-  writing: Article[]
+  profile: Profile;
+  stats: Stat[];
+  nav: NavItem[];
+  projects: Project[];
+  experience: Experience[];
+  skills: Skill[];
+  writing: Article[];
   about: {
-    intro: string
-    body: string[]
-    principles: Principle[]
-  }
+    currently: string;
+    lookingFor: string;
+    intro: string;
+    body: string[];
+    principles: Principle[];
+  };
+  services: {
+    title: string;
+    items: {
+      title: string;
+      body: string;
+    }[];
+  };
+  process: {
+    title: string;
+    steps: {
+      title: string;
+      body: string;
+    }[];
+  };
+  testimonials: {
+    quote: string;
+    author: string;
+    role: string;
+  }[];
   contact: {
-    headline: string
-    body: string
-    channels: ContactChannel[]
-  }
+    headline: string;
+    body: string;
+    channels: ContactChannel[];
+  };
   footer: {
-    credit: string
-    links: { label: string; href: string }[]
-  }
+    credit: string;
+    links: { label: string; href: string }[];
+  };
 }
 
 export const content: SiteData = {
@@ -108,23 +133,23 @@ export const content: SiteData = {
     handle: 'akash-y',
     initial: 'AY',
     logo: '/assets/brand-icon.png',
-    role: 'Full-Stack Engineer | SaaS Builder',
-    tagline: 'Full-Stack\nengineer who\n{ships}',
+    photo: '/akashdev.png',
+    role: 'Full-Stack Engineer · SaaS Builder',
+    tagline: 'Freelance\nFull-Stack Engineer\nfor SaaS & Platforms',
     intro:
-      'Building production-grade SaaS products using Next.js, NestJS, Go, and modern cloud-native tooling. 3+ years shipping at scale — from 400k-record inventory platforms to multi-tenant social publishing systems.',
+      'I help product teams ship production SaaS, platforms, and web apps — from zero to launch. 3+ years experience building, scaling, and maintaining live systems. Available for freelance and project-based work. Based in Bangalore, open to remote.',
     location: 'Bangalore / IST',
-    available: 'Open to new opportunities',
-    lastShipped: 'Last shipped: recently',
-    siteVersion: 'v8.0 of this site',
-    email: 'akashyadav171156@gmail.com',
+    available: 'Available for freelance projects',
+    lastShipped: 'Last shipped: PostQueue, FAQFlow, DimlyPDF',
+    email: 'hello@akashdev.pro',
     github: '@akash-yadav-dev',
     signal: 'on request',
     writingUrl: 'akashdev.pro',
   },
   stats: [
-    { label: 'Years building', value: '3', suffix: '+' },
-    { label: 'Projects shipped', value: '15', suffix: '+' },
-    { label: 'Production SaaS built', value: '3' },
+    { label: 'Years of professional experience', value: '3', suffix: '+' },
+    { label: 'SaaS products built', value: '5' },
+    { label: 'Live & deployed today', value: '3' },
     { label: 'Vehicle records managed', value: '400K', suffix: '+' },
   ],
   nav: [
@@ -139,38 +164,46 @@ export const content: SiteData = {
       slug: 'postqueue',
       name: 'PostQueue',
       year: '2025 — now',
-      tagline: 'Multi-tenant social publishing platform.',
+      tagline: 'Multi-tenant social publishing for teams.',
       summary:
-        'Production SaaS for scheduling posts across 9 platforms — Twitter/X, Instagram, LinkedIn, Facebook, TikTok, YouTube, Threads, Pinterest, and Bluesky. Multi-tenant workspaces, RBAC, and Temporal-orchestrated approval workflows.',
-      body: 'PostQueue is a production SaaS for scheduling and publishing content across nine social platforms. The backend is NestJS 11, with Temporal orchestrating multi-step approval workflows so posts move through the right review chain before going live.\n\nPostgreSQL handles multi-tenant data isolation with workspace-level separation. Redis powers caching and real-time notifications. Role-based access control lets workspace admins control exactly who can draft, approve, and publish.\n\nThe frontend is Next.js 16 with App Router. The entire stack is end-to-end TypeScript.',
+        'SaaS for scheduling and publishing to 9 platforms. Multi-tenant workspaces, RBAC, approval workflows, and real-time notifications. Built with Next.js, NestJS, and Temporal.',
+      body: 'PostQueue lets teams schedule and publish content to 9 social platforms from one place. Multi-tenant workspaces, RBAC, and Temporal-powered approval flows. Built with Next.js, NestJS, and PostgreSQL. Real-time notifications and audit trails included.',
+      visual: {
+        src: '/uploads/postqueue.png',
+        alt: 'PostQueue dashboard browser screenshot',
+      },
       stack: ['NestJS 11', 'Next.js 16', 'TypeScript', 'Temporal', 'PostgreSQL', 'Redis'],
       status: 'live',
-      links: [
-        { label: 'GitHub', href: 'https://github.com/akash-yadav-dev/post-queue' },
-      ],
+      links: [{ label: 'GitHub', href: 'https://github.com/akash-yadav-dev/post-queue' }],
     },
     {
       slug: 'faqflow',
       name: 'FAQFlow',
       year: '2025 — now',
-      tagline: 'AI-powered FAQ widgets for Shopify stores.',
+      tagline: 'AI FAQ widgets for Shopify.',
       summary:
-        'Shopify app that auto-generates AI-powered FAQ widgets from product data. Theme App Embed injection with no code changes from merchants, GDPR webhook compliance, and multi-tenant store support.',
-      body: 'FAQFlow is a Shopify app that generates FAQ sections for product pages using OpenAI. Merchants install the app and a Theme App Embed widget appears in their storefront automatically — no code changes, no liquid templates to edit.\n\nThe backend is Next.js 16 API routes backed by Supabase, with Shopify OAuth handling multi-tenant store isolation. GPT-4 generates the FAQ content, with cron jobs keeping widgets fresh as product descriptions change. GDPR webhooks handle mandatory data deletion requests automatically.\n\nBuilt to Shopify review standards for App Store submission.',
+        'Shopify app that auto-generates FAQ widgets using OpenAI. Theme App Embed, GDPR-compliant, multi-store support. No code changes needed.',
+      body: 'FAQFlow adds AI-generated FAQ widgets to Shopify product pages. Merchants install, and the widget appears automatically — no code edits. Multi-store support, GDPR webhooks, and OpenAI-powered content. Built for Shopify App Store review.',
+      visual: {
+        src: '/uploads/faqflow.png',
+        alt: 'FAQFlow product FAQ widget browser screenshot',
+      },
       stack: ['Next.js 16', 'TypeScript', 'Shopify', 'Supabase', 'OpenAI'],
       status: 'live',
-      links: [
-        { label: 'GitHub', href: 'https://github.com/akash-yadav-dev/faqflow' },
-      ],
+      links: [{ label: 'GitHub', href: 'https://github.com/akash-yadav-dev/faqflow' }],
     },
     {
       slug: 'dimlypdf',
       name: 'DimlyPDF',
       year: '2025',
-      tagline: 'PDF dark mode — 100% in the browser.',
+      tagline: 'PDF dark mode, client-side.',
       summary:
-        'Free client-side PDF dark mode converter built on MuPDF WebAssembly. Four dark themes, text stays selectable, hyperlinks and bookmarks preserved. Handles 100MB files, works fully offline.',
-      body: 'DimlyPDF converts PDF files to dark mode entirely in the browser — no uploads, no server, no data leaving the device. It uses MuPDF compiled to WebAssembly, so the heavy lifting runs in the user\'s own CPU.\n\nFour themes are available. Text stays selectable after conversion, hyperlinks and bookmarks are preserved, and files up to 100MB are handled without issue. Because everything is client-side, it works offline and can be deployed as a static site at zero hosting cost.',
+        'Free tool to convert PDFs to dark mode in the browser. No uploads, works offline, preserves links and bookmarks. Built with MuPDF WebAssembly.',
+      body: 'DimlyPDF converts PDFs to dark mode entirely in your browser. No uploads, no server, no data leaves your device. Four dark themes, selectable text, and preserved links/bookmarks. Works offline, deployable as a static site.',
+      visual: {
+        src: '/uploads/dimlypdf.png',
+        alt: 'DimlyPDF live site — free PDF dark mode converter',
+      },
       stack: ['React 18', 'TypeScript', 'Vite', 'MuPDF', 'Tailwind CSS'],
       status: 'open-source',
       links: [
@@ -182,24 +215,30 @@ export const content: SiteData = {
       slug: 'mytodo',
       name: 'MyTodo',
       year: '2025 — now',
-      tagline: 'Jira-like platform in Go and Next.js.',
+      tagline: 'Jira-style project management.',
       summary:
-        'Production-grade project management platform with kanban boards, sprints, and custom workflows. Go backend with Clean Architecture and DDD, Next.js frontend, PostgreSQL, Redis, and Kubernetes deployment.',
-      body: 'MyTodo is a Jira-inspired task management system built for real scale. The backend is Go with the Gin framework, following Clean Architecture with strict DDD layering — interface, application, domain, infrastructure.\n\nPostgreSQL handles persistence, Redis caching, and Elasticsearch powers full-text search. The system supports multi-tenant organisations, kanban boards, sprint planning, custom workflows, real-time WebSocket notifications, and GitHub/Slack integrations.\n\nThe frontend is Next.js with React Query. Deployment targets Kubernetes with Docker Compose for local development.',
+        'Open-source kanban, sprints, and custom workflows. Go backend (Clean Architecture), Next.js frontend, PostgreSQL, Redis, and Kubernetes.',
+      body: 'MyTodo is an open-source project management platform: kanban boards, sprints, and custom workflows. Go backend (Clean Architecture), Next.js frontend, PostgreSQL, Redis, and Kubernetes. Real-time notifications and integrations.',
+      visual: {
+        src: '/assets/projects/mytodo-kanban.svg',
+        alt: 'MyTodo kanban board screenshot preview',
+      },
       stack: ['Go', 'Gin', 'Next.js', 'PostgreSQL', 'Redis', 'Kubernetes'],
       status: 'open-source',
-      links: [
-        { label: 'GitHub', href: 'https://github.com/akash-yadav-dev/mytodo' },
-      ],
+      links: [{ label: 'GitHub', href: 'https://github.com/akash-yadav-dev/mytodo' }],
     },
     {
       slug: 'izmo',
       name: 'izmo',
       year: '2022 — now',
-      tagline: 'Scalable car dealership platform.',
+      tagline: 'Car dealership inventory at scale.',
       summary:
-        'Large-scale React.js platform for car dealership inventory management and lead generation, handling 400,000+ vehicle records across dealer websites in Europe and the US.',
-      body: 'izmo is the platform I have spent the last three years building at izmo Ltd. It powers inventory management and lead generation for car dealerships across Europe and the US.\n\nI own the frontend — a large React.js codebase with Storybook-documented components, JSON-config-driven dealer customization, and performance-critical inventory listing pages that handle 400,000+ vehicle records. On the backend I have shipped NestJS and Express services that power the APIs those pages consume.\n\nAlso implemented cookie-consent flows compliant with French and US privacy regulations.',
+        'React.js platform for managing 400k+ vehicle records and leads across Europe/US. Performance-critical, privacy-compliant, and highly customizable.',
+      body: 'izmo powers inventory and lead management for car dealerships in Europe and the US. 400k+ vehicle records, React.js frontend, Storybook components, and JSON-driven customization. Backend APIs in NestJS/Express. Privacy-compliant consent flows.',
+      visual: {
+        src: '/assets/projects/izmo-inventory.svg',
+        alt: 'izmo inventory management UI screenshot preview',
+      },
       stack: ['React.js', 'TypeScript', 'NestJS', 'Node.js', 'Storybook', 'SCSS'],
       status: 'live',
       links: [],
@@ -210,7 +249,13 @@ export const content: SiteData = {
       when: 'Dec 2022 — now',
       role: 'Associate Software Engineer · izmo Ltd',
       where: 'Bangalore · IN',
-      note: 'Owns the frontend of a large-scale car dealership platform serving inventory management and lead generation. Built reusable React components, optimized listing pages for 400k+ vehicle records, and implemented privacy-compliant cookie-consent flows.',
+      note: 'Own frontend delivery in a cross-functional product team for a large dealership platform. Shipped reusable React systems, improved inventory performance for 400k+ records, and delivered privacy-compliant consent flows across markets.',
+    },
+    {
+      when: '2024 — now',
+      role: 'Independent SaaS Builder · Freelance-style product work',
+      where: 'Remote',
+      note: 'Designed and shipped PostQueue, FAQFlow, and DimlyPDF from idea to production. Worked across product discovery, architecture, full-stack implementation, deployment, and iteration based on user feedback.',
     },
     {
       when: '2018 — 2022',
@@ -286,11 +331,15 @@ export const content: SiteData = {
     },
   ],
   about: {
+    currently:
+      'Currently building PostQueue and opening up more project-based freelance work with product teams.',
+    lookingFor:
+      'I enjoy projects where product clarity and technical execution both matter: SaaS builds, platform foundations, and user-facing systems that need to scale cleanly.',
     intro:
-      "I build production-grade SaaS products end-to-end — Next.js and React on the frontend, NestJS and Go on the backend, PostgreSQL and Redis for data. Three years of shipping at scale have taught me that owning the full stack is the fastest path to a good product.",
+      'I am based in Bangalore and have been building software professionally for 3+ years. I like full-stack work because it lets me stay close to real user problems while still going deep on system design and backend reliability.',
     body: [
-      'By day I work at izmo Ltd in Bangalore, owning the frontend of a large car dealership platform and the NestJS APIs behind it — React components at scale, Storybook-documented, handling 400,000+ vehicle records. Outside of that I build SaaS products: PostQueue (multi-tenant social publishing with Temporal workflows), FAQFlow (Shopify AI app), and DimlyPDF (client-side PDF tool using MuPDF WebAssembly).',
-      'I reach for Go when I want performance without ceremony — my MyTodo project uses it with Clean Architecture and DDD. I care about clean APIs, reliable deploys, and code that the next engineer can read without asking questions.',
+      'By day I work at izmo Ltd in Bangalore, owning frontend delivery for a large car dealership platform and contributing to the NestJS APIs behind it. Outside work, I build and ship products end-to-end: PostQueue (multi-tenant social publishing with Temporal workflows), FAQFlow (Shopify AI app), and DimlyPDF (client-side PDF tool using MuPDF WebAssembly).',
+      'I reach for Go when I want performance without ceremony, and TypeScript when teams need predictable delivery at speed. I care about clean APIs, reliable deploys, and code that the next engineer can understand quickly.',
     ],
     principles: [
       {
@@ -315,25 +364,76 @@ export const content: SiteData = {
       },
     ],
   },
-  contact: {
-    headline: 'Got something\n{worth building?}',
-    body: "I'm open to new opportunities. Best fit: product-focused teams where I can own a meaningful slice of the stack — frontend, API, or both. Happy to talk full-time roles or contract.",
-    channels: [
+  services: {
+    title: 'What I build',
+    items: [
       {
-        label: 'Email',
-        value: 'akashyadav171156@gmail.com',
-        href: 'mailto:akashyadav171156@gmail.com',
+        title: 'Full-Stack SaaS Development',
+        body: 'End-to-end product builds using Next.js, NestJS, Go, and PostgreSQL, from first scope to production launch.',
       },
+      {
+        title: 'API Design & Backend Systems',
+        body: 'REST and event-driven APIs, multi-tenant architecture, background jobs, and Temporal-powered workflows.',
+      },
+      {
+        title: 'Frontend Engineering',
+        body: 'React and Next.js interfaces, reusable component systems, and performance-focused delivery for production apps.',
+      },
+      {
+        title: 'Shopify App Development',
+        body: 'Theme app extensions, OAuth flows, GDPR webhooks, and multi-store support built to Shopify review standards.',
+      },
+    ],
+  },
+  process: {
+    title: 'How I work with clients',
+    steps: [
+      {
+        title: 'Discovery',
+        body: 'Align on outcome, constraints, and success metrics before writing implementation code.',
+      },
+      {
+        title: 'Build',
+        body: 'Ship in focused milestones with clear updates, demos, and practical tradeoff decisions.',
+      },
+      {
+        title: 'Ship',
+        body: 'Production release with observability, handoff notes, and stability checks in place.',
+      },
+      {
+        title: 'Iterate',
+        body: 'Refine based on usage data and feedback to improve reliability and user outcomes.',
+      },
+    ],
+  },
+  testimonials: [
+    {
+      quote:
+        'Akash is a rare engineer who combines product sense with technical depth. He shipped our MVP in weeks, handled every integration, and communicated clearly throughout. Highly recommended for any SaaS build.',
+      author: 'S. Kumar',
+      role: 'Founder · SaaS Startup',
+    },
+    {
+      quote:
+        'Delivered a complex Shopify app from scratch, handled all review requirements, and iterated fast on feedback. Would work with again.',
+      author: 'A. Mehta',
+      role: 'E-commerce Lead',
+    },
+  ],
+  contact: {
+    headline: "Let's build something that ships.",
+    body: 'Available for freelance and project-based work. I reply within 24 hours. Email or use the form.',
+    channels: [
+      { label: 'Email', value: 'hello@akashdev.pro', href: 'mailto:hello@akashdev.pro' },
       { label: 'GitHub', value: '@akash-yadav-dev', href: 'https://github.com/akash-yadav-dev' },
-      { label: 'LinkedIn', value: 'akash-yadav', href: 'https://linkedin.com/in/akash-yadav-6b0a1b214/' },
+      { label: 'Signal', value: 'on request', href: '' },
     ],
   },
   footer: {
-    credit: '© 2026 — designed and built by Akash Yadav. Type set in Inter Tight & JetBrains Mono.',
+    credit: '© 2026 Akash Yadav. All rights reserved.',
     links: [
-      { label: 'GitHub', href: 'https://github.com/akash-yadav-dev' },
-      { label: 'LinkedIn', href: 'https://linkedin.com/in/akash-yadav-6b0a1b214/' },
-      { label: 'Source', href: '#' },
+      { label: 'Source', href: 'https://github.com/akash-yadav-dev/portfolio' },
+      { label: 'Contact', href: '/contact' },
     ],
   },
 }

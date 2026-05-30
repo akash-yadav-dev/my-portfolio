@@ -3,7 +3,11 @@ import { WorkRow } from '@/components/ui/WorkRow'
 import { FadeIn } from '@/components/ui/FadeIn'
 import { content } from '@/data/content'
 
-export const metadata: Metadata = { title: 'Work' }
+export const metadata: Metadata = {
+  title: 'Work',
+  description:
+    'Selected projects: SaaS, Shopify apps, open-source tools, and large-scale React platforms. All built and shipped by Akash Yadav.',
+}
 
 export default function WorkPage() {
   return (
@@ -23,8 +27,7 @@ export default function WorkPage() {
           shipped.
         </h1>
         <p className="text-fg-muted leading-[1.35] max-w-[60ch]" style={{ fontSize: 'clamp(18px,2vw,24px)' }}>
-          Most are still running. A couple are open source. One was acquired. Click any of them to read the longer
-          story.
+          Most are still running. Some are open source. Click any of them to read the longer story.
         </p>
       </section>
 

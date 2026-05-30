@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { cn, parseRichText } from '@/lib/utils'
 import { content } from '@/data/content'
 
@@ -15,56 +16,72 @@ export function Hero() {
           {profile.available}
         </span>
         <span>{profile.location}</span>
-        <span>{profile.siteVersion}</span>
         <span>{profile.lastShipped}</span>
       </div>
 
-      {/* Heading */}
-      <h1
-        className="hero-reveal font-display font-semibold mb-5"
-        style={{
-          fontSize: 'clamp(72px,12vw,168px)',
-          letterSpacing: '-0.05em',
-          lineHeight: '0.9',
-          whiteSpace: 'pre-line',
-        }}
-      >
-        {taglineParts.map((part, i) =>
-          part.type === 'accent' ? (
-            <em key={i} className="not-italic text-accent cursor-blink">
-              {part.content}
-            </em>
-          ) : (
-            <span key={i}>{part.content}</span>
-          )
-        )}
-      </h1>
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-10 items-start">
+        <div>
+          {/* Heading */}
+          <h1
+            className="hero-reveal font-display font-semibold mb-5"
+            style={{
+              fontSize: 'clamp(64px,10vw,128px)',
+              letterSpacing: '-0.04em',
+              lineHeight: '0.95',
+              whiteSpace: 'pre-line',
+            }}
+          >
+            {taglineParts.map((part, i) =>
+              part.type === 'accent' ? (
+                <em key={i} className="not-italic text-accent">
+                  {part.content}
+                </em>
+              ) : (
+                <span key={i}>{part.content}</span>
+              )
+            )}
+          </h1>
 
-      {/* Sub */}
-      <p
-        className="hero-reveal text-fg-muted mb-8 leading-[1.35]"
-        style={{ fontSize: 'clamp(18px,2vw,24px)', maxWidth: '60ch' }}
-      >
-        {profile.intro}
-      </p>
+          {/* Sub */}
+          <p
+            className="hero-reveal text-fg-muted mb-8 leading-[1.35]"
+            style={{ fontSize: 'clamp(20px,2vw,26px)', maxWidth: '60ch' }}
+          >
+            {profile.intro}
+          </p>
 
-      {/* CTAs */}
-      <div className="hero-reveal flex gap-3 flex-wrap items-center">
-        <Link
-          href="/contact"
-          className="btn-accent-primary inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-sm font-medium transition-all duration-200 hover:-translate-y-0.5 group"
-          style={{ background: 'var(--accent)', color: 'var(--accent-fg)' }}
-        >
-          Start a project
-          <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
-        </Link>
-        <Link
-          href="/work"
-          className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-sm font-medium border border-line-strong transition-all duration-200 hover:border-fg hover:bg-bg-sunken group"
-        >
-          See selected work
-          <span className="transition-transform duration-200 group-hover:translate-x-1 opacity-50">→</span>
-        </Link>
+          {/* CTAs */}
+          <div className="hero-reveal flex gap-3 flex-wrap items-center">
+            <Link
+              href="/contact"
+              className="btn-accent-primary inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-sm font-medium transition-all duration-200 hover:-translate-y-0.5 group"
+              style={{ background: 'var(--accent)', color: 'var(--accent-fg)' }}
+            >
+              Start a project
+              <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+            </Link>
+            <Link
+              href="/work"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-sm font-medium border border-line-strong transition-all duration-200 hover:border-fg hover:bg-bg-sunken group"
+            >
+              See selected work
+              <span className="transition-transform duration-200 group-hover:translate-x-1 opacity-50">→</span>
+            </Link>
+          </div>
+        </div>
+
+        <div className="hero-reveal lg:pt-8">
+          <div className="relative w-full max-w-[320px] mx-auto rounded-[28px] overflow-hidden border border-line bg-bg-sunken">
+            <Image
+              src={profile.photo}
+              alt={`${profile.name} headshot`}
+              width={640}
+              height={760}
+              className="w-full h-auto object-cover"
+              priority
+            />
+          </div>
+        </div>
       </div>
 
       {/* Stats — 4-col desktop, 2-col mobile with correct borders */}
@@ -74,9 +91,7 @@ export function Hero() {
             key={stat.label}
             className={cn(
               'py-5 pr-5 border-r border-line',
-              // Mobile 2-col: even-indexed items (0,2) keep right border; odd-indexed (1,3) remove it
               i % 2 === 1 && 'border-r-0 md:border-r border-line',
-              // Desktop: last item never has right border
               i === stats.length - 1 && 'md:border-r-0',
             )}
           >

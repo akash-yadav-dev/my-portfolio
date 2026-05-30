@@ -31,8 +31,9 @@ export const metadata: Metadata = {
     template: `%s — ${content.profile.name}`,
     default: `${content.profile.name} — ${content.profile.role}`,
   },
-  description: content.profile.intro,
-  metadataBase: new URL('https://akashyadav.dev'),
+  description:
+    'Freelance full-stack engineer for SaaS, platforms, and web apps. 3+ years experience. Available for project-based work. Based in Bangalore, open to remote.',
+  metadataBase: new URL('https://akashdev.pro'),
   openGraph: {
     type: 'website',
     locale: 'en_US',

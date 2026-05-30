@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Badge } from './Badge'
 import type { Project } from '@/data/content'
 
@@ -20,6 +21,15 @@ export function WorkRow({ project, index }: WorkRowProps) {
       <span className="font-mono text-[11px] text-fg-subtle pt-1">{'// '}{idx}</span>
 
       <div>
+        <div className="mb-4 rounded-lg overflow-hidden border border-line bg-bg-sunken">
+          <Image
+            src={project.visual.src}
+            alt={project.visual.alt}
+            width={1200}
+            height={675}
+            className="w-full h-auto object-cover"
+          />
+        </div>
         <h3 className="font-display text-[clamp(28px,4vw,44px)] font-semibold tracking-tight leading-[1.05] mb-3 transition-colors duration-100 group-hover:text-accent">
           {project.name}
         </h3>

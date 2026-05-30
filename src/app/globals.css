@@ -18,10 +18,10 @@
   --line: oklch(0.88 0.005 100);
   --line-strong: oklch(0.78 0.005 100);
 
-  --accent: oklch(0.78 0.2 130);
-  --accent-fg: oklch(0.2 0.05 130);
-  --accent-soft: oklch(0.94 0.08 130);
-  --accent-hover: oklch(0.82 0.21 130);
+  --accent: oklch(0.78 0.18 70);
+  --accent-fg: oklch(0.23 0.05 70);
+  --accent-soft: oklch(0.94 0.08 70);
+  --accent-hover: oklch(0.82 0.2 70);
   --success: oklch(0.65 0.16 150);
 
   --shadow-sm: 0 1px 2px oklch(0 0 0 / 0.04), 0 0 0 1px oklch(0 0 0 / 0.04);
@@ -31,7 +31,7 @@
   /* Glass nav background — light mode */
   --bg-glass: rgb(252 250 248 / 0.88);
   /* Accent glow for buttons */
-  --accent-glow: 0 12px 24px -10px oklch(0.78 0.2 130 / 0.6);
+  --accent-glow: 0 12px 24px -10px oklch(0.78 0.18 70 / 0.6);
 }
 
 [data-theme="dark"] {
@@ -44,10 +44,10 @@
   --line: oklch(0.26 0.012 265);
   --line-strong: oklch(0.38 0.012 265);
 
-  --accent: oklch(0.87 0.22 130);
-  --accent-fg: oklch(0.14 0.05 130);
-  --accent-soft: oklch(0.28 0.1 130);
-  --accent-hover: oklch(0.91 0.23 130);
+  --accent: oklch(0.86 0.2 72);
+  --accent-fg: oklch(0.15 0.05 72);
+  --accent-soft: oklch(0.3 0.1 72);
+  --accent-hover: oklch(0.9 0.21 72);
 
   --shadow-sm: 0 1px 2px oklch(0 0 0 / 0.4), 0 0 0 1px oklch(1 0 0 / 0.04);
   --shadow-md: 0 4px 12px oklch(0 0 0 / 0.4), 0 0 0 1px oklch(1 0 0 / 0.04);
@@ -56,7 +56,7 @@
   /* Glass nav background — dark mode */
   --bg-glass: rgb(28 26 38 / 0.88);
   /* Accent glow — brighter in dark mode */
-  --accent-glow: 0 12px 24px -8px oklch(0.87 0.22 130 / 0.55);
+  --accent-glow: 0 12px 24px -8px oklch(0.86 0.2 72 / 0.55);
 }
 
 /* ── Base ────────────────────────────────────────────────── */
@@ -109,9 +109,9 @@ img {
 
 /* ── Animations ──────────────────────────────────────────── */
 @keyframes pulse-dot {
-  0%   { box-shadow: 0 0 0 0 oklch(0.78 0.2 130 / 0.6); }
-  70%  { box-shadow: 0 0 0 12px oklch(0.78 0.2 130 / 0); }
-  100% { box-shadow: 0 0 0 0 oklch(0.78 0.2 130 / 0); }
+  0%   { box-shadow: 0 0 0 0 oklch(0.78 0.18 70 / 0.6); }
+  70%  { box-shadow: 0 0 0 12px oklch(0.78 0.18 70 / 0); }
+  100% { box-shadow: 0 0 0 0 oklch(0.78 0.18 70 / 0); }
 }
 
 @keyframes blink {

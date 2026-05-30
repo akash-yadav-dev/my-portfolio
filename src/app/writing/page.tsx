@@ -3,7 +3,11 @@ import { WritingCard } from '@/components/ui/WritingCard'
 import { FadeIn } from '@/components/ui/FadeIn'
 import { content } from '@/data/content'
 
-export const metadata: Metadata = { title: 'Writing' }
+export const metadata: Metadata = {
+  title: 'Writing',
+  description:
+    'Technical writing on SaaS, multi-tenancy, workflows, and production systems by Akash Yadav. Notes on building real products.',
+}
 
 export default function WritingPage() {
   return (

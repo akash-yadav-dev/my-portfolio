@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { Badge } from '@/components/ui/Badge'
 import { content } from '@/data/content'
@@ -47,6 +48,17 @@ export default function ProjectPage({ params }: Props) {
       <p className="text-fg-muted leading-[1.35] mb-8 max-w-[60ch]" style={{ fontSize: 'clamp(18px,2vw,24px)' }}>
         {project.tagline}
       </p>
+
+      <div className="mb-8 rounded-xl overflow-hidden border border-line bg-bg-sunken">
+        <Image
+          src={project.visual.src}
+          alt={project.visual.alt}
+          width={1400}
+          height={840}
+          className="w-full h-auto object-cover"
+          priority
+        />
+      </div>
 
       {/* Meta strip */}
       <dl className="grid grid-cols-2 md:grid-cols-4 gap-5 py-5 border-t border-b border-line mb-10 font-mono text-[11px]">

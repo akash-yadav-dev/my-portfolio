@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -49,16 +48,10 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 font-mono text-[13px]">
             <span
-              className="w-7 h-7 rounded-sm grid place-items-center overflow-hidden"
-              style={{ background: '#0a0a0a', padding: '2px' }}
+              className="w-7 h-7 rounded-sm grid place-items-center overflow-hidden font-display font-semibold text-[11px]"
+              style={{ background: 'var(--accent)', color: 'var(--accent-fg)' }}
             >
-              <Image
-                src={content.profile.logo}
-                alt={content.profile.name}
-                width={24}
-                height={24}
-                className="object-contain w-full h-full"
-              />
+              {content.profile.initial}
             </span>
             <span className="text-fg font-medium">{content.profile.name}</span>
           </Link>
