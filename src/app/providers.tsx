@@ -1,11 +1,6 @@
 'use client'
 
-import { ThemeProvider } from 'next-themes'
-
+// Single light theme — no theme switching.
 export function Providers({ children }: { children: React.ReactNode }) {
-  return (
-    <ThemeProvider attribute="data-theme" defaultTheme="system" enableSystem disableTransitionOnChange={false}>
-      {children}
-    </ThemeProvider>
-  )
+  return <>{children}</>
 }

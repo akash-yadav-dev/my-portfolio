@@ -17,6 +17,8 @@ const config: Config = {
         accent: 'var(--accent)',
         'accent-fg': 'var(--accent-fg)',
         'accent-soft': 'var(--accent-soft)',
+        'accent-border': 'var(--accent-border)',
+        'accent-dim': 'var(--accent-dim)',
         'accent-hover': 'var(--accent-hover)',
         success: 'var(--success)',
       },
@@ -48,9 +50,9 @@ const config: Config = {
       },
       keyframes: {
         'pulse-dot': {
-          '0%': { boxShadow: '0 0 0 0 oklch(0.78 0.2 130 / 0.6)' },
-          '70%': { boxShadow: '0 0 0 12px oklch(0.78 0.2 130 / 0)' },
-          '100%': { boxShadow: '0 0 0 0 oklch(0.78 0.2 130 / 0)' },
+          '0%': { boxShadow: '0 0 0 0 rgb(140 74 53 / 0.5)' },
+          '70%': { boxShadow: '0 0 0 12px rgb(140 74 53 / 0)' },
+          '100%': { boxShadow: '0 0 0 0 rgb(140 74 53 / 0)' },
         },
         blink: {
           '50%': { opacity: '0' },

@@ -2,61 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ── Design tokens ───────────────────────────────────────── */
+/* ── Design tokens — single clean light theme ────────────── */
 :root {
-  --font-display: var(--font-inter-tight), "Inter Tight", system-ui, sans-serif;
-  --font-sans: var(--font-inter), "Inter", system-ui, sans-serif;
+  --font-display: var(--font-fraunces), "Fraunces", Georgia, serif;
+  --font-sans: var(--font-jakarta), "Plus Jakarta Sans", system-ui, sans-serif;
   --font-mono: var(--font-jetbrains-mono), "JetBrains Mono", ui-monospace, monospace;
 
-  /* Light theme */
-  --bg: oklch(0.985 0.005 100);
-  --bg-elev: oklch(1 0 0);
-  --bg-sunken: oklch(0.96 0.005 100);
-  --fg: oklch(0.18 0.01 260);
-  --fg-muted: oklch(0.45 0.01 260);
-  --fg-subtle: oklch(0.62 0.01 260);
-  --line: oklch(0.88 0.005 100);
-  --line-strong: oklch(0.78 0.005 100);
+  /* Surfaces — warm cream paper (palette matched to artist-ada) */
+  --bg: #fff8f3;
+  --bg-elev: #ffffff;
+  --bg-sunken: #faf2ec;
 
-  --accent: oklch(0.78 0.18 70);
-  --accent-fg: oklch(0.23 0.05 70);
-  --accent-soft: oklch(0.94 0.08 70);
-  --accent-hover: oklch(0.82 0.2 70);
-  --success: oklch(0.65 0.16 150);
+  /* Text — warm near-black */
+  --fg: #1e1b17;
+  --fg-muted: #53433e;
+  --fg-subtle: #86736d;
 
-  --shadow-sm: 0 1px 2px oklch(0 0 0 / 0.04), 0 0 0 1px oklch(0 0 0 / 0.04);
-  --shadow-md: 0 4px 12px oklch(0 0 0 / 0.06), 0 0 0 1px oklch(0 0 0 / 0.04);
-  --shadow-lg: 0 24px 48px -12px oklch(0 0 0 / 0.18), 0 0 0 1px oklch(0 0 0 / 0.04);
+  /* Borders — warm */
+  --line: #e8e1db;
+  --line-strong: #d9c2bb;
 
-  /* Glass nav background — light mode */
-  --bg-glass: rgb(252 250 248 / 0.88);
+  /* Single accent — warm terracotta / clay */
+  --accent: #8c4a35;
+  --accent-fg: #ffffff;       /* text on solid accent */
+  --accent-soft: #ffe5db;     /* badge / chip backgrounds */
+  --accent-border: #e6c8bb;   /* badge / chip borders */
+  --accent-dim: #aa614b;      /* project numbers, subtle marks */
+  --accent-hover: #743c2b;
+
+  /* Semantic */
+  --success: #00a544;
+
+  --shadow-sm: 0 1px 2px rgb(64 38 28 / 0.05), 0 0 0 1px rgb(64 38 28 / 0.04);
+  --shadow-md: 0 4px 14px rgb(64 38 28 / 0.08), 0 0 0 1px rgb(64 38 28 / 0.04);
+  --shadow-lg: 0 24px 48px -12px rgb(64 38 28 / 0.2), 0 0 0 1px rgb(64 38 28 / 0.05);
+
+  /* Glass nav background */
+  --bg-glass: rgb(255 248 243 / 0.82);
   /* Accent glow for buttons */
-  --accent-glow: 0 12px 24px -10px oklch(0.78 0.18 70 / 0.6);
-}
-
-[data-theme="dark"] {
-  --bg: oklch(0.15 0.012 265);
-  --bg-elev: oklch(0.19 0.012 265);
-  --bg-sunken: oklch(0.12 0.01 265);
-  --fg: oklch(0.97 0.005 100);
-  --fg-muted: oklch(0.68 0.01 260);
-  --fg-subtle: oklch(0.48 0.01 260);
-  --line: oklch(0.26 0.012 265);
-  --line-strong: oklch(0.38 0.012 265);
-
-  --accent: oklch(0.86 0.2 72);
-  --accent-fg: oklch(0.15 0.05 72);
-  --accent-soft: oklch(0.3 0.1 72);
-  --accent-hover: oklch(0.9 0.21 72);
-
-  --shadow-sm: 0 1px 2px oklch(0 0 0 / 0.4), 0 0 0 1px oklch(1 0 0 / 0.04);
-  --shadow-md: 0 4px 12px oklch(0 0 0 / 0.4), 0 0 0 1px oklch(1 0 0 / 0.04);
-  --shadow-lg: 0 24px 48px -12px oklch(0 0 0 / 0.65), 0 0 0 1px oklch(1 0 0 / 0.05);
-
-  /* Glass nav background — dark mode */
-  --bg-glass: rgb(28 26 38 / 0.88);
-  /* Accent glow — brighter in dark mode */
-  --accent-glow: 0 12px 24px -8px oklch(0.86 0.2 72 / 0.55);
+  --accent-glow: 0 12px 24px -10px rgb(140 74 53 / 0.4);
 }
 
 /* ── Base ────────────────────────────────────────────────── */
@@ -109,9 +93,9 @@ img {
 
 /* ── Animations ──────────────────────────────────────────── */
 @keyframes pulse-dot {
-  0%   { box-shadow: 0 0 0 0 oklch(0.78 0.18 70 / 0.6); }
-  70%  { box-shadow: 0 0 0 12px oklch(0.78 0.18 70 / 0); }
-  100% { box-shadow: 0 0 0 0 oklch(0.78 0.18 70 / 0); }
+  0%   { box-shadow: 0 0 0 0 rgb(140 74 53 / 0.5); }
+  70%  { box-shadow: 0 0 0 12px rgb(140 74 53 / 0); }
+  100% { box-shadow: 0 0 0 0 rgb(140 74 53 / 0); }
 }
 
 @keyframes blink {
@@ -215,7 +199,3 @@ img {
 .syn-c { color: var(--fg-subtle); font-style: italic; }
 .syn-n { color: oklch(0.55 0.18 40); }
 .syn-f { color: oklch(0.5 0.18 250); }
-[data-theme="dark"] .syn-k { color: oklch(0.78 0.15 290); }
-[data-theme="dark"] .syn-s { color: oklch(0.78 0.14 150); }
-[data-theme="dark"] .syn-n { color: oklch(0.8 0.16 40); }
-[data-theme="dark"] .syn-f { color: oklch(0.78 0.15 250); }

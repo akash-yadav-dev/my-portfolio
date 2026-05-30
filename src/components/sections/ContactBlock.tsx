@@ -12,11 +12,11 @@ export function ContactBlock() {
       style={{ background: 'var(--fg)', color: 'var(--bg)' }}
     >
       <h2
-        className="font-display font-semibold tracking-tight mb-6"
+        className="font-display font-semibold mb-6"
         style={{
-          fontSize: 'clamp(48px,8vw,96px)',
-          lineHeight: '0.95',
-          letterSpacing: '-0.04em',
+          fontSize: 'clamp(30px,4.5vw,52px)',
+          lineHeight: '1.05',
+          letterSpacing: '-0.02em',
           whiteSpace: 'pre-line',
         }}
       >

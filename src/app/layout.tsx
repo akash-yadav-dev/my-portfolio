@@ -1,28 +1,33 @@
 import type { Metadata } from 'next'
-import { Inter, Inter_Tight, JetBrains_Mono } from 'next/font/google'
+import { Fraunces, Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import { Providers } from './providers'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { content } from '@/data/content'
 
-const inter = Inter({
+// Display serif — hero & section titles
+const fraunces = Fraunces({
   subsets: ['latin'],
-  variable: '--font-inter',
+  weight: ['300', '400', '500', '600'],
+  style: ['normal', 'italic'],
+  variable: '--font-fraunces',
   display: 'swap',
 })
 
-const interTight = Inter_Tight({
+// Body / UI sans
+const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
-  variable: '--font-inter-tight',
   weight: ['400', '500', '600', '700'],
+  variable: '--font-jakarta',
   display: 'swap',
 })
 
+// Tags, numbers, code
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   variable: '--font-jetbrains-mono',
-  weight: ['400', '500', '600'],
+  weight: ['400', '500'],
   display: 'swap',
 })
 
@@ -32,7 +37,7 @@ export const metadata: Metadata = {
     default: `${content.profile.name} — ${content.profile.role}`,
   },
   description:
-    'Freelance full-stack engineer for SaaS, platforms, and web apps. 3+ years experience. Available for project-based work. Based in Bangalore, open to remote.',
+    'Freelance full stack engineer for booking and transactional platforms, SaaS, and web apps. More than three years of experience and six live products. Available for project based work. Based in Bangalore, open to remote.',
   metadataBase: new URL('https://akashdev.pro'),
   openGraph: {
     type: 'website',
@@ -43,11 +48,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${interTight.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${fraunces.variable} ${jakarta.variable} ${jetbrainsMono.variable}`}>
       <body>
         <Providers>
           <Header />
-          <div className="max-w-site mx-auto px-6">
+          <div className="max-w-site mx-auto px-6 md:px-10 lg:px-14">
             <main>{children}</main>
             <Footer />
           </div>

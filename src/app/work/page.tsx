@@ -19,15 +19,13 @@ export default function WorkPage() {
           Selected work · {content.projects.length} projects
         </div>
         <h1
-          className="font-display font-semibold tracking-tight leading-tight m-0 mb-4"
-          style={{ fontSize: 'clamp(56px,9vw,112px)', lineHeight: '0.95', letterSpacing: '-0.04em' }}
+          className="font-display font-semibold m-0 mb-4"
+          style={{ fontSize: 'clamp(40px,6vw,64px)', lineHeight: '1.02', letterSpacing: '-0.02em' }}
         >
-          Things I&apos;ve
-          <br />
-          shipped.
+          Things I&apos;ve shipped.
         </h1>
-        <p className="text-fg-muted leading-[1.35] max-w-[60ch]" style={{ fontSize: 'clamp(18px,2vw,24px)' }}>
-          Most are still running. Some are open source. Click any of them to read the longer story.
+        <p className="text-fg-muted leading-[1.6] max-w-[58ch]" style={{ fontSize: 'clamp(16px,1.5vw,19px)' }}>
+          Most are live and still running. A few are open source, and one is the day job platform that taught me how to keep things fast at scale. The last few are in active development. Open any of them for the longer story.
         </p>
       </section>
 

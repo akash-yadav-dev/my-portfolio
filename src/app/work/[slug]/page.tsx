@@ -39,32 +39,62 @@ export default function ProjectPage({ params }: Props) {
       </div>
 
       <h1
-        className="font-display font-semibold tracking-tight leading-tight m-0 mb-4"
-        style={{ fontSize: 'clamp(56px,9vw,112px)', lineHeight: '0.95', letterSpacing: '-0.04em' }}
+        className="font-display font-semibold m-0 mb-4"
+        style={{ fontSize: 'clamp(40px,6vw,68px)', lineHeight: '1.02', letterSpacing: '-0.02em' }}
       >
         {project.name}
       </h1>
 
-      <p className="text-fg-muted leading-[1.35] mb-8 max-w-[60ch]" style={{ fontSize: 'clamp(18px,2vw,24px)' }}>
+      <p className="text-fg-muted leading-[1.5] mb-8 max-w-[58ch]" style={{ fontSize: 'clamp(17px,1.6vw,21px)' }}>
         {project.tagline}
       </p>
 
-      <div className="mb-8 rounded-xl overflow-hidden border border-line bg-bg-sunken">
-        <Image
-          src={project.visual.src}
-          alt={project.visual.alt}
-          width={1400}
-          height={840}
-          className="w-full h-auto object-cover"
-          priority
-        />
-      </div>
+      {project.visual ? (
+        <div className="mb-8 rounded-xl overflow-hidden border border-line bg-bg-sunken">
+          <Image
+            src={project.visual.src}
+            alt={project.visual.alt}
+            width={1400}
+            height={840}
+            className="w-full h-auto object-cover"
+            priority
+          />
+        </div>
+      ) : (
+        <div className="mb-8 rounded-xl border border-line bg-bg-sunken grid place-items-center text-center aspect-[16/8] px-6">
+          <div>
+            <span
+              className="inline-grid place-items-center w-14 h-14 rounded-lg font-display font-semibold text-xl mb-4"
+              style={{ background: 'var(--accent-soft)', color: 'var(--accent)' }}
+            >
+              {project.name.slice(0, 2)}
+            </span>
+            <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-fg-subtle">
+              {project.status === 'corporate'
+                ? 'Corporate platform, internal product'
+                : 'In active development'}
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* Meta strip */}
       <dl className="grid grid-cols-2 md:grid-cols-4 gap-5 py-5 border-t border-b border-line mb-10 font-mono text-[11px]">
         {[
           { label: 'Year', value: project.year },
-          { label: 'Status', value: project.status },
+          {
+            label: 'Status',
+            value: {
+              live: 'Live in production',
+              beta: 'Live, in beta',
+              'open-source': 'Open source',
+              building: 'Building now',
+              upcoming: 'In development',
+              corporate: 'Corporate work',
+              acquired: 'Acquired',
+              sunset: 'Sunset',
+            }[project.status],
+          },
           { label: 'Stack', value: project.stack.join(', ') },
           { label: 'Role', value: 'Design + engineering' },
         ].map(({ label, value }) => (

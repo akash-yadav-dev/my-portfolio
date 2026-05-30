@@ -19,15 +19,15 @@ export default function ContactPage() {
           Contact · {content.profile.available}
         </div>
         <h1
-          className="font-display font-semibold tracking-tight m-0 mb-4"
-          style={{ fontSize: 'clamp(48px,7vw,96px)', lineHeight: '0.95', letterSpacing: '-0.04em' }}
+          className="font-display font-semibold m-0 mb-4"
+          style={{ fontSize: 'clamp(34px,5vw,56px)', lineHeight: '1.05', letterSpacing: '-0.02em' }}
         >
           Start a project, ask a question,
           <br />
           or just say hello.
         </h1>
-        <p className="text-fg-muted leading-[1.45] max-w-[68ch]" style={{ fontSize: 'clamp(17px,1.6vw,20px)' }}>
-          I work on project-based engagements (4–12 weeks), but can also support hourly or retainer setups for the right fit. Best for product-focused teams that need strong execution across frontend and backend. Email is fastest.
+        <p className="text-fg-muted leading-[1.6] max-w-[64ch]" style={{ fontSize: 'clamp(16px,1.5vw,19px)' }}>
+          I take project based engagements of roughly four to twelve weeks, and can also support hourly or retainer setups for the right fit. The best fit is a product team that needs strong execution across frontend and backend, and booking and transactional platforms especially. Email is fastest, and I reply within a day.
         </p>
       </section>
 

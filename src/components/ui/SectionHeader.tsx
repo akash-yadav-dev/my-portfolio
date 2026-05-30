@@ -16,7 +16,7 @@ export function SectionHeader({ num, label, title, desc }: SectionHeaderProps) {
         {label}
       </div>
       <div>
-        <h2 className="font-display font-semibold m-0" style={{ fontSize: 'clamp(32px,5vw,48px)', letterSpacing: '-0.04em', lineHeight: '1' }}>
+        <h2 className="font-display font-semibold m-0" style={{ fontSize: 'clamp(28px,4vw,42px)', letterSpacing: '-0.02em', lineHeight: '1.05' }}>
           {lines.map((line, i) => (
             <span key={i}>
               {line}

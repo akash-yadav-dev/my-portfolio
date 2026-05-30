@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { cn, parseRichText } from '@/lib/utils'
+import { parseRichText } from '@/lib/utils'
 import { content } from '@/data/content'
 
 export function Hero() {
@@ -16,24 +16,23 @@ export function Hero() {
           {profile.available}
         </span>
         <span>{profile.location}</span>
-        <span>{profile.lastShipped}</span>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-10 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-10 lg:gap-14 items-center">
         <div>
           {/* Heading */}
           <h1
-            className="hero-reveal font-display font-semibold mb-5"
+            className="hero-reveal font-display font-semibold mb-6"
             style={{
-              fontSize: 'clamp(64px,10vw,128px)',
-              letterSpacing: '-0.04em',
-              lineHeight: '0.95',
+              fontSize: 'clamp(38px,6vw,60px)',
+              letterSpacing: '-0.02em',
+              lineHeight: '1.04',
               whiteSpace: 'pre-line',
             }}
           >
             {taglineParts.map((part, i) =>
               part.type === 'accent' ? (
-                <em key={i} className="not-italic text-accent">
+                <em key={i} className="italic font-light text-accent">
                   {part.content}
                 </em>
               ) : (
@@ -44,8 +43,8 @@ export function Hero() {
 
           {/* Sub */}
           <p
-            className="hero-reveal text-fg-muted mb-8 leading-[1.35]"
-            style={{ fontSize: 'clamp(20px,2vw,26px)', maxWidth: '60ch' }}
+            className="hero-reveal text-fg-muted mb-8 leading-[1.6]"
+            style={{ fontSize: 'clamp(16px,1.4vw,19px)', maxWidth: '52ch' }}
           >
             {profile.intro}
           </p>
@@ -70,8 +69,8 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="hero-reveal lg:pt-8">
-          <div className="relative w-full max-w-[320px] mx-auto rounded-[28px] overflow-hidden border border-line bg-bg-sunken">
+        <div className="hero-reveal">
+          <div className="relative w-full max-w-[280px] mx-auto rounded-2xl overflow-hidden border border-line bg-bg-sunken shadow-md">
             <Image
               src={profile.photo}
               alt={`${profile.name} headshot`}
@@ -84,17 +83,10 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Stats — 4-col desktop, 2-col mobile with correct borders */}
-      <dl className="hero-reveal grid grid-cols-2 md:grid-cols-4 mt-16 border-t border-line">
-        {stats.map((stat, i) => (
-          <div
-            key={stat.label}
-            className={cn(
-              'py-5 pr-5 border-r border-line',
-              i % 2 === 1 && 'border-r-0 md:border-r border-line',
-              i === stats.length - 1 && 'md:border-r-0',
-            )}
-          >
+      {/* Stats — clean spacing, no separators */}
+      <dl className="hero-reveal grid grid-cols-2 md:grid-cols-4 gap-x-10 gap-y-8 mt-16 pt-8 border-t border-line">
+        {stats.map((stat) => (
+          <div key={stat.label}>
             <dt className="font-mono text-[10px] uppercase tracking-[0.12em] text-fg-subtle mb-2">
               {stat.label}
             </dt>

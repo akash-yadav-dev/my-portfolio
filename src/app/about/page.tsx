@@ -3,8 +3,6 @@ import Image from 'next/image'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { ExperienceRow } from '@/components/ui/ExperienceRow'
 import { PrincipleCard } from '@/components/ui/PrincipleCard'
-import { SkillBar } from '@/components/ui/SkillBar'
-import { CodeSnippet } from '@/components/sections/CodeSnippet'
 import { FadeIn } from '@/components/ui/FadeIn'
 import { content } from '@/data/content'
 
@@ -28,12 +26,12 @@ export default function AboutPage() {
               About
             </div>
             <h1
-              className="font-display font-semibold tracking-tight m-0"
-              style={{ fontSize: 'clamp(48px,7vw,96px)', lineHeight: '0.95', letterSpacing: '-0.04em' }}
+              className="font-display font-semibold m-0"
+              style={{ fontSize: 'clamp(34px,5vw,56px)', lineHeight: '1.05', letterSpacing: '-0.02em' }}
             >
-              Freelance Full-Stack Engineer
+              Full-stack engineer who
               <br />
-              for SaaS & Platforms
+              ships platforms that hold up.
             </h1>
           </div>
 
@@ -54,14 +52,14 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-10 items-start">
           <FadeIn>
             <div>
-              <p className="text-fg leading-relaxed mb-4" style={{ fontSize: 'clamp(18px,1.7vw,22px)' }}>
-                I help product teams ship production SaaS, platforms, and web apps — from zero to launch. 3+ years experience building, scaling, and maintaining live systems. Available for freelance and project-based work. Based in Bangalore, open to remote.
+              <p className="text-fg leading-relaxed mb-4" style={{ fontSize: 'clamp(17px,1.6vw,20px)' }}>
+                I am a full stack engineer with more than three years building production web apps. By day I own frontend delivery on a platform that manages more than 400,000 records, so I spend a lot of time on the things that make or break a booking or transactional system. That means keeping data fast at scale, handling state cleanly, and shipping work that does not fall over.
               </p>
-              <p className="text-fg-muted leading-relaxed mb-4" style={{ fontSize: 'clamp(16px,1.5vw,19px)' }}>
-                Previously: izmo Ltd (car dealership platform, 400k+ records, React/NestJS), PostQueue (multi-tenant social publishing, Temporal workflows), FAQFlow (Shopify AI app), DimlyPDF (client-side PDF tool, MuPDF WebAssembly).
+              <p className="text-fg-muted leading-relaxed mb-4" style={{ fontSize: 'clamp(15px,1.4vw,18px)' }}>
+                Outside the day job I ship products end to end. ImgToolz, DimlyPDF, and UnitCraft are live tools that run entirely in the browser. PostQueue is a team scheduling platform built on durable queues and retries, and FAQFlow is a Shopify app preparing for its store listing. Across all of them the pattern is the same. Reliable flows, clean APIs, and a launch that actually runs.
               </p>
-              <p className="text-fg-muted leading-relaxed mb-0" style={{ fontSize: 'clamp(16px,1.5vw,19px)' }}>
-                I enjoy projects where product clarity and technical execution both matter: SaaS builds, platform foundations, and user-facing systems that need to scale cleanly.
+              <p className="text-fg-muted leading-relaxed mb-0" style={{ fontSize: 'clamp(15px,1.4vw,18px)' }}>
+                I am based in Bangalore and work remotely with product teams. The best fit is a build where product clarity and technical execution both matter, such as booking and ticketing platforms, SaaS, and user facing systems that need to scale cleanly. Right now I am focused on Artist Ada, with ConsentPulse and TrackProbe in progress.
               </p>
             </div>
           </FadeIn>
@@ -69,7 +67,7 @@ export default function AboutPage() {
           <FadeIn delay={0.1}>
             <div className="p-6 rounded-lg border border-line" style={{ background: 'var(--bg-sunken)' }}>
               <h4 className="font-mono text-[10px] uppercase tracking-[0.12em] text-fg-subtle mb-4">
-                Skills — grouped
+Stack I reach for
               </h4>
               <div className="flex flex-col gap-2">
                 <div>
@@ -107,7 +105,7 @@ export default function AboutPage() {
       {/* Principles */}
       <section className="py-24 border-t border-line">
         <FadeIn>
-          <SectionHeader num="—" label="Principles" title="How I work." />
+          <SectionHeader num="01" label="Principles" title="How I work." />
         </FadeIn>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {about.principles.map((principle, i) => (
@@ -123,7 +121,7 @@ export default function AboutPage() {
       {/* Experience */}
       <section className="py-24 border-t border-line">
         <FadeIn>
-          <SectionHeader num="—" label="Experience" title="A list, well set." />
+          <SectionHeader num="02" label="Experience" title="A list, well set." />
         </FadeIn>
         <div className="flex flex-col">
           {experience.map((exp, i) => (

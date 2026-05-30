@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { ThemeToggle } from './ThemeToggle'
 import { content } from '@/data/content'
 
 export function Header() {
@@ -33,7 +32,7 @@ export function Header() {
   return (
     <>
       <header
-        className="sticky top-4 z-50 max-w-site mx-auto px-6 mt-5"
+        className="sticky top-4 z-50 max-w-site mx-auto px-6 md:px-10 lg:px-14 mt-5"
         style={{ position: 'sticky' }}
       >
         <div
@@ -73,7 +72,6 @@ export function Header() {
 
           {/* Right side */}
           <div className="flex items-center gap-3">
-            <ThemeToggle />
             <Link
               href="/contact"
               className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full font-mono text-[11px] uppercase tracking-[0.06em] font-medium transition-all duration-200 hover:-translate-y-px"
@@ -82,8 +80,8 @@ export function Header() {
                 color: 'var(--accent-fg)',
               }}
             >
+              <span className="w-1.5 h-1.5 rounded-full bg-current opacity-90" />
               Available
-              <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
             </Link>
 
             {/* Hamburger — mobile */}
