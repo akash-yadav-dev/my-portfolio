@@ -6,7 +6,7 @@ const statusConfig: Record<ProjectStatus, { label: string; dot?: string; accent?
   beta: { label: 'Beta', accent: true },
   'open-source': { label: 'Open source', accent: true },
   building: { label: 'Building now', accent: true },
-  upcoming: { label: 'Upcoming' },
+  upcoming: { label: 'Coming soon', accent: true },
   corporate: { label: 'Corporate work' },
   acquired: { label: 'Acquired', accent: true },
   sunset: { label: 'Sunset' },

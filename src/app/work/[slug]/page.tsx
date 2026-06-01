@@ -26,7 +26,7 @@ export default function ProjectPage({ params }: Props) {
   const paragraphs = project.body.split('\n\n')
 
   return (
-    <section className="py-16 pb-24">
+    <section className="py-16 pb-16">
       <Link
         href="/work"
         className="inline-flex items-center gap-1.5 font-mono text-[11px] text-fg-muted mb-8 hover:text-accent transition-colors duration-100"

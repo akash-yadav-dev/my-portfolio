@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Hero } from '@/components/sections/Hero'
 import { ContactBlock } from '@/components/sections/ContactBlock'
 import { SectionHeader } from '@/components/ui/SectionHeader'
-import { WorkRow } from '@/components/ui/WorkRow'
+import { WorkCard } from '@/components/ui/WorkCard'
 import { WritingCard } from '@/components/ui/WritingCard'
 import { FadeIn } from '@/components/ui/FadeIn'
 import { content } from '@/data/content'
@@ -11,7 +11,7 @@ import { content } from '@/data/content'
 export const metadata: Metadata = {
   title: `${content.profile.name} — ${content.profile.role}`,
   description:
-    'Akash Yadav, full stack engineer for hire. I build booking and transactional platforms, SaaS, and web apps with Next.js and NestJS, with six live products you can open. Based in Bangalore, open to remote freelance work.',
+    'Akash Yadav, freelance full stack developer. I build websites and web apps, including booking and ordering platforms, with six live products you can try. Based in Bangalore, open to remote freelance work.',
 }
 
 export default function HomePage() {
@@ -24,19 +24,19 @@ export default function HomePage() {
       <Hero />
 
       {/* Featured Work */}
-      <section className="py-20 border-t border-line">
+      <section className="py-16 border-t border-line">
         <FadeIn>
-          <SectionHeader num="01" label="Selected Work" title={"Things I've shipped\nthat are still running."} />
+          <SectionHeader num="01" label="Selected Work" title={"A few projects\nI've worked on."} />
         </FadeIn>
-        <div className="flex flex-col">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {featured.map((project, i) => (
-            <FadeIn key={project.slug} delay={i * 0.06}>
-              <WorkRow project={project} index={i} />
+            <FadeIn key={project.slug} delay={i * 0.06} className="h-full">
+              <WorkCard project={project} index={i} />
             </FadeIn>
           ))}
         </div>
         <FadeIn delay={0.15}>
-          <div className="mt-8">
+          <div className="mt-10 flex justify-center">
             <Link
               href="/work"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-md text-sm font-medium border border-line-strong transition-all duration-200 hover:border-fg hover:bg-bg-sunken group"
@@ -49,9 +49,9 @@ export default function HomePage() {
       </section>
 
       {/* Services */}
-      <section className="py-20 border-t border-line">
+      <section className="py-16 border-t border-line">
         <FadeIn>
-          <SectionHeader num="02" label={services.title} title="What you can hire me for." />
+          <SectionHeader num="02" label={services.title} title="How I can help you." />
         </FadeIn>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {services.items.map((service, i) => (
@@ -66,9 +66,9 @@ export default function HomePage() {
       </section>
 
       {/* Process */}
-      <section className="py-20 border-t border-line">
+      <section className="py-16 border-t border-line">
         <FadeIn>
-          <SectionHeader num="03" label={process.title} title="Discovery to delivery." />
+          <SectionHeader num="03" label={process.title} title="From idea to launch." />
         </FadeIn>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {process.steps.map((step, i) => (
@@ -84,7 +84,7 @@ export default function HomePage() {
       </section>
 
       {/* Stack */}
-      <section className="py-20 border-t border-line">
+      <section className="py-16 border-t border-line">
         <FadeIn>
           <SectionHeader num="04" label="Stack" title="What I use to build." />
         </FadeIn>
@@ -113,9 +113,9 @@ export default function HomePage() {
       </section>
 
       {/* Writing */}
-      <section className="py-20 border-t border-line">
+      <section className="py-16 border-t border-line">
         <FadeIn>
-          <SectionHeader num="05" label="Latest Writing" title="Notes on building." />
+          <SectionHeader num="05" label="Latest Writing" title="Things I write about." />
         </FadeIn>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {recentWriting.map((article, i) => (
@@ -138,7 +138,7 @@ export default function HomePage() {
       </section>
 
       {/* Contact CTA */}
-      <section className="py-24 border-t border-line">
+      <section className="py-16 border-t border-line">
         <FadeIn>
           <ContactBlock />
         </FadeIn>

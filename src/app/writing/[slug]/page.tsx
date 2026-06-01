@@ -30,7 +30,7 @@ export default function ArticlePage({ params }: Props) {
   if (!article) notFound()
 
   return (
-    <section className="py-16 pb-24 max-w-[70ch]">
+    <section className="py-16 pb-16 max-w-[70ch]">
       <Link
         href="/writing"
         className="inline-flex items-center gap-1.5 font-mono text-[11px] text-fg-muted mb-8 hover:text-accent transition-colors duration-100"

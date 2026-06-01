@@ -1,12 +1,12 @@
 import type { Metadata } from 'next'
-import { WorkRow } from '@/components/ui/WorkRow'
+import { WorkCard } from '@/components/ui/WorkCard'
 import { FadeIn } from '@/components/ui/FadeIn'
 import { content } from '@/data/content'
 
 export const metadata: Metadata = {
   title: 'Work',
   description:
-    'Selected projects: SaaS, Shopify apps, open-source tools, and large-scale React platforms. All built and shipped by Akash Yadav.',
+    'A selection of websites, web apps, and tools that Akash Yadav has built and worked on.',
 }
 
 export default function WorkPage() {
@@ -22,19 +22,35 @@ export default function WorkPage() {
           className="font-display font-semibold m-0 mb-4"
           style={{ fontSize: 'clamp(40px,6vw,64px)', lineHeight: '1.02', letterSpacing: '-0.02em' }}
         >
-          Things I&apos;ve shipped.
+          Projects I&apos;ve worked on.
         </h1>
         <p className="text-fg-muted leading-[1.6] max-w-[58ch]" style={{ fontSize: 'clamp(16px,1.5vw,19px)' }}>
-          Most are live and still running. A few are open source, and one is the day job platform that taught me how to keep things fast at scale. The last few are in active development. Open any of them for the longer story.
+          Most of these are live and ready to use. A couple are open source, and one is the platform from my day job. A few are still in progress. Click any project to read more about it.
         </p>
+
+        {/* Trust strip — proof at a glance */}
+        <div className="flex flex-wrap items-center gap-x-8 gap-y-3 mt-8 pt-7 border-t border-line">
+          <span className="font-mono text-[11px] uppercase tracking-[0.06em] text-fg-subtle">
+            Proven track record
+          </span>
+          <span className="text-fg-muted text-[15px]">
+            <strong className="font-display font-semibold text-fg">3+ years</strong> building for the web
+          </span>
+          <span className="text-fg-muted text-[15px]">
+            <strong className="font-display font-semibold text-fg">400K+</strong> records handled smoothly
+          </span>
+          <span className="text-fg-muted text-[15px]">
+            <strong className="font-display font-semibold text-fg">6</strong> live products you can try today
+          </span>
+        </div>
       </section>
 
-      {/* Work list */}
-      <section className="pb-24">
-        <div className="flex flex-col">
+      {/* Work grid */}
+      <section className="pb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {content.projects.map((project, i) => (
-            <FadeIn key={project.slug} delay={i * 0.06}>
-              <WorkRow project={project} index={i} />
+            <FadeIn key={project.slug} delay={i * 0.06} className="h-full">
+              <WorkCard project={project} index={i} />
             </FadeIn>
           ))}
         </div>

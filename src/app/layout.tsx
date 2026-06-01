@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     default: `${content.profile.name} — ${content.profile.role}`,
   },
   description:
-    'Freelance full stack engineer for booking and transactional platforms, SaaS, and web apps. More than three years of experience and six live products. Available for project based work. Based in Bangalore, open to remote.',
+    'Akash Yadav is a freelance full stack developer who builds websites and web apps, including booking and ordering platforms. More than three years of experience and six live products. Based in Bangalore, available for freelance and project work.',
   metadataBase: new URL('https://akashdev.pro'),
   openGraph: {
     type: 'website',

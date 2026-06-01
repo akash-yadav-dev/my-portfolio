@@ -6,7 +6,7 @@ import { content } from '@/data/content'
 export const metadata: Metadata = {
   title: 'Writing',
   description:
-    'Technical writing on SaaS, multi-tenancy, workflows, and production systems by Akash Yadav. Notes on building real products.',
+    'Articles by Akash Yadav about building websites, web apps, and the tools behind them.',
 }
 
 export default function WritingPage() {
@@ -22,16 +22,16 @@ export default function WritingPage() {
           className="font-display font-semibold m-0 mb-4"
           style={{ fontSize: 'clamp(40px,6vw,64px)', lineHeight: '1.02', letterSpacing: '-0.02em' }}
         >
-          Notes on building.
+          Things I write about.
         </h1>
         <p className="text-fg-muted leading-[1.6] max-w-[58ch]" style={{ fontSize: 'clamp(16px,1.5vw,19px)' }}>
-          Working notes on software, infrastructure, and the occasional non-software thing. New posts on irregular
-          Mondays.
+          Notes and articles on building software, the tools I use, and the occasional other topic. New posts whenever
+          I have something worth sharing.
         </p>
       </section>
 
       {/* Grid */}
-      <section className="pb-24 border-t border-line pt-10">
+      <section className="pb-16 border-t border-line pt-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {content.writing.map((article, i) => (
             <FadeIn key={article.slug} delay={i * 0.06}>

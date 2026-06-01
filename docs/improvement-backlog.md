@@ -95,9 +95,9 @@ Homepage features the top 3. All five live/beta sites have real Playwright scree
 
 ## Priority 3 — Polish (Nice to have)
 
-### P3-1: Add `priority` prop to PostQueue image in WorkRow
+### P3-1: Add `priority` prop to the first WorkCard image
 **Problem:** Next.js flags `/uploads/postqueue.png` as the LCP element — it should have `priority` to load faster.  
-**Action:** Either add `priority` prop in `WorkRow.tsx` for `index === 0`, or handle it in the work page.
+**Action:** Add a `priority` prop to `WorkCard.tsx` (passed for `index === 0`) so the homepage/work-grid first image loads eagerly.
 
 ### P3-2: Add LinkedIn to footer/contact ✅ Done (May 30, 2026)
 LinkedIn now in `content.contact.channels` (replaced the "Signal on request" entry).
@@ -121,6 +121,31 @@ LinkedIn now in `content.contact.channels` (replaced the "Signal on request" ent
 ---
 
 ## Done ✅
+
+**Plain-language copy pass (Jun 1, 2026):**
+- [x] Rewrote client-facing copy in simple, non-technical language for a broader (incl. Indian) audience, framed as "what I've worked on / done"
+- [x] Removed "shipping" jargon from headings & blocks: work H1 "Things I've shipped" → "Projects I've worked on"; homepage section titles, trust strip, hero tagline/intro, stats labels all simplified
+- [x] Contact headline "Let's build something that ships." → "Let's work together."; writing "Notes on building." → "Things I write about."
+- [x] Simplified the Services and Process blocks and the About "How I work" principle cards (e.g. "Type everything" → "I keep the work clean", "Performance is UX" → "Speed matters")
+- [x] `profile.role` → "Full-Stack Developer · Websites & Apps"; page/SEO meta descriptions reworded in plain language
+- [x] Deeper technical wording kept only on project detail pages and Writing articles, where the audience expects it
+
+**Homepage cards + corner status badges (Jun 1, 2026):**
+- [x] Homepage "Selected Work" now uses the shared `WorkCard` grid (3-up on desktop, 2-up tablet, stacked on mobile) instead of the old row list
+- [x] "All projects" button moved to centered below the cards (was bottom-left)
+- [x] Status badge moved to the card's top-right corner (backdrop-blur pill) so `Coming soon` on ConsentPulse + TrackProbe stands out instead of blending with the stack tags
+- [x] Deleted the now-unused `WorkRow.tsx` and its `.work-row` CSS
+
+**Badges, equal-height cards, tighter spacing (Jun 1, 2026):**
+- [x] `upcoming` status now shows an accented `Coming soon` badge so ConsentPulse + TrackProbe read as not-yet-live
+- [x] About → "How I work" principle cards are equal height regardless of body length (`h-full` on `FadeIn` + `PrincipleCard`)
+- [x] Reduced vertical rhythm site-wide: content sections `py-20`/`py-24` → `py-16`, last-section `pb-24` → `pb-16`, footer `py-12 mt-12` → `py-10 mt-8` (cuts the dead space above the footer)
+
+**Work page card layout + trust strip (Jun 1, 2026):**
+- [x] `/work` converted from a stacked list to a responsive card grid (1 / 2 / 3 cols) via new `WorkCard.tsx`
+- [x] Each card shows the screenshot up top, then index/title/year, a 3-line-clamped summary (`line-clamp-3`), and status + stack badges
+- [x] Added a header trust strip surfacing 3+ years experience, 400K+ records at scale, and 6 live products
+- [x] Homepage featured-work section keeps the `WorkRow` row layout (cards are work-page only)
 
 **Live projects + theme (May 30, 2026):**
 - [x] Verified functionality of all 6 deployed sites and ranked them working-first

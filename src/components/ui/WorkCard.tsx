@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { Badge } from './Badge'
 import type { Project } from '@/data/content'
 
-interface WorkRowProps {
+interface WorkCardProps {
   project: Project
   index: number
 }
@@ -14,25 +14,27 @@ const placeholderLabel: Partial<Record<Project['status'], string>> = {
   building: 'Interface live, more coming',
 }
 
-export function WorkRow({ project, index }: WorkRowProps) {
+export function WorkCard({ project, index }: WorkCardProps) {
   const idx = String(index + 1).padStart(2, '0')
 
   return (
     <Link
       href={`/work/${project.slug}`}
-      className="work-row group relative grid md:grid-cols-[320px_1fr] gap-5 md:gap-8 items-center py-7 px-2 md:px-4 border-t border-line last:border-b last:border-line transition-colors duration-200 hover:bg-bg-sunken cursor-pointer"
+      className="group relative flex flex-col h-full rounded-xl overflow-hidden border border-line bg-bg transition-all duration-200 hover:border-line-strong hover:-translate-y-1 hover:shadow-md cursor-pointer"
     >
-      <div className="work-row-bar" />
-
-      {/* Visual or themed placeholder */}
-      <div className="relative aspect-[16/10] rounded-lg overflow-hidden border border-line bg-bg-sunken">
+      {/* Screenshot or themed placeholder */}
+      <div className="relative aspect-[16/10] overflow-hidden border-b border-line bg-bg-sunken">
+        {/* Status badge — pinned to a corner so it reads at a glance, not lost among the stack tags */}
+        <span className="absolute top-3 right-3 z-10 rounded-full bg-bg/80 backdrop-blur-sm shadow-sm">
+          <Badge status={project.status} />
+        </span>
         {project.visual ? (
           <Image
             src={project.visual.src}
             alt={project.visual.alt}
             width={1280}
             height={800}
-            className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
+            className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.03]"
           />
         ) : (
           <div className="w-full h-full grid place-items-center text-center px-4">
@@ -52,25 +54,24 @@ export function WorkRow({ project, index }: WorkRowProps) {
       </div>
 
       {/* Content */}
-      <div className="min-w-0">
-        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
+      <div className="flex flex-col flex-1 p-5">
+        <div className="flex items-baseline gap-x-3 mb-2">
           <span className="font-mono text-[12px] select-none" style={{ color: 'var(--accent-dim)' }}>
             {idx}
           </span>
           <h3
             className="font-display font-semibold tracking-snug leading-tight transition-colors duration-150 group-hover:text-accent"
-            style={{ fontSize: 'clamp(20px,2.6vw,26px)' }}
+            style={{ fontSize: 'clamp(19px,2.2vw,23px)' }}
           >
             {project.name}
           </h3>
-          <span className="font-mono text-[11px] text-fg-subtle">{project.year}</span>
+          <span className="font-mono text-[11px] text-fg-subtle ml-auto whitespace-nowrap">{project.year}</span>
         </div>
-        <p className="text-fg-muted text-[15px] leading-relaxed max-w-[58ch] mb-3">
+        <p className="text-fg-muted text-[14.5px] leading-relaxed mb-4 line-clamp-3">
           {project.summary}
         </p>
-        <div className="flex gap-1.5 flex-wrap items-center">
-          <Badge status={project.status} />
-          {project.stack.slice(0, 4).map((tech) => (
+        <div className="mt-auto flex gap-1.5 flex-wrap items-center">
+          {project.stack.slice(0, 3).map((tech) => (
             <Badge key={tech}>{tech}</Badge>
           ))}
         </div>

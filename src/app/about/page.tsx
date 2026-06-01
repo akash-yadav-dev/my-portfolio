@@ -9,7 +9,7 @@ import { content } from '@/data/content'
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'About Akash Yadav — freelance full-stack engineer for SaaS, platforms, and web apps. 3+ years experience. Based in Bangalore, open to remote.',
+    'About Akash Yadav — freelance full stack developer building websites and web apps. More than three years of experience. Based in Bangalore, open to remote work.',
 }
 
 export default function AboutPage() {
@@ -29,9 +29,9 @@ export default function AboutPage() {
               className="font-display font-semibold m-0"
               style={{ fontSize: 'clamp(34px,5vw,56px)', lineHeight: '1.05', letterSpacing: '-0.02em' }}
             >
-              Full-stack engineer who
+              I build web apps
               <br />
-              ships platforms that hold up.
+              that people can rely on.
             </h1>
           </div>
 
@@ -48,18 +48,18 @@ export default function AboutPage() {
       </section>
 
       {/* Bio + Skills */}
-      <section className="pb-24 border-t border-line pt-10">
+      <section className="pb-16 border-t border-line pt-10">
         <div className="grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-10 items-start">
           <FadeIn>
             <div>
               <p className="text-fg leading-relaxed mb-4" style={{ fontSize: 'clamp(17px,1.6vw,20px)' }}>
-                I am a full stack engineer with more than three years building production web apps. By day I own frontend delivery on a platform that manages more than 400,000 records, so I spend a lot of time on the things that make or break a booking or transactional system. That means keeping data fast at scale, handling state cleanly, and shipping work that does not fall over.
+                I am a full stack developer with more than three years of experience building websites and web apps. In my day job I look after a large platform that handles over 400,000 records, so I have learned how to keep things fast, reliable, and easy to use even when there is a lot going on.
               </p>
               <p className="text-fg-muted leading-relaxed mb-4" style={{ fontSize: 'clamp(15px,1.4vw,18px)' }}>
-                Outside the day job I ship products end to end. ImgToolz, DimlyPDF, and UnitCraft are live tools that run entirely in the browser. PostQueue is a team scheduling platform built on durable queues and retries, and FAQFlow is a Shopify app preparing for its store listing. Across all of them the pattern is the same. Reliable flows, clean APIs, and a launch that actually runs.
+                Outside of work I build my own products from start to finish. ImgToolz, DimlyPDF, and UnitCraft are free tools anyone can use right in their browser. PostQueue helps teams plan and schedule their social media posts, and FAQFlow is an app for online stores. They are all different, but the goal is always the same: something useful that simply works.
               </p>
               <p className="text-fg-muted leading-relaxed mb-0" style={{ fontSize: 'clamp(15px,1.4vw,18px)' }}>
-                I am based in Bangalore and work remotely with product teams. The best fit is a build where product clarity and technical execution both matter, such as booking and ticketing platforms, SaaS, and user facing systems that need to scale cleanly. Right now I am focused on Artist Ada, with ConsentPulse and TrackProbe in progress.
+                I am based in Bangalore and work with teams remotely. I enjoy projects like booking and ticketing websites, online products, and apps that need to stay fast as they grow. Right now I am focused on Artist Ada, with ConsentPulse and TrackProbe in progress.
               </p>
             </div>
           </FadeIn>
@@ -67,7 +67,7 @@ export default function AboutPage() {
           <FadeIn delay={0.1}>
             <div className="p-6 rounded-lg border border-line" style={{ background: 'var(--bg-sunken)' }}>
               <h4 className="font-mono text-[10px] uppercase tracking-[0.12em] text-fg-subtle mb-4">
-Stack I reach for
+Tools I work with
               </h4>
               <div className="flex flex-col gap-2">
                 <div>
@@ -103,13 +103,13 @@ Stack I reach for
       </section>
 
       {/* Principles */}
-      <section className="py-24 border-t border-line">
+      <section className="py-16 border-t border-line">
         <FadeIn>
           <SectionHeader num="01" label="Principles" title="How I work." />
         </FadeIn>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {about.principles.map((principle, i) => (
-            <FadeIn key={principle.n} delay={i * 0.08}>
+            <FadeIn key={principle.n} delay={i * 0.08} className="h-full">
               <PrincipleCard principle={principle} />
             </FadeIn>
           ))}
@@ -119,9 +119,9 @@ Stack I reach for
 
 
       {/* Experience */}
-      <section className="py-24 border-t border-line">
+      <section className="py-16 border-t border-line">
         <FadeIn>
-          <SectionHeader num="02" label="Experience" title="A list, well set." />
+          <SectionHeader num="02" label="Experience" title="Where I've worked." />
         </FadeIn>
         <div className="flex flex-col">
           {experience.map((exp, i) => (

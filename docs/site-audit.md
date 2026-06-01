@@ -24,8 +24,8 @@ This is a personal portfolio and freelance sales site for **Akash Yadav**, a Ful
 
 | Route | File | Purpose | Status |
 |---|---|---|---|
-| `/` | `src/app/page.tsx` | Homepage — hero, featured work, services, process, stack, writing preview, CTA (testimonials removed) | ✅ Working |
-| `/work` | `src/app/work/page.tsx` | All 5 projects as clean scannable rows (screenshots live on detail pages) | ✅ Working |
+| `/` | `src/app/page.tsx` | Homepage — hero, featured work (3-card `WorkCard` grid, centered "All projects" button), services, process, stack, writing preview, CTA (testimonials removed) | ✅ Working |
+| `/work` | `src/app/work/page.tsx` | All 9 projects as a responsive card grid (1/2/3 cols) — each card has a screenshot, status badge, stack tags, and a 3-line-clamped summary; header carries a trust strip (3+ years, 400K+ records, 6 live products) | ✅ Working |
 | `/work/[slug]` | `src/app/work/[slug]/page.tsx` | Individual project detail pages — renders body, meta, stack, visual, links | ✅ Working |
 | `/about` | `src/app/about/page.tsx` | Bio, photo, grouped skill tags (no rating bars), experience timeline, principles | ✅ Working |
 | `/writing` | `src/app/writing/page.tsx` | Grid of 7 article cards | ✅ Working |
@@ -54,14 +54,14 @@ This is a personal portfolio and freelance sales site for **Akash Yadav**, a Ful
 ### UI
 | Component | File | Notes |
 |---|---|---|
-| Badge | `src/components/ui/Badge.tsx` | Tech stack + status labels |
+| Badge | `src/components/ui/Badge.tsx` | Tech stack + status labels; `upcoming` renders an accented `Coming soon` badge |
 | Button | `src/components/ui/Button.tsx` | Reusable button |
 | ExperienceRow | `src/components/ui/ExperienceRow.tsx` | Timeline entry in About |
 | FadeIn | `src/components/ui/FadeIn.tsx` | Framer Motion scroll reveal |
 | PrincipleCard | `src/components/ui/PrincipleCard.tsx` | Engineering principle cards |
 | SectionHeader | `src/components/ui/SectionHeader.tsx` | Numbered section titles |
 | SkillBar | `src/components/ui/SkillBar.tsx` | Animated skill level bar |
-| WorkRow | `src/components/ui/WorkRow.tsx` | Project card with screenshot, stack badges, status |
+| WorkCard | `src/components/ui/WorkCard.tsx` | Shared project card (homepage featured grid + `/work`) — screenshot, corner status badge, stack tags, 3-line-clamped summary, `h-full` for equal heights |
 | WritingCard | `src/components/ui/WritingCard.tsx` | Article card for writing grid |
 
 ---

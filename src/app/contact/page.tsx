@@ -6,7 +6,7 @@ import { content } from '@/data/content'
 export const metadata: Metadata = {
   title: 'Contact',
   description:
-    'Contact Akash Yadav — freelance full-stack engineer. Available for project-based, hourly, or retainer work. Email is fastest.',
+    'Get in touch with Akash Yadav. Available for freelance and project work. Email is the fastest way to reach me.',
 }
 
 export default function ContactPage() {
@@ -27,11 +27,11 @@ export default function ContactPage() {
           or just say hello.
         </h1>
         <p className="text-fg-muted leading-[1.6] max-w-[64ch]" style={{ fontSize: 'clamp(16px,1.5vw,19px)' }}>
-          I take project based engagements of roughly four to twelve weeks, and can also support hourly or retainer setups for the right fit. The best fit is a product team that needs strong execution across frontend and backend, and booking and transactional platforms especially. Email is fastest, and I reply within a day.
+          I usually take on projects that run from about four to twelve weeks, and I am also open to hourly or ongoing work for the right fit. I work best with teams building websites and apps, especially booking and ordering platforms. Email is the fastest way to reach me, and I reply within a day.
         </p>
       </section>
 
-      <section className="pb-24 border-t border-line pt-10">
+      <section className="pb-16 border-t border-line pt-10">
         <FadeIn>
           <ContactBlock />
         </FadeIn>

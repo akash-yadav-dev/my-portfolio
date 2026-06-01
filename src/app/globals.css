@@ -119,24 +119,6 @@ img {
   animation: pulse-dot 2s ease-out infinite;
 }
 
-/* ── Work row hover accent bar ───────────────────────────── */
-.work-row-bar {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: var(--accent);
-  transform: scaleY(0);
-  transform-origin: top;
-  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
-  border-radius: 0 2px 2px 0;
-}
-
-.work-row:hover .work-row-bar {
-  transform: scaleY(1);
-}
-
 /* ── Staggered hero entry ────────────────────────────────── */
 @keyframes fade-up-in {
   from { opacity: 0; transform: translateY(28px); }

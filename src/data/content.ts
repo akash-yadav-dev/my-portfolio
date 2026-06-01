@@ -141,10 +141,10 @@ export const content: SiteData = {
     initial: 'AY',
     logo: '/icon.svg',
     photo: '/akashdev.png',
-    role: 'Full-Stack Engineer · Web Platforms',
-    tagline: 'I build web platforms\nthat {handle real volume}.',
+    role: 'Full-Stack Developer · Websites & Apps',
+    tagline: 'I build websites and apps\nthat {people actually use}.',
     intro:
-      'Full stack engineer with more than three years shipping production web apps. I work on what booking and transactional platforms are made of, including fast data at scale, real time updates, multi tenant SaaS, and reliable flows from end to end. I helped keep a platform of 400,000 records quick and stable, and I ship products from first scope to launch.',
+      'I am a full stack developer with more than three years of experience building websites and web apps. I have worked on large platforms used by people every day, kept a system of over 400,000 records running fast and smooth, and built and launched my own products from scratch. I enjoy turning an idea into something real that works well and is easy to use.',
     location: 'Bangalore, India · Remote-friendly',
     available: 'Open for freelance projects',
     email: 'hello@akashdev.pro',
@@ -153,10 +153,10 @@ export const content: SiteData = {
     writingUrl: 'akashdev.pro',
   },
   stats: [
-    { label: 'Years of web development and management', value: '3', suffix: '+' },
-    { label: 'Live products you can open', value: '6' },
-    { label: 'Records kept fast at scale', value: '400K', suffix: '+' },
-    { label: 'In active development now', value: '3' },
+    { label: 'Years building for the web', value: '3', suffix: '+' },
+    { label: 'Live products you can try', value: '6' },
+    { label: 'Records handled smoothly', value: '400K', suffix: '+' },
+    { label: 'Projects in progress now', value: '3' },
   ],
   nav: [
     { label: 'Index', href: '/' },
@@ -189,7 +189,7 @@ export const content: SiteData = {
       tagline: 'Private PDF tools that convert to dark mode in seconds.',
       summary:
         'A free PDF toolkit that converts documents to dark mode and also compresses, merges, and splits files, all inside the browser. Files stay on the device, and links and text stay selectable.',
-      body: 'DimlyPDF turns any PDF into a comfortable dark mode for night reading, and it also compresses, merges, and splits files. Everything runs in the browser, so documents never reach a server and stay completely private.\n\nIt is built on a WebAssembly build of MuPDF, keeps links and bookmarks intact, works offline, and ships as a static site. The project is open source.',
+      body: 'DimlyPDF turns any PDF into a comfortable dark mode for night reading, and it also compresses, merges, and splits files. Everything runs in the browser, so documents never reach a server and stay completely private.\n\nIt is built on a WebAssembly build of MuPDF, keeps links and bookmarks intact, works offline, and runs as a simple static site. The project is open source.',
       visual: {
         src: '/uploads/dimlypdf.png',
         alt: 'DimlyPDF home page, a free private PDF dark mode converter',
@@ -224,7 +224,7 @@ export const content: SiteData = {
       slug: 'unitcraft',
       name: 'UnitCraft',
       year: '2025 to now',
-      tagline: 'CSS tools built for how teams actually ship.',
+      tagline: 'CSS tools made for everyday front-end work.',
       summary:
         'A set of more than twenty six CSS utilities for developers. It converts units, generates fluid type with clamp, does viewport math, and checks color contrast, all in the browser with no signup.',
       body: 'UnitCraft is a focused toolkit for front end developers. It converts between px, rem, em, and viewport units, generates fluid typography with clamp, helps with Tailwind spacing, and checks WCAG color contrast.\n\nEverything runs in the browser with instant results and no accounts, which makes it a quick daily reference while building responsive interfaces.',
@@ -313,19 +313,19 @@ export const content: SiteData = {
       when: 'Dec 2022 to now',
       role: 'Associate Software Engineer · izmo Ltd',
       where: 'Bangalore · IN',
-      note: 'Own frontend delivery in a cross functional product team for a large dealership platform. Shipped reusable React systems, improved inventory performance for more than 400,000 records, and delivered privacy compliant consent flows across markets.',
+      note: 'I lead the frontend work for a large car dealership platform used across Europe and the US. I built reusable design pieces, made the inventory pages much faster across more than 400,000 records, and handled privacy and consent across different markets.',
     },
     {
       when: '2024 to now',
       role: 'Independent product and freelance work',
       where: 'Remote',
-      note: 'Designed and shipped ImgToolz, DimlyPDF, UnitCraft, PostQueue, and FAQFlow from idea to production. Worked across product discovery, architecture, full stack implementation, deployment, and iteration based on real usage.',
+      note: 'Designed and built ImgToolz, DimlyPDF, UnitCraft, PostQueue, and FAQFlow from idea to launch. I handled everything myself, from planning and design to building, launching, and improving them based on real feedback.',
     },
     {
       when: '2018 to 2022',
       role: 'Bachelor of Engineering',
       where: 'Bangalore · IN',
-      note: 'Studied engineering while building data pipeline and geospatial visualization projects, including disaster news aggregation, satellite imagery annotation, and COVID-19 datathon work.',
+      note: 'Studied engineering while working on data and mapping projects, including disaster news tracking, satellite image labelling, and COVID-19 data challenges.',
     },
   ],
   skills: [
@@ -408,23 +408,23 @@ export const content: SiteData = {
     principles: [
       {
         n: '01',
-        title: 'Own the full stack',
-        body: 'Understanding both ends lets you make better tradeoffs. A slow page is often a bad query in disguise.',
+        title: 'I handle the whole project',
+        body: 'I work on both the parts people see and the parts behind the scenes, so everything fits together and nothing falls through the cracks.',
       },
       {
         n: '02',
-        title: 'Type everything',
-        body: 'End to end TypeScript is not overhead. It is the cheapest form of documentation that stays accurate.',
+        title: 'I keep the work clean',
+        body: 'Clear, well organised work means fewer problems later and a product that is easy to grow as your needs change.',
       },
       {
         n: '03',
-        title: 'Ship, then iterate',
-        body: 'A working product with rough edges beats a perfect product that is still in development.',
+        title: 'I launch, then improve',
+        body: 'A working product you can use today beats a perfect one that never gets finished. I launch early and keep making it better.',
       },
       {
         n: '04',
-        title: 'Performance is UX',
-        body: 'A fast page is a better page. Profile first, optimize second, never guess.',
+        title: 'Speed matters',
+        body: 'A fast website is a better website. I make sure things load quickly and feel smooth for the people using them.',
       },
     ],
   },
@@ -432,20 +432,20 @@ export const content: SiteData = {
     title: 'What I build',
     items: [
       {
-        title: 'Booking and transactional platforms',
-        body: 'Reservation, ticketing, and checkout flows with reliable state, payment integration, and the tricky cases handled properly, such as holds, retries, double booking, and refunds.',
+        title: 'Booking and order websites',
+        body: 'Websites where people book, buy, or reserve something. I make sure the tricky parts work properly, like payments, availability, and avoiding double bookings, so nothing goes wrong for your customers.',
       },
       {
-        title: 'Full stack SaaS builds',
-        body: 'Products built end to end with Next.js, NestJS, and PostgreSQL, from first scope to a production launch you can actually run.',
+        title: 'Complete web applications',
+        body: 'Full products built from start to finish, from the first idea all the way to a finished product your customers can use every day.',
       },
       {
-        title: 'Performance at scale',
-        body: 'Keeping data heavy apps fast with query and render optimization, caching, and pagination, proven on a platform of 400,000 records.',
+        title: 'Fast, smooth websites',
+        body: 'Making websites quick and responsive even when there is a lot of data, so your users never have to wait around. Proven on a platform with more than 400,000 records.',
       },
       {
-        title: 'APIs and real time backends',
-        body: 'REST and event driven APIs, multi tenant architecture, background jobs, and real time updates that stay consistent under load.',
+        title: 'Reliable systems behind the scenes',
+        body: 'The behind the scenes part that keeps everything running, handles many users at once, and updates in real time without breaking.',
       },
     ],
   },
@@ -453,28 +453,28 @@ export const content: SiteData = {
     title: 'How I work with clients',
     steps: [
       {
-        title: 'Discovery',
-        body: 'Align on outcome, constraints, and success metrics before writing implementation code.',
+        title: 'Understand',
+        body: 'We start by talking through what you need and what success looks like, before any work begins.',
       },
       {
         title: 'Build',
-        body: 'Ship in focused milestones with clear updates, demos, and practical tradeoff decisions.',
+        body: 'I build in small steps with regular updates and demos, so you always know how things are going.',
       },
       {
-        title: 'Ship',
-        body: 'Production release with observability, handoff notes, and stability checks in place.',
+        title: 'Launch',
+        body: 'I get your product live and make sure it is stable, with clear notes on how everything works.',
       },
       {
-        title: 'Iterate',
-        body: 'Refine based on usage data and feedback to improve reliability and user outcomes.',
+        title: 'Improve',
+        body: 'After launch I keep refining things based on how real people use it, so it keeps getting better over time.',
       },
     ],
   },
   // Real client testimonials only — add them here as they come in.
   testimonials: [],
   contact: {
-    headline: "Let's build something that ships.",
-    body: 'Available for freelance and project-based work. I reply within 24 hours. Email or use the form.',
+    headline: "Let's work together.",
+    body: 'I am available for freelance and project work, and I reply within a day. Send me an email or use the form below.',
     channels: [
       { label: 'Email', value: 'hello@akashdev.pro', href: 'mailto:hello@akashdev.pro' },
       { label: 'GitHub', value: '@akash-yadav-dev', href: 'https://github.com/akash-yadav-dev' },

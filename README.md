@@ -21,11 +21,16 @@ Single light theme — no dark mode / theme toggle (removed deliberately for a c
 - **Brand mark / favicon**: `src/app/icon.svg` and `src/app/apple-icon.svg` (terracotta square, cream "A"), auto-served by Next.js
 - **Type scale**: hero/headings cap around 56–68px (deliberately not oversized); body 15–19px
 - **Screenshots**: live project screenshots in `public/uploads/*.png`, captured with Playwright at 1280×800 @2x. Projects without a screenshot (izmo, ConsentPulse, TrackProbe) render a themed placeholder instead; izmo links to the company site `izmocars.com`.
+- **Work cards**: the shared `WorkCard` renders a screenshot, a corner status badge, stack tags, and a 3-line-clamped summary. It's used in a responsive grid (`grid-cols-1 sm:grid-cols-2 lg:grid-cols-3`) on both `/work` (all 9 projects) and the homepage "Selected Work" section (first 3, "All projects" button centered below). `/work` adds a header trust strip (3+ years, 400K+ records, 6 live products).
+- **Status badges**: pinned to the top-right corner of each card (over a `backdrop-blur` pill) so they read at a glance instead of blending into the stack tags. Not-yet-live projects (ConsentPulse, TrackProbe) carry an accented `Coming soon` badge (the `upcoming` status) so visitors know they aren't shipped yet.
+- **Vertical rhythm**: content sections use `py-16` (page heads `pt-16 pb-12`, last section `pb-16`) and the footer sits `mt-8` below `main`, for a tight, consistent gap on every page. Equal-height card grids use `h-full` on both the `FadeIn` wrapper and the card (see About → "How I work").
 - **Layout**: global horizontal gutter is `px-6 md:px-10 lg:px-14`. Hero stats have no separator borders.
 
 ## Positioning
 
-The site is tuned to convert **freelance clients building booking / ticketing / transactional platforms**. The strongest proof point is the izmo day-job platform (400K+ records, performance at scale), backed by shipped SaaS products. Copy lives in `src/data/content.ts` (single source of truth).
+The site is tuned to convert **freelance clients building booking / ticketing / transactional platforms**. The strongest proof point is the izmo day-job platform (400K+ records, performance at scale), backed by the products built end to end. Copy lives in `src/data/content.ts` (single source of truth).
+
+**Tone**: copy is written in plain, simple language for a non-technical audience (potential clients, including in India), framed around "what I've worked on / done" rather than developer jargon. Avoid "shipping" terminology and deep technical terms in client-facing headings and blocks (hero, work, services, process, about principles, contact). Deeper technical detail stays on project detail pages and in the Writing articles, where the audience expects it.
 
 ## Contact email — setup required before sharing
 
