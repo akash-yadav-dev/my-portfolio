@@ -122,6 +122,12 @@ LinkedIn now in `content.contact.channels` (replaced the "Signal on request" ent
 
 ## Done ✅
 
+**Copy + card polish fixes (Jun 1, 2026):**
+- [x] Removed the "use the form below" line from the contact copy — there is no form, only an email button + channel links (`contact.body`)
+- [x] Reframed the izmo role as full stack (React frontend + NestJS APIs) instead of frontend-only, on both the About experience entry and the project detail body
+- [x] Homepage "A few projects I've worked on" heading is now a single line (removed the hard `\n`/`<br>`); it wraps responsively on its own
+- [x] Fixed WorkCard screenshot hover — added `rounded-t-xl` + `translateZ(0)` to the image container so the scaled image stays clipped to the card's rounded corners (no more square corners poking out)
+
 **Plain-language copy pass (Jun 1, 2026):**
 - [x] Rewrote client-facing copy in simple, non-technical language for a broader (incl. Indian) audience, framed as "what I've worked on / done"
 - [x] Removed "shipping" jargon from headings & blocks: work H1 "Things I've shipped" → "Projects I've worked on"; homepage section titles, trust strip, hero tagline/intro, stats labels all simplified

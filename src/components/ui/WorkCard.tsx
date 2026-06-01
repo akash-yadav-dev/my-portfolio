@@ -22,8 +22,9 @@ export function WorkCard({ project, index }: WorkCardProps) {
       href={`/work/${project.slug}`}
       className="group relative flex flex-col h-full rounded-xl overflow-hidden border border-line bg-bg transition-all duration-200 hover:border-line-strong hover:-translate-y-1 hover:shadow-md cursor-pointer"
     >
-      {/* Screenshot or themed placeholder */}
-      <div className="relative aspect-[16/10] overflow-hidden border-b border-line bg-bg-sunken">
+      {/* Screenshot or themed placeholder.
+          rounded-t-xl + translateZ(0) keep the scaled image clipped to the card's rounded corners on hover. */}
+      <div className="relative aspect-[16/10] overflow-hidden rounded-t-xl border-b border-line bg-bg-sunken [transform:translateZ(0)]">
         {/* Status badge — pinned to a corner so it reads at a glance, not lost among the stack tags */}
         <span className="absolute top-3 right-3 z-10 rounded-full bg-bg/80 backdrop-blur-sm shadow-sm">
           <Badge status={project.status} />

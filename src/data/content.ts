@@ -262,7 +262,7 @@ export const content: SiteData = {
       tagline: 'High volume dealership platform at scale.',
       summary:
         'More than three years of web development, ongoing management, and performance improvement on a high volume dealership platform. I have direct experience keeping a system of more than 400,000 records fast and stable, which is exactly what a booking or ticketing platform needs.',
-      body: 'izmo is my day job, where I have spent more than three years on web development, day to day management, and performance improvement for a dealership platform used across Europe and the US. I own frontend delivery, working with more than 400,000 vehicle records, a reusable React component system, and JSON driven customization, with backend APIs in NestJS and Express.\n\nThe hard part is performance at scale, which means fast filtering, pagination, and rendering over very large datasets, along with privacy compliant consent flows across markets. The product itself is internal, so the link goes to the company site rather than a screenshot of the platform.',
+      body: 'izmo is my day job, where I have spent more than three years on web development, day to day management, and performance improvement for a dealership platform used across Europe and the US. I work across the full stack, from a reusable React component system and JSON driven customization on the frontend to the backend APIs in NestJS and Express, all over more than 400,000 vehicle records.\n\nThe hard part is performance at scale, which means fast filtering, pagination, and rendering over very large datasets, along with privacy compliant consent flows across markets. The product itself is internal, so the link goes to the company site rather than a screenshot of the platform.',
       stack: ['React.js', 'TypeScript', 'NestJS', 'Node.js', 'Storybook', 'SCSS'],
       status: 'corporate',
       links: [{ label: 'Live site', href: 'https://www.izmocars.com/' }],
@@ -313,7 +313,7 @@ export const content: SiteData = {
       when: 'Dec 2022 to now',
       role: 'Associate Software Engineer · izmo Ltd',
       where: 'Bangalore · IN',
-      note: 'I lead the frontend work for a large car dealership platform used across Europe and the US. I built reusable design pieces, made the inventory pages much faster across more than 400,000 records, and handled privacy and consent across different markets.',
+      note: 'I work across the full stack on a large car dealership platform used across Europe and the US, building both the parts people see in React and the APIs behind them in NestJS. I made the inventory pages much faster across more than 400,000 records and handled privacy and consent across different markets.',
     },
     {
       when: '2024 to now',
@@ -474,7 +474,7 @@ export const content: SiteData = {
   testimonials: [],
   contact: {
     headline: "Let's work together.",
-    body: 'I am available for freelance and project work, and I reply within a day. Send me an email or use the form below.',
+    body: 'I am available for freelance and project work. The best way to reach me is by email, and I usually reply within a day.',
     channels: [
       { label: 'Email', value: 'hello@akashdev.pro', href: 'mailto:hello@akashdev.pro' },
       { label: 'GitHub', value: '@akash-yadav-dev', href: 'https://github.com/akash-yadav-dev' },

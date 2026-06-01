@@ -26,7 +26,7 @@ export default function HomePage() {
       {/* Featured Work */}
       <section className="py-16 border-t border-line">
         <FadeIn>
-          <SectionHeader num="01" label="Selected Work" title={"A few projects\nI've worked on."} />
+          <SectionHeader num="01" label="Selected Work" title="A few projects I've worked on." />
         </FadeIn>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {featured.map((project, i) => (
