@@ -19,7 +19,13 @@ export default function AboutPage() {
     <>
       {/* Page head */}
       <section className="pt-16 pb-12">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_140px] gap-8 items-start">
+        <div
+          className={
+            content.profile.showPhoto
+              ? 'grid grid-cols-1 lg:grid-cols-[1fr_140px] gap-8 items-start'
+              : 'max-w-3xl'
+          }
+        >
           <div>
             <div className="flex items-center gap-3 font-mono text-[11px] text-fg-muted uppercase tracking-[0.06em] mb-5">
               <span className="w-6 h-px bg-accent" />
@@ -35,15 +41,17 @@ export default function AboutPage() {
             </h1>
           </div>
 
-          <div className="w-[120px] h-[120px] rounded-full overflow-hidden border border-line bg-bg-sunken mx-0 lg:mx-auto">
-            <Image
-              src={content.profile.photo}
-              alt={`${content.profile.name} profile photo`}
-              width={240}
-              height={240}
-              className="w-full h-full object-cover"
-            />
-          </div>
+          {content.profile.showPhoto && (
+            <div className="w-[120px] h-[120px] rounded-full overflow-hidden border border-line bg-bg-sunken mx-0 lg:mx-auto">
+              <Image
+                src={content.profile.photo}
+                alt={`${content.profile.name} profile photo`}
+                width={240}
+                height={240}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          )}
         </div>
       </section>
 

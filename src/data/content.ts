@@ -4,6 +4,7 @@ export interface Profile {
   initial: string
   logo: string
   photo: string
+  showPhoto: boolean
   role: string
   tagline: string
   intro: string
@@ -141,6 +142,7 @@ export const content: SiteData = {
     initial: 'AY',
     logo: '/icon.svg',
     photo: '/akashdev.png',
+    showPhoto: false,
     role: 'Full-Stack Developer · Websites & Apps',
     tagline: 'I build websites and apps\nthat {people actually use}.',
     intro:

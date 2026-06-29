@@ -18,7 +18,13 @@ export function Hero() {
         <span>{profile.location}</span>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-10 lg:gap-14 items-center">
+      <div
+        className={
+          profile.showPhoto
+            ? 'grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-10 lg:gap-14 items-center'
+            : 'max-w-3xl'
+        }
+      >
         <div>
           {/* Heading */}
           <h1
@@ -69,18 +75,20 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="hero-reveal">
-          <div className="relative w-full max-w-[280px] mx-auto rounded-2xl overflow-hidden border border-line bg-bg-sunken shadow-md">
-            <Image
-              src={profile.photo}
-              alt={`${profile.name} headshot`}
-              width={640}
-              height={760}
-              className="w-full h-auto object-cover"
-              priority
-            />
+        {profile.showPhoto && (
+          <div className="hero-reveal">
+            <div className="relative w-full max-w-[280px] mx-auto rounded-2xl overflow-hidden border border-line bg-bg-sunken shadow-md">
+              <Image
+                src={profile.photo}
+                alt={`${profile.name} headshot`}
+                width={640}
+                height={760}
+                className="w-full h-auto object-cover"
+                priority
+              />
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       {/* Stats — clean spacing, no separators */}
