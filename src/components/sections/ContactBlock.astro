@@ -6,15 +6,18 @@ const { contact, profile } = content
 const headlineParts = parseRichText(contact.headline)
 ---
 
-<div class="px-8 md:px-14 py-14 md:py-16 rounded-xl overflow-hidden" style="background: var(--fg); color: var(--bg)">
+<div
+  class="px-8 md:px-14 py-14 md:py-16 rounded-[22px] overflow-hidden"
+  style="background: var(--bg-inverse); color: var(--fg-on-dark)"
+>
   <h2
-    class="font-display font-semibold mb-6"
+    class="font-display font-semibold mb-5"
     style="font-size: clamp(30px,4.5vw,52px); line-height: 1.05; letter-spacing: -0.02em; white-space: pre-line"
   >
     {
       headlineParts.map((part) =>
         part.type === 'accent' ? (
-          <em class="not-italic text-accent">{part.content}</em>
+          <em class="not-italic" style="color: var(--accent-on-dark)">{part.content}</em>
         ) : (
           <span>{part.content}</span>
         ),
@@ -22,27 +25,27 @@ const headlineParts = parseRichText(contact.headline)
     }
   </h2>
 
-  <p class="mb-6 leading-[1.4] max-w-[50ch]" style="font-size: clamp(16px,1.5vw,19px); opacity: 0.65">
+  <p class="mb-8 leading-[1.6] max-w-[50ch]" style="font-size: clamp(16px,1.5vw,19px); color: var(--fg-on-dark-muted)">
     {contact.body}
   </p>
 
-  <a
-    href={`mailto:${profile.email}`}
-    class="lift-on-hover btn-accent-primary inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-sm font-medium transition-all duration-200 group"
-    style="background: var(--accent); color: var(--accent-fg)"
-  >
+  <a href={`mailto:${profile.email}`} class="btn btn-primary">
     {profile.email}
-    <span class="transition-transform duration-200 group-hover:translate-x-1">→</span>
+    <span class="btn-arrow" aria-hidden="true">→</span>
   </a>
 
-  <dl class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-10 pt-8 font-mono text-[11px]" style="border-top: 1px solid rgba(128,128,128,0.2)">
+  <dl class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 pt-8" style="border-top: 1px solid rgb(250 250 249 / 0.12)">
     {contact.channels.map((ch) => (
       <div>
-        <dt class="uppercase tracking-[0.12em] mb-1.5" style="opacity: 0.45; font-size: 10px">
+        <dt class="font-mono text-[12px] uppercase tracking-[0.1em] mb-2" style="color: var(--fg-on-dark-muted)">
           {ch.label}
         </dt>
-        <dd class="m-0">
-          <a href={ch.href} class="text-accent border-b border-current hover:opacity-80 transition-opacity">
+        <dd class="m-0 text-[15px]">
+          <a
+            href={ch.href}
+            class="underline underline-offset-4 decoration-1 transition-opacity hover:opacity-80"
+            style="color: var(--accent-on-dark)"
+          >
             {ch.value}
           </a>
         </dd>

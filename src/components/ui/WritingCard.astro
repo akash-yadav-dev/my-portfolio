@@ -10,18 +10,14 @@ const { article } = Astro.props
 
 <a
   href={`/writing/${article.slug}`}
-  class="lift-on-hover group block p-5 border border-line rounded-lg transition-all duration-200 hover:border-line-strong hover:shadow-md h-full"
-  style="background: var(--bg)"
+  class="card card-interactive group flex flex-col h-full p-6"
 >
-  <div class="flex justify-between font-mono text-[10px] text-fg-subtle uppercase tracking-[0.12em] mb-3">
+  <div class="flex justify-between gap-4 t-meta mb-4">
     <span>{article.date}</span>
     <span>{article.readTime}</span>
   </div>
-  <h4
-    class="font-display text-lg font-semibold leading-snug mb-3 transition-colors duration-100 group-hover:text-accent"
-    style="letter-spacing: -0.02em"
-  >
+  <h3 class="t-h3 text-[19px] mb-3 transition-colors duration-150 group-hover:text-accent">
     {article.title}
-  </h4>
-  <p class="text-fg-muted text-sm leading-relaxed">{article.excerpt}</p>
+  </h3>
+  <p class="t-body text-[14.5px] m-0">{article.excerpt}</p>
 </a>

@@ -181,7 +181,7 @@
       "PostgreSQL",
       "Redis"
     ],
-    "status": "beta",
+    "status": "sunset",
     "links": [
       {
         "label": "Live",
