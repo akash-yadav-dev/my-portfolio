@@ -1,0 +1,377 @@
+[
+  {
+    "slug": "browserzap",
+    "name": "BrowserZap",
+    "year": "2026 to now",
+    "tagline": "Let AI agents use your own Chrome, safely.",
+    "summary": "Lets AI agents like Claude Code, Codex and Cursor work in your own signed-in Chrome, with exact clicks and your approval before anything risky. Published on the Chrome Web Store and npm.",
+    "body": "BrowserZap connects an AI coding agent to the Chrome you already use, through an MCP server, a small Node.js bridge and a Chrome extension. There is no cloud browser and no copied cookies: the agent works in your real tab while you watch, and every click or fill is matched to exactly one element by its accessible role and name.\n\nSafety is built in. Submits, payments, deletions and uploads wait for your approval, the agent never types a password or one-time code, and a stop button takes the tab back at once. Agents can also read console errors and failed network requests to debug a page, and repeat a recorded workflow with new values.",
+    "visual": {
+      "src": "/uploads/browserzap.jpg",
+      "alt": "BrowserZap home page: MCP browser automation in the Chrome you already use"
+    },
+    "stack": [
+      "TypeScript",
+      "Node.js",
+      "MCP",
+      "Chrome Extension",
+      "WebSocket"
+    ],
+    "status": "live",
+    "links": [
+      {
+        "label": "Live",
+        "href": "https://browserzap.com/"
+      }
+    ],
+    "category": "product"
+  },
+  {
+    "slug": "mrrdue",
+    "name": "MRRdue",
+    "year": "2026 to now",
+    "tagline": "Recover failed subscription payments.",
+    "summary": "Watches Stripe or Dodo Payments, ranks every failed payment by what it costs you, and drafts the recovery email. You decide what goes out, and AI clients can read the data through a secure MCP server.",
+    "body": "MRRdue is a revenue recovery product for subscription businesses. It pulls billing data from Stripe and Dodo Payments, puts every failed payment and at-risk customer in one place, and ranks them by how much revenue is at stake, so the most valuable recoveries come first.\n\nUnder the hood it uses verified webhooks, queued data imports, scheduled checks, encrypted provider keys and team workspaces on PostgreSQL. An OAuth 2.1 MCP server lets AI assistants read revenue data and analysis, while any outreach still needs a human to approve it in the dashboard.",
+    "visual": {
+      "src": "/uploads/mrrdue.jpg",
+      "alt": "MRRdue home page: recover revenue before it disappears"
+    },
+    "stack": [
+      "Next.js",
+      "TypeScript",
+      "PostgreSQL",
+      "Prisma",
+      "Stripe",
+      "MCP"
+    ],
+    "status": "live",
+    "links": [
+      {
+        "label": "Live",
+        "href": "https://www.mrrdue.com/"
+      }
+    ],
+    "category": "product"
+  },
+  {
+    "slug": "aisearchaudit",
+    "name": "AI Search Audit",
+    "year": "2026 to now",
+    "tagline": "See what AI can actually read on your site.",
+    "summary": "A free audit that shows whether ChatGPT, Claude, Perplexity and other AI search engines can reach and read your website, checked against 27 rules and a 17-crawler access matrix.",
+    "body": "AI Search Audit checks how visible a website is to AI search. It scans the home page and key pages, reads the robots and discovery files, and tests whether each major AI crawler can reach the content, then scores the result across five areas with clear evidence for every finding.\n\nThe engine is deterministic, so running the audit again after a fix shows exactly what changed. It also generates an llms.txt file. It is built with Next.js, Neon PostgreSQL and Drizzle ORM.",
+    "visual": {
+      "src": "/uploads/aisearchaudit.jpg",
+      "alt": "AI Search Audit home page: know what AI actually sees on your website"
+    },
+    "stack": [
+      "Next.js",
+      "TypeScript",
+      "PostgreSQL",
+      "Drizzle ORM"
+    ],
+    "status": "live",
+    "links": [
+      {
+        "label": "Live",
+        "href": "https://www.aisearchaudit.pro/"
+      }
+    ],
+    "category": "product"
+  },
+  {
+    "slug": "tryfreecalculator",
+    "name": "TryFreeCalculator",
+    "year": "2026 to now",
+    "tagline": "Free calculators that show their working.",
+    "summary": "A free library of 40 online calculators across 11 categories. Every result shows the formula with your numbers filled in, step by step, and everything runs in the browser with no sign-up.",
+    "body": "TryFreeCalculator is a free calculator library built with Astro as a fully static site on Cloudflare Pages. Each calculator is a single data file, and the pages, category listings, search and sitemap are all generated from one registry, so adding a new calculator takes minutes.\n\nEvery result explains itself by showing the formula with the real numbers filled in, which makes the tools useful for learning as well as for quick answers. The site loads fast because there is no server and no sign-up.",
+    "visual": {
+      "src": "/uploads/tryfreecalculator.jpg",
+      "alt": "TryFreeCalculator home page: free online calculators that show their working"
+    },
+    "stack": [
+      "Astro",
+      "TypeScript",
+      "Cloudflare Pages"
+    ],
+    "status": "live",
+    "links": [
+      {
+        "label": "Live",
+        "href": "https://tryfreecalculator.com/"
+      }
+    ],
+    "category": "tool"
+  },
+  {
+    "slug": "unitconverterone",
+    "name": "UnitConverterOne",
+    "year": "2026 to now",
+    "tagline": "Unit converters that show the formula.",
+    "summary": "58 free converters for weight, volume, length, area, temperature and speed. Each one shows the exact formula behind its answer, and every conversion runs privately in the browser.",
+    "body": "UnitConverterOne is a set of fast, clear unit converters built with Astro as a fully static site on Cloudflare Pages, with no database and no server.\n\nEach page shows the formula behind its answer so people can check the maths, ships only about 3 KB of JavaScript, and is covered by an automated test suite for the maths, number formatting and page metadata.",
+    "visual": {
+      "src": "/uploads/unitconverterone.jpg",
+      "alt": "UnitConverterOne home page: free online unit converter with the formula shown"
+    },
+    "stack": [
+      "Astro",
+      "TypeScript",
+      "Cloudflare Pages"
+    ],
+    "status": "live",
+    "links": [
+      {
+        "label": "Live",
+        "href": "https://unitconverterone.com/"
+      }
+    ],
+    "category": "tool"
+  },
+  {
+    "slug": "dimlypdf",
+    "name": "DimlyPDF",
+    "year": "2025 to now",
+    "tagline": "Private PDF tools that convert to dark mode in seconds.",
+    "summary": "A free PDF toolkit that converts documents to dark mode and also compresses, merges, and splits files, all inside the browser. Files stay on the device, and links and text stay selectable.",
+    "body": "DimlyPDF turns any PDF into a comfortable dark mode for night reading, and it also compresses, merges, and splits files. Everything runs in the browser, so documents never reach a server and stay completely private.\n\nIt is built on a WebAssembly build of MuPDF, keeps links and bookmarks intact, works offline, and runs as a simple static site. The project is open source.",
+    "visual": {
+      "src": "/uploads/dimlypdf.png",
+      "alt": "DimlyPDF home page, a free private PDF dark mode converter"
+    },
+    "stack": [
+      "React",
+      "TypeScript",
+      "Vite",
+      "MuPDF",
+      "WebAssembly"
+    ],
+    "status": "live",
+    "links": [
+      {
+        "label": "Live",
+        "href": "https://dimlypdf.akashdev.pro/"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/akash-yadav-dev/dimlypdf"
+      }
+    ],
+    "category": "tool",
+    "explored": true
+  },
+  {
+    "slug": "postqueue",
+    "name": "PostQueue",
+    "year": "2025 to now",
+    "tagline": "One command center to schedule and publish across platforms.",
+    "summary": "A social publishing platform for teams that drafts, reviews, schedules, and publishes content across nine platforms. It is built around reliable queues, automatic retries, and approval workflows. Accounts and the core scheduling flow are live while the rest is built out.",
+    "body": "PostQueue gives teams one place to plan and publish content across nine platforms instead of posting by hand. It is built around a queue and retry model so posts go out reliably, with approval workflows and timezone aware planning for groups working together.\n\nThe backend uses durable workflows for the publishing pipeline, with multi tenant workspaces and secure token handling. Sign up, sign in, and the core scheduling flow are live, and more of the product is being added.",
+    "visual": {
+      "src": "/uploads/postqueue.png",
+      "alt": "PostQueue marketing site and product dashboard"
+    },
+    "stack": [
+      "NestJS",
+      "Next.js",
+      "TypeScript",
+      "Temporal",
+      "PostgreSQL",
+      "Redis"
+    ],
+    "status": "beta",
+    "links": [
+      {
+        "label": "Live",
+        "href": "https://www.postqueuehq.com/"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/akash-yadav-dev/post-queue"
+      }
+    ],
+    "category": "product",
+    "explored": true
+  },
+  {
+    "slug": "unitcraft",
+    "name": "UnitCraft",
+    "year": "2025 to now",
+    "tagline": "CSS tools made for everyday front-end work.",
+    "summary": "A set of more than twenty six CSS utilities for developers. It converts units, generates fluid type with clamp, does viewport math, and checks color contrast, all in the browser with no signup.",
+    "body": "UnitCraft is a focused toolkit for front end developers. It converts between px, rem, em, and viewport units, generates fluid typography with clamp, helps with Tailwind spacing, and checks WCAG color contrast.\n\nEverything runs in the browser with instant results and no accounts, which makes it a quick daily reference while building responsive interfaces.",
+    "visual": {
+      "src": "/uploads/unitcraft.png",
+      "alt": "UnitCraft home page, in browser CSS tools for developers"
+    },
+    "stack": [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS"
+    ],
+    "status": "live",
+    "links": [
+      {
+        "label": "Live",
+        "href": "https://unitcraft.akashdev.pro/"
+      }
+    ],
+    "category": "tool",
+    "explored": true
+  },
+  {
+    "slug": "faqflow",
+    "name": "FAQFlow",
+    "year": "2025 to now",
+    "tagline": "A smart FAQ widget for any Shopify store in minutes.",
+    "summary": "A Shopify app that adds an AI assisted FAQ widget to a store in a couple of minutes to cut support tickets. The marketing site is live and the app is preparing for the Shopify App Store.",
+    "body": "FAQFlow lets a merchant add a smart FAQ widget to a Shopify store in under two minutes, which reduces repetitive support questions and helps shoppers find answers faster. It drafts FAQs from the product catalog with AI, tracks deflection and unanswered searches, and matches the store brand without any code.\n\nIt is built to Shopify review standards with secure OAuth, privacy webhooks, and multi store support. The public site is live and the app is preparing for its Shopify App Store listing.",
+    "visual": {
+      "src": "/uploads/faqflow.png",
+      "alt": "FAQFlow marketing site and analytics dashboard"
+    },
+    "stack": [
+      "Next.js",
+      "TypeScript",
+      "Shopify",
+      "Supabase",
+      "OpenAI"
+    ],
+    "status": "beta",
+    "links": [
+      {
+        "label": "Live",
+        "href": "https://faqflow.shop/"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/akash-yadav-dev/faqflow"
+      }
+    ],
+    "category": "product"
+  },
+  {
+    "slug": "izmo",
+    "name": "izmo",
+    "year": "2022 to now",
+    "tagline": "AI-assisted dealership platform, built end to end.",
+    "summary": "Four years of full stack work on a dealership platform used across Europe. I built an AI page builder for the CMS, raised the speed score of big inventory pages from about 45 to over 80, and I am moving old JSP pages to Next.js.",
+    "body": "izmo is my day job, where I have spent four years building a multi-brand dealership website platform used across Europe, first as an associate engineer and since April 2026 as a full stack software engineer. I work end to end, from Java and Spring Boot services and NestJS APIs to React, Redux and Next.js screens, with shared components configured for 13 car brands.\n\nRecent work includes an AI-assisted drag and drop page builder, where AI reads existing brand settings and creates the page structure the backend uses, and the move of legacy JSP and Razor pages to Next.js. Earlier I rebuilt vehicle search and raised the speed score of big inventory pages from about 45 to over 80. The product itself is internal, so the link goes to the company site.",
+    "stack": [
+      "React.js",
+      "Next.js",
+      "TypeScript",
+      "Java",
+      "Spring Boot",
+      "NestJS",
+      "OpenAI"
+    ],
+    "status": "corporate",
+    "links": [
+      {
+        "label": "Live site",
+        "href": "https://www.izmocars.com/"
+      }
+    ],
+    "category": "corporate"
+  },
+  {
+    "slug": "trackprobe",
+    "name": "TrackProbe",
+    "year": "2026",
+    "tagline": "GA4 and GTM auditing that checks what really fires.",
+    "summary": "An analytics auditing tool that compares what is configured in Google Analytics and Tag Manager with what actually fires in the browser during a crawl, then scores the gaps, duplicates, and consent issues in a report you can export. In active development.",
+    "body": "TrackProbe audits Google Analytics and Tag Manager setups on real websites. Instead of trusting the admin settings alone, it crawls pages in a controlled browser, captures the analytics calls that actually fire, and compares them against the configuration and the reported volume.\n\nEvents are marked as verified, production confirmed, suspected gaps, or unreached, with clear reliability when bot protection limits the crawl. The result is a scored report you can export. It is currently in active development.",
+    "stack": [
+      "Next.js",
+      "TypeScript",
+      "Playwright",
+      "Google APIs"
+    ],
+    "status": "upcoming",
+    "links": [],
+    "category": "product",
+    "explored": true
+  },
+  {
+    "slug": "consentvalidator",
+    "name": "Consent Validator",
+    "year": "2026 to now",
+    "tagline": "Check that cookie consent really works.",
+    "summary": "Checks what a website actually does before consent, after reject and after accept, with screenshots, cookie and network evidence, plus a read-only GA4 and Tag Manager audit including Consent Mode v2.",
+    "body": "Consent Validator is an independent check for cookie consent. It loads a site in a real browser three times, before consent, after rejecting and after accepting, and records the cookies, scripts, network requests and Google Consent Mode signals each time, so teams can prove tracking respects user choices.\n\nThe web app runs on Next.js and Vercel with Supabase PostgreSQL and row-level security, while a Dockerized Playwright worker on Railway runs the audits with fair scheduling, watchdogs and reconciliation. Every run gets a clear evidence state and confidence level, so a clean result reads as a pass instead of an empty report.",
+    "visual": {
+      "src": "/uploads/consentvalidator.jpg",
+      "alt": "Consent Validator home page: know exactly what your consent stack does"
+    },
+    "stack": [
+      "Next.js",
+      "TypeScript",
+      "Playwright",
+      "Supabase",
+      "Docker"
+    ],
+    "status": "live",
+    "category": "product",
+    "links": [
+      {
+        "label": "Live",
+        "href": "https://www.consentvalidator.com/"
+      }
+    ]
+  },
+  {
+    "slug": "imageconverter",
+    "name": "ImageConverter",
+    "year": "2026 to now",
+    "tagline": "Convert images privately in your browser.",
+    "summary": "A free image converter and compressor for JPG, PNG, WebP, HEIC, AVIF and more. Everything runs in the browser, so files never leave the device.",
+    "body": "ImageConverter converts and compresses images entirely in the browser, with no backend, no upload and no API. It handles JPG, PNG, WebP, HEIC, GIF, BMP, AVIF, TIFF and ICO, up to ten files at a time, with advanced settings for quality and size.\n\nBecause nothing is uploaded, it is private by design and fast even on large batches. It is built with Next.js, React and TypeScript.",
+    "visual": {
+      "src": "/uploads/imageconverter.jpg",
+      "alt": "ImageConverter home page: convert images in your browser"
+    },
+    "stack": [
+      "Next.js",
+      "TypeScript",
+      "React"
+    ],
+    "status": "live",
+    "category": "tool",
+    "links": [
+      {
+        "label": "Live",
+        "href": "https://imageconverter.akashdev.pro/"
+      }
+    ]
+  },
+  {
+    "slug": "makeupnnow",
+    "name": "Makeupnnow",
+    "year": "2026",
+    "tagline": "A marketplace for makeup artists, built for a client.",
+    "summary": "Client project: a marketplace where people find professional makeup artists by category and location. I built the production Next.js site from the design, with accounts, a database and media storage.",
+    "body": "Makeupnnow is a client project, a marketplace that helps people find professional makeup artists near them by category, location and service. I turned the approved design into a production Next.js site that matches it closely, with custom typography and colour tokens.\n\nBehind the pages it uses Neon PostgreSQL with Drizzle ORM, managed authentication with sessions and two-factor support, input validation with Zod, and Cloudflare R2 for artist photos and media.",
+    "visual": {
+      "src": "/uploads/makeupnnow.jpg",
+      "alt": "Makeupnnow home page: find professional makeup artists near you"
+    },
+    "stack": [
+      "Next.js",
+      "TypeScript",
+      "PostgreSQL",
+      "Drizzle ORM",
+      "Cloudflare R2"
+    ],
+    "status": "live",
+    "category": "client",
+    "links": [
+      {
+        "label": "Live",
+        "href": "https://makeupnnow.com/"
+      }
+    ]
+  }
+]

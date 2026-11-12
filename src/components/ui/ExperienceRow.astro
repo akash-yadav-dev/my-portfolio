@@ -1,0 +1,27 @@
+---
+import type { Experience } from '../../data/content'
+
+interface Props {
+  exp: Experience
+}
+
+const { exp } = Astro.props
+---
+
+<div class="group grid grid-cols-1 md:grid-cols-[180px_1fr_200px] gap-1.5 md:gap-5 py-5 border-t border-line last:border-b last:border-line items-baseline transition-[padding] duration-200 hover:pl-3">
+  <span class="font-mono text-[11px] text-fg-muted">{exp.when}</span>
+  <div>
+    <h3 class="font-display text-xl font-semibold tracking-snug mb-1">{exp.role}</h3>
+    <p class="text-fg-muted text-sm">{exp.note}</p>
+    {exp.highlights && exp.highlights.length > 0 && (
+      <ul class="mt-3 flex flex-col gap-1.5 text-sm text-fg-muted list-none p-0">
+        {exp.highlights.map((h) => (
+          <li class="relative pl-4 before:content-[''] before:absolute before:left-0 before:top-[0.6em] before:w-1.5 before:h-1.5 before:rounded-full before:bg-accent">
+            {h}
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+  <span class="font-mono text-[11px] md:text-right text-fg-muted">{exp.where}</span>
+</div>

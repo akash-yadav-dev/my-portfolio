@@ -1,0 +1,38 @@
+---
+interface Props {
+  headers: string[]
+  rows: string[][]
+}
+
+const { headers, rows } = Astro.props
+
+function rowStyle(i: number, last: number) {
+  return [
+    `border-bottom: ${i < last ? '1px solid var(--line)' : 'none'}`,
+    `background: ${i % 2 === 0 ? 'transparent' : 'var(--bg-sunken)'}`,
+  ].join('; ')
+}
+---
+
+<div class="overflow-x-auto my-8 rounded-lg border border-line">
+  <table class="w-full text-sm">
+    <thead>
+      <tr style="background: var(--bg-sunken); border-bottom: 1px solid var(--line)">
+        {headers.map((h) => (
+          <th class="text-left px-4 py-3 font-mono text-[10px] uppercase tracking-wider text-fg-subtle font-medium">
+            {h}
+          </th>
+        ))}
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((row, i) => (
+        <tr style={rowStyle(i, rows.length - 1)}>
+          {row.map((cell) => (
+            <td class="px-4 py-3 text-fg-muted leading-snug">{cell}</td>
+          ))}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

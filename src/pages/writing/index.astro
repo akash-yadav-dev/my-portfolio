@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import WritingCard from '../../components/ui/WritingCard.astro'
+import FadeIn from '../../components/ui/FadeIn.astro'
+import { content } from '../../data/content'
+---
+
+<BaseLayout
+  title="Writing"
+  description="Articles by Akash Yadav about building websites, web apps, and the tools behind them."
+>
+  <!-- Page head -->
+  <section class="pt-16 pb-12">
+    <div class="flex items-center gap-3 font-mono text-[11px] text-fg-muted uppercase tracking-[0.06em] mb-5">
+      <span class="w-6 h-px bg-accent"></span>
+      Writing · {content.writing.length} posts
+    </div>
+    <h1
+      class="font-display font-semibold m-0 mb-4"
+      style="font-size: clamp(40px,6vw,64px); line-height: 1.02; letter-spacing: -0.02em"
+    >
+      Things I write about.
+    </h1>
+    <p class="text-fg-muted leading-[1.6] max-w-[58ch]" style="font-size: clamp(16px,1.5vw,19px)">
+      Notes and articles on building software, the tools I use, and the occasional other topic. New posts whenever
+      I have something worth sharing.
+    </p>
+  </section>
+
+  <!-- Grid -->
+  <section class="pb-16 border-t border-line pt-10">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      {content.writing.map((article, i) => (
+        <FadeIn delay={i * 0.06}>
+          <WritingCard article={article} />
+        </FadeIn>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

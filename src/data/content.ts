@@ -27,42 +27,17 @@ export interface NavItem {
   href: string
 }
 
-export interface ProjectLink {
-  label: string
-  href: string
-}
+import type { Project } from './projects'
+import { projects } from './projects'
 
-export type ProjectStatus =
-  | 'live'
-  | 'beta'
-  | 'open-source'
-  | 'building'
-  | 'upcoming'
-  | 'corporate'
-  | 'acquired'
-  | 'sunset'
-
-export interface Project {
-  slug: string
-  name: string
-  year: string
-  tagline: string
-  summary: string
-  body: string
-  visual?: {
-    src: string
-    alt: string
-  }
-  stack: string[]
-  status: ProjectStatus
-  links: ProjectLink[]
-}
+export type { Project, ProjectLink, ProjectStatus } from './projects'
 
 export interface Experience {
   when: string
   role: string
   where: string
   note: string
+  highlights?: string[]
 }
 
 export interface Skill {
@@ -146,7 +121,7 @@ export const content: SiteData = {
     role: 'Full-Stack Developer · Websites & Apps',
     tagline: 'I build websites and apps\nthat {people actually use}.',
     intro:
-      'I am a full stack developer with more than three years of experience building websites and web apps. I have worked on large platforms used by people every day, kept a system of over 400,000 records running fast and smooth, and built and launched my own products from scratch. I enjoy turning an idea into something real that works well and is easy to use.',
+      'I am a full stack developer with 4 years of experience building websites and web apps. At my day job I work on a large car dealership platform used across Europe, where I made the vehicle pages much faster and built an AI page builder. I also build and launch my own products, including AI tools, from scratch. I enjoy turning an idea into something real that works well and is easy to use.',
     location: 'Bangalore, India · Remote-friendly',
     available: 'Open for freelance projects',
     email: 'hello@akashdev.pro',
@@ -155,9 +130,9 @@ export const content: SiteData = {
     writingUrl: 'akashdev.pro',
   },
   stats: [
-    { label: 'Years building for the web', value: '3', suffix: '+' },
-    { label: 'Live products you can try', value: '6' },
-    { label: 'Records handled smoothly', value: '400K', suffix: '+' },
+    { label: 'Years building for the web', value: '4', suffix: '+' },
+    { label: 'Live products you can try', value: '7' },
+    { label: 'Lighthouse speed score', value: '80', suffix: '+' },
     { label: 'Projects in progress now', value: '3' },
   ],
   nav: [
@@ -167,161 +142,43 @@ export const content: SiteData = {
     { label: 'Writing', href: '/writing' },
     { label: 'Contact', href: '/contact' },
   ],
-  projects: [
-    {
-      slug: 'imgtoolz',
-      name: 'ImgToolz',
-      year: '2025 to now',
-      tagline: 'Fourteen image tools that run in the browser.',
-      summary:
-        'A free image toolkit that compresses, resizes, converts, and crops images entirely in the browser. Nothing is uploaded, so files never leave the device and results come back in seconds.',
-      body: 'ImgToolz is a free image toolkit that runs completely in the browser using the HTML5 Canvas API. People can compress a photo down to a target size, resize for the web, convert between WebP, JPG, and PNG, and crop, all without an account and without a single upload.\n\nBecause every operation happens on the device, the work stays private and fast. It also handles batch processing of several images at once with a single ZIP download, which makes it genuinely useful for everyday tasks.',
-      visual: {
-        src: '/uploads/imgtoolz.png',
-        alt: 'ImgToolz home page, a free in browser image toolkit',
-      },
-      stack: ['Next.js', 'TypeScript', 'Canvas API', 'Tailwind CSS'],
-      status: 'live',
-      links: [{ label: 'Live', href: 'https://imgtoolz.akashdev.pro/' }],
-    },
-    {
-      slug: 'dimlypdf',
-      name: 'DimlyPDF',
-      year: '2025 to now',
-      tagline: 'Private PDF tools that convert to dark mode in seconds.',
-      summary:
-        'A free PDF toolkit that converts documents to dark mode and also compresses, merges, and splits files, all inside the browser. Files stay on the device, and links and text stay selectable.',
-      body: 'DimlyPDF turns any PDF into a comfortable dark mode for night reading, and it also compresses, merges, and splits files. Everything runs in the browser, so documents never reach a server and stay completely private.\n\nIt is built on a WebAssembly build of MuPDF, keeps links and bookmarks intact, works offline, and runs as a simple static site. The project is open source.',
-      visual: {
-        src: '/uploads/dimlypdf.png',
-        alt: 'DimlyPDF home page, a free private PDF dark mode converter',
-      },
-      stack: ['React', 'TypeScript', 'Vite', 'MuPDF', 'WebAssembly'],
-      status: 'live',
-      links: [
-        { label: 'Live', href: 'https://dimlypdf.akashdev.pro/' },
-        { label: 'GitHub', href: 'https://github.com/akash-yadav-dev/dimlypdf' },
-      ],
-    },
-    {
-      slug: 'postqueue',
-      name: 'PostQueue',
-      year: '2025 to now',
-      tagline: 'One command center to schedule and publish across platforms.',
-      summary:
-        'A social publishing platform for teams that drafts, reviews, schedules, and publishes content across nine platforms. It is built around reliable queues, automatic retries, and approval workflows. Accounts and the core scheduling flow are live while the rest is built out.',
-      body: 'PostQueue gives teams one place to plan and publish content across nine platforms instead of posting by hand. It is built around a queue and retry model so posts go out reliably, with approval workflows and timezone aware planning for groups working together.\n\nThe backend uses durable workflows for the publishing pipeline, with multi tenant workspaces and secure token handling. Sign up, sign in, and the core scheduling flow are live, and more of the product is being added.',
-      visual: {
-        src: '/uploads/postqueue.png',
-        alt: 'PostQueue marketing site and product dashboard',
-      },
-      stack: ['NestJS', 'Next.js', 'TypeScript', 'Temporal', 'PostgreSQL', 'Redis'],
-      status: 'beta',
-      links: [
-        { label: 'Live', href: 'https://www.postqueuehq.com/' },
-        { label: 'GitHub', href: 'https://github.com/akash-yadav-dev/post-queue' },
-      ],
-    },
-    {
-      slug: 'unitcraft',
-      name: 'UnitCraft',
-      year: '2025 to now',
-      tagline: 'CSS tools made for everyday front-end work.',
-      summary:
-        'A set of more than twenty six CSS utilities for developers. It converts units, generates fluid type with clamp, does viewport math, and checks color contrast, all in the browser with no signup.',
-      body: 'UnitCraft is a focused toolkit for front end developers. It converts between px, rem, em, and viewport units, generates fluid typography with clamp, helps with Tailwind spacing, and checks WCAG color contrast.\n\nEverything runs in the browser with instant results and no accounts, which makes it a quick daily reference while building responsive interfaces.',
-      visual: {
-        src: '/uploads/unitcraft.png',
-        alt: 'UnitCraft home page, in browser CSS tools for developers',
-      },
-      stack: ['Next.js', 'TypeScript', 'Tailwind CSS'],
-      status: 'live',
-      links: [{ label: 'Live', href: 'https://unitcraft.akashdev.pro/' }],
-    },
-    {
-      slug: 'faqflow',
-      name: 'FAQFlow',
-      year: '2025 to now',
-      tagline: 'A smart FAQ widget for any Shopify store in minutes.',
-      summary:
-        'A Shopify app that adds an AI assisted FAQ widget to a store in a couple of minutes to cut support tickets. The marketing site is live and the app is preparing for the Shopify App Store.',
-      body: 'FAQFlow lets a merchant add a smart FAQ widget to a Shopify store in under two minutes, which reduces repetitive support questions and helps shoppers find answers faster. It drafts FAQs from the product catalog with AI, tracks deflection and unanswered searches, and matches the store brand without any code.\n\nIt is built to Shopify review standards with secure OAuth, privacy webhooks, and multi store support. The public site is live and the app is preparing for its Shopify App Store listing.',
-      visual: {
-        src: '/uploads/faqflow.png',
-        alt: 'FAQFlow marketing site and analytics dashboard',
-      },
-      stack: ['Next.js', 'TypeScript', 'Shopify', 'Supabase', 'OpenAI'],
-      status: 'beta',
-      links: [
-        { label: 'Live', href: 'https://faqflow.shop/' },
-        { label: 'GitHub', href: 'https://github.com/akash-yadav-dev/faqflow' },
-      ],
-    },
-    {
-      slug: 'izmo',
-      name: 'izmo',
-      year: '2022 to now',
-      tagline: 'High volume dealership platform at scale.',
-      summary:
-        'More than three years of web development, ongoing management, and performance improvement on a high volume dealership platform. I have direct experience keeping a system of more than 400,000 records fast and stable, which is exactly what a booking or ticketing platform needs.',
-      body: 'izmo is my day job, where I have spent more than three years on web development, day to day management, and performance improvement for a dealership platform used across Europe and the US. I work across the full stack, from a reusable React component system and JSON driven customization on the frontend to the backend APIs in NestJS and Express, all over more than 400,000 vehicle records.\n\nThe hard part is performance at scale, which means fast filtering, pagination, and rendering over very large datasets, along with privacy compliant consent flows across markets. The product itself is internal, so the link goes to the company site rather than a screenshot of the platform.',
-      stack: ['React.js', 'TypeScript', 'NestJS', 'Node.js', 'Storybook', 'SCSS'],
-      status: 'corporate',
-      links: [{ label: 'Live site', href: 'https://www.izmocars.com/' }],
-    },
-    {
-      slug: 'artist-ada',
-      name: 'Artist Ada',
-      year: '2026 to now',
-      tagline: 'A marketplace that connects Indian artisans with collectors.',
-      summary:
-        'A marketplace that brings traditional Indian craftsmanship to a wider audience, connecting artisans with collectors through artist profiles, craft categories, and workshops. The interface is live and the functionality is being built now.',
-      body: 'Artist Ada is a marketplace for Indian craftsmanship that helps collectors discover artisans by craft, region, and reputation, with artist profiles, workshops, and curated collections. This is the project I am focused on right now.\n\nThe full interface is live with the visual design and structure in place, and the data and core functionality are being implemented next.',
-      visual: {
-        src: '/uploads/artist-ada.png',
-        alt: 'Artist Ada marketplace home page for Indian craftsmanship',
-      },
-      stack: ['Next.js', 'TypeScript', 'Tailwind CSS'],
-      status: 'building',
-      links: [{ label: 'Live', href: 'https://artist-ada.vercel.app/' }],
-    },
-    {
-      slug: 'consentpulse',
-      name: 'ConsentPulse',
-      year: '2026',
-      tagline: 'Automated checks for cookie and consent compliance.',
-      summary:
-        'A compliance tool that audits a website for cookies, network requests, and Google Consent Mode, then reports whether tracking behaves correctly before and after consent. In active development.',
-      body: 'ConsentPulse checks how a website handles privacy. It loads a site in a controlled browser, watches the cookies it sets and the network requests it makes, and verifies Google Consent Mode, so teams can see whether tracking actually respects user choices.\n\nEach run is classified with clear evidence and a confidence level, so a clean no tracking result reads as a pass rather than an empty report. It is currently in active development.',
-      stack: ['Next.js', 'TypeScript', 'Playwright', 'PostgreSQL'],
-      status: 'upcoming',
-      links: [],
-    },
-    {
-      slug: 'trackprobe',
-      name: 'TrackProbe',
-      year: '2026',
-      tagline: 'GA4 and GTM auditing that checks what really fires.',
-      summary:
-        'An analytics auditing tool that compares what is configured in Google Analytics and Tag Manager with what actually fires in the browser during a crawl, then scores the gaps, duplicates, and consent issues in a report you can export. In active development.',
-      body: 'TrackProbe audits Google Analytics and Tag Manager setups on real websites. Instead of trusting the admin settings alone, it crawls pages in a controlled browser, captures the analytics calls that actually fire, and compares them against the configuration and the reported volume.\n\nEvents are marked as verified, production confirmed, suspected gaps, or unreached, with clear reliability when bot protection limits the crawl. The result is a scored report you can export. It is currently in active development.',
-      stack: ['Next.js', 'TypeScript', 'Playwright', 'Google APIs'],
-      status: 'upcoming',
-      links: [],
-    },
-  ],
+  projects,
   experience: [
     {
-      when: 'Dec 2022 to now',
-      role: 'Associate Software Engineer · izmo Ltd',
+      when: 'Apr 2026 to now',
+      role: 'Software Engineer, Full Stack · izmo Ltd',
       where: 'Bangalore · IN',
-      note: 'I work across the full stack on a large car dealership platform used across Europe and the US, building both the parts people see in React and the APIs behind them in NestJS. I made the inventory pages much faster across more than 400,000 records and handled privacy and consent across different markets.',
+      note: 'Promoted to full stack ownership on a large car dealership platform used across Europe. I built an AI page builder that lets editors drag and drop pages while AI creates the page setup the backend needs. I am moving old JSP and Razor pages to Next.js, and I build features end to end with Java, Spring Boot and SQL.',
+      highlights: [
+        'Built an AI-assisted drag and drop page builder for the CMS: AI (OpenAI GPT-6 Luna) reads existing brand settings and creates page structure in the exact format the backend stores.',
+        'Leading the move of legacy JSP and ASP.NET Razor (.cshtml) pages with plain JavaScript to Next.js, React and TypeScript.',
+        'Delivered a vehicle emissions disclosure feature for environmental rules, from the database and Spring service layer to the listing and detail pages.',
+        'Extended the multi-brand theming engine (per-brand settings, logos, colours and fonts), covered by JUnit and Mockito tests.',
+      ],
+    },
+    {
+      when: 'Dec 2022 to Mar 2026',
+      role: 'Associate Software Engineer, Full Stack · izmo Ltd',
+      where: 'Bangalore · IN',
+      note: 'Built the vehicle search pages end to end, from the NestJS APIs to the React and Redux screens with filters and sorting. Raised the speed score of big inventory pages from about 45 to over 80, built shared components used by 13 car brands, and handled cookie consent for France and the US.',
+      highlights: [
+        'Built vehicle inventory search end to end: NestJS REST APIs for filtering, sorting and pagination, plus an e-commerce style React and Redux interface.',
+        'Raised the Lighthouse performance score of big inventory pages from 45-50 to 80+ by reworking how vehicle data is loaded and shown.',
+        'Built JSON-driven site settings and a shared library of accessible components, so 13 car brands change layouts and branding without code changes.',
+        'Shipped cookie consent flows for French and US privacy rules across dealer websites.',
+      ],
     },
     {
       when: '2024 to now',
       role: 'Independent product and freelance work',
       where: 'Remote',
-      note: 'Designed and built ImgToolz, DimlyPDF, UnitCraft, PostQueue, and FAQFlow from idea to launch. I handled everything myself, from planning and design to building, launching, and improving them based on real feedback.',
+      note: 'Designed and launched BrowserZap, MRRdue, AI Search Audit, Consent Validator, UnitConverterOne, TryFreeCalculator and ImageConverter from idea to launch, and built a marketplace site for a client. Several are AI tools, including MCP servers that let AI agents work safely with real data and a real browser. I handled everything myself, from planning and design to launch and improvements.',
+      highlights: [
+        'BrowserZap: an MCP server, Node.js bridge and Chrome extension that let AI agents work in your own browser, with approval before risky actions.',
+        'MRRdue: failed payment recovery for Stripe and Dodo Payments, with an OAuth 2.1 MCP server for AI assistants.',
+        'AI Search Audit: checks whether AI search engines can read a site, using 27 rules and a 17-crawler access matrix.',
+        'TryFreeCalculator (40 calculators) and UnitConverterOne (58 converters): free static tools that show the formula behind every answer.',
+      ],
     },
     {
       when: '2018 to 2022',
@@ -334,6 +191,8 @@ export const content: SiteData = {
     { name: 'React.js / Next.js', level: 93 },
     { name: 'TypeScript / JavaScript', level: 91 },
     { name: 'NestJS / Express / Node.js', level: 82 },
+    { name: 'AI / LLM integration (OpenAI, RAG, MCP)', level: 80 },
+    { name: 'Java / Spring Boot', level: 72 },
     { name: 'HTML5 / CSS / Tailwind / SCSS', level: 88 },
     { name: 'PostgreSQL / Prisma', level: 76 },
     { name: 'Go', level: 62 },
@@ -398,13 +257,13 @@ export const content: SiteData = {
   ],
   about: {
     currently:
-      'Currently building PostQueue and opening up more project-based freelance work with product teams.',
+      'Currently building AI features at izmo, growing MRRdue and BrowserZap, and opening up more project-based freelance work with product teams.',
     lookingFor:
       'I enjoy projects where product clarity and technical execution both matter: SaaS builds, platform foundations, and user-facing systems that need to scale cleanly.',
     intro:
-      'I am based in Bangalore and have been building software professionally for 3+ years. I like full-stack work because it lets me stay close to real user problems while still going deep on system design and backend reliability.',
+      'I am based in Bangalore and have been building software professionally for 4 years. I like full-stack work because it lets me stay close to real user problems while still going deep on system design and backend reliability.',
     body: [
-      'By day I work at izmo Ltd in Bangalore, owning frontend delivery for a large car dealership platform and contributing to the NestJS APIs behind it. Outside work, I build and ship products end-to-end: PostQueue (multi-tenant social publishing with Temporal workflows), FAQFlow (Shopify AI app), and DimlyPDF (client-side PDF tool using MuPDF WebAssembly).',
+      'By day I am a full stack software engineer at izmo Ltd in Bangalore, working on a large car dealership platform across Java and Spring Boot, NestJS, React and Next.js. I built an AI page builder for our CMS and I am moving legacy JSP pages to Next.js. Outside work, I build and ship products end to end: MRRdue (revenue recovery with an MCP server for AI clients), AI Search Audit (how visible a site is to AI search), BrowserZap (lets AI agents use your own browser safely), and FAQFlow (Shopify AI app).',
       'I reach for Go when I want performance without ceremony, and TypeScript when teams need predictable delivery at speed. I care about clean APIs, reliable deploys, and code that the next engineer can understand quickly.',
     ],
     principles: [
@@ -443,7 +302,7 @@ export const content: SiteData = {
       },
       {
         title: 'Fast, smooth websites',
-        body: 'Making websites quick and responsive even when there is a lot of data, so your users never have to wait around. Proven on a platform with more than 400,000 records.',
+        body: 'Making websites quick and responsive even when there is a lot of data, so your users never have to wait around. Proven on a car dealership platform, where I raised the speed score of big inventory pages from about 45 to over 80.',
       },
       {
         title: 'Reliable systems behind the scenes',
@@ -486,7 +345,7 @@ export const content: SiteData = {
   footer: {
     credit: '© 2026 Akash Yadav. All rights reserved.',
     links: [
-      { label: 'Source', href: 'https://github.com/akash-yadav-dev/portfolio' },
+      { label: 'Source', href: 'https://github.com/akash-yadav-dev/my-portfolio' },
       { label: 'Contact', href: '/contact' },
     ],
   },

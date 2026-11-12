@@ -1,0 +1,209 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+---
+
+<BaseLayout
+  title="Dashboard"
+  description="Personal automation workspace"
+  noindex
+>
+  <section class="pt-16 pb-12">
+    <div class="flex items-center gap-3 font-mono text-[11px] text-fg-muted uppercase tracking-[0.06em] mb-5">
+      <span class="w-6 h-px bg-accent"></span>
+      Personal · Private
+    </div>
+    <h1
+      class="font-display font-semibold m-0 mb-4"
+      style="font-size: clamp(34px,5vw,56px); line-height: 1.05; letter-spacing: -0.02em"
+    >
+      My automations.
+    </h1>
+    <p class="text-fg-muted leading-[1.6] max-w-[58ch]" style="font-size: clamp(16px,1.5vw,19px)">
+      A private workspace to track personal automation ideas and projects. Everything is stored
+      locally in this browser — nothing leaves your machine.
+    </p>
+  </section>
+
+  <section class="pb-16 border-t border-line pt-10">
+    <!-- Add form -->
+    <form id="auto-form" class="flex flex-col sm:flex-row gap-3 mb-10">
+      <input
+        id="auto-title"
+        type="text"
+        placeholder="Automation idea… e.g. weekly portfolio sync"
+        class="flex-1 px-4 py-3 rounded-md border border-line-strong bg-bg-elev text-fg placeholder:text-fg-subtle font-mono text-sm focus:outline-none focus:border-accent"
+        required
+      />
+      <select
+        id="auto-status"
+        class="px-4 py-3 rounded-md border border-line-strong bg-bg-elev text-fg font-mono text-sm focus:outline-none focus:border-accent"
+      >
+        <option value="idea">💡 Idea</option>
+        <option value="building">🔨 Building</option>
+        <option value="done">✅ Done</option>
+      </select>
+      <button
+        type="submit"
+        class="px-6 py-3 rounded-md font-mono text-[11px] uppercase tracking-[0.06em] font-medium transition-all duration-200 hover:-translate-y-[1px]"
+        style="background: var(--accent); color: var(--accent-fg)"
+      >
+        Add
+      </button>
+    </form>
+
+    <!-- Filter tabs -->
+    <div id="auto-filters" class="flex gap-2 flex-wrap mb-6 font-mono text-[11px] uppercase tracking-[0.06em]">
+      <button data-filter="all" class="filter-chip px-3 py-1.5 rounded-full border border-line-strong text-fg-muted hover:text-fg transition-colors">All</button>
+      <button data-filter="idea" class="filter-chip px-3 py-1.5 rounded-full border border-line-strong text-fg-muted hover:text-fg transition-colors">💡 Ideas</button>
+      <button data-filter="building" class="filter-chip px-3 py-1.5 rounded-full border border-line-strong text-fg-muted hover:text-fg transition-colors">🔨 Building</button>
+      <button data-filter="done" class="filter-chip px-3 py-1.5 rounded-full border border-line-strong text-fg-muted hover:text-fg transition-colors">✅ Done</button>
+    </div>
+
+    <!-- List -->
+    <ul id="auto-list" class="flex flex-col gap-3"></ul>
+
+    <!-- Empty state -->
+    <p id="auto-empty" class="text-fg-subtle font-mono text-[12px] text-center py-12" hidden>
+      No automations yet — add your first idea above.
+    </p>
+  </section>
+</BaseLayout>
+
+<script>
+  const STORAGE_KEY = 'akash.automations.v1'
+
+  interface Auto {
+    id: string
+    title: string
+    status: 'idea' | 'building' | 'done'
+    createdAt: string
+  }
+
+  const form = document.getElementById('auto-form') as HTMLFormElement
+  const titleInput = document.getElementById('auto-title') as HTMLInputElement
+  const statusSelect = document.getElementById('auto-status') as HTMLSelectElement
+  const listEl = document.getElementById('auto-list') as HTMLUListElement
+  const emptyEl = document.getElementById('auto-empty') as HTMLElement
+  const filters = document.querySelectorAll<HTMLButtonElement>('.filter-chip')
+
+  let items: Auto[] = []
+  let filter: string = 'all'
+
+  function load() {
+    try {
+      items = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? '[]')
+    } catch {
+      items = []
+    }
+  }
+
+  function save() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(items))
+  }
+
+  const statusLabel: Record<Auto['status'], string> = {
+    idea: '💡 Idea',
+    building: '🔨 Building',
+    done: '✅ Done',
+  }
+
+  function render() {
+    const visible = items.filter((i) => filter === 'all' || i.status === filter)
+    emptyEl.hidden = items.length > 0
+    listEl.innerHTML = ''
+
+    for (const item of visible) {
+      const li = document.createElement('li')
+      li.className =
+        'flex items-center gap-3 px-5 py-4 rounded-lg border border-line bg-bg-elev transition-all duration-200 hover:border-line-strong'
+
+      const label = document.createElement('span')
+      label.className =
+        'font-mono text-[10px] uppercase tracking-[0.06em] px-2 py-1 rounded-full border shrink-0'
+      label.textContent = statusLabel[item.status]
+      label.style.color = 'var(--accent)'
+      label.style.borderColor = 'var(--accent-border)'
+      label.style.background = 'var(--accent-soft)'
+
+      const title = document.createElement('span')
+      title.className = 'flex-1 font-mono text-sm text-fg'
+      title.textContent = item.title
+      if (item.status === 'done') {
+        title.style.textDecoration = 'line-through'
+        title.style.color = 'var(--fg-subtle)'
+      }
+
+      const actions = document.createElement('div')
+      actions.className = 'flex gap-2 shrink-0'
+
+      if (item.status !== 'done') {
+        const doneBtn = document.createElement('button')
+        doneBtn.className = 'px-3 py-1.5 rounded-full border border-line-strong font-mono text-[10px] uppercase tracking-[0.06em] text-fg-muted hover:text-fg transition-colors'
+        doneBtn.textContent = 'Done'
+        doneBtn.addEventListener('click', () => {
+          item.status = 'done'
+          save()
+          render()
+        })
+        actions.appendChild(doneBtn)
+      } else {
+        const reopenBtn = document.createElement('button')
+        reopenBtn.className = 'px-3 py-1.5 rounded-full border border-line-strong font-mono text-[10px] uppercase tracking-[0.06em] text-fg-muted hover:text-fg transition-colors'
+        reopenBtn.textContent = 'Reopen'
+        reopenBtn.addEventListener('click', () => {
+          item.status = 'building'
+          save()
+          render()
+        })
+        actions.appendChild(reopenBtn)
+      }
+
+      const delBtn = document.createElement('button')
+      delBtn.className = 'px-3 py-1.5 rounded-full border border-line-strong font-mono text-[10px] uppercase tracking-[0.06em] text-fg-muted hover:text-accent transition-colors'
+      delBtn.textContent = '✕'
+      delBtn.setAttribute('aria-label', 'Delete')
+      delBtn.addEventListener('click', () => {
+        items = items.filter((i) => i.id !== item.id)
+        save()
+        render()
+      })
+      actions.appendChild(delBtn)
+
+      li.appendChild(label)
+      li.appendChild(title)
+      li.appendChild(actions)
+      listEl.appendChild(li)
+    }
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    const title = titleInput.value.trim()
+    if (!title) return
+    items.unshift({
+      id: crypto.randomUUID(),
+      title,
+      status: statusSelect.value as Auto['status'],
+      createdAt: new Date().toISOString(),
+    })
+    save()
+    titleInput.value = ''
+    titleInput.focus()
+    render()
+  })
+
+  for (const chip of filters) {
+    chip.addEventListener('click', () => {
+      filter = chip.dataset.filter ?? 'all'
+      for (const c of filters) {
+        c.style.background = c === chip ? 'var(--accent-soft)' : ''
+        c.style.color = c === chip ? 'var(--accent)' : ''
+        c.style.borderColor = c === chip ? 'var(--accent-border)' : ''
+      }
+      render()
+    })
+  }
+
+  load()
+  render()
+</script>
