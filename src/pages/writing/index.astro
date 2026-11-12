@@ -10,28 +10,20 @@ import { content } from '../../data/content'
   description="Articles by Akash Yadav about building websites, web apps, and the tools behind them."
 >
   <!-- Page head -->
-  <section class="pt-16 pb-12">
-    <div class="flex items-center gap-3 font-mono text-[11px] text-fg-muted uppercase tracking-[0.06em] mb-5">
-      <span class="w-6 h-px bg-accent"></span>
-      Writing · {content.writing.length} posts
-    </div>
-    <h1
-      class="font-display font-semibold m-0 mb-4"
-      style="font-size: clamp(40px,6vw,64px); line-height: 1.02; letter-spacing: -0.02em"
-    >
-      Things I write about.
-    </h1>
-    <p class="text-fg-muted leading-[1.6] max-w-[58ch]" style="font-size: clamp(16px,1.5vw,19px)">
+  <section class="pt-16 md:pt-24 pb-12">
+    <div class="eyebrow eyebrow-rule mb-6">Writing · {content.writing.length} posts</div>
+    <h1 class="t-display m-0 mb-5">Things I write about.</h1>
+    <p class="t-lead max-w-[58ch] m-0">
       Notes and articles on building software, the tools I use, and the occasional other topic. New posts whenever
       I have something worth sharing.
     </p>
   </section>
 
   <!-- Grid -->
-  <section class="pb-16 border-t border-line pt-10">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+  <section class="pb-16 md:pb-24">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {content.writing.map((article, i) => (
-        <FadeIn delay={i * 0.06}>
+        <FadeIn delay={Math.min(i, 6) * 0.06} class="h-full">
           <WritingCard article={article} />
         </FadeIn>
       ))}

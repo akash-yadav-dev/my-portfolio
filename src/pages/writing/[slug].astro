@@ -1,7 +1,5 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro'
-import WritingCard from '../../components/ui/WritingCard.astro'
-import FadeIn from '../../components/ui/FadeIn.astro'
 import { content } from '../../data/content'
 
 export function getStaticPaths() {
@@ -12,38 +10,28 @@ export function getStaticPaths() {
 
 const { slug } = Astro.params
 const article = content.writing.find((a) => a.slug === slug)
-const reserved = 'logic-first-ai'
-const isReserved = slug === reserved
 ---
 
 <BaseLayout title={article?.title ?? 'Writing'} description={article?.excerpt ?? ''}>
-  <article class="py-16 pb-32 max-w-[100ch]">
-    <a
-      href="/writing"
-      class="inline-flex items-center gap-1.5 font-mono text-[11px] text-fg-muted mb-10 hover:text-accent transition-colors duration-100"
-    >
-      ← All writing
+  <article class="pt-12 md:pt-16 pb-20 md:pb-28 max-w-[72ch]">
+    <a href="/writing" class="back-link mb-10">
+      <span aria-hidden="true">←</span> All writing
     </a>
 
-    <div class="flex items-center gap-4 font-mono text-[10px] text-fg-subtle uppercase tracking-[0.12em] mb-6">
+    <div class="flex flex-wrap items-center gap-3 t-meta mb-5">
       <span>{article?.date}</span>
-      <span>·</span>
+      <span aria-hidden="true">·</span>
       <span>{article?.readTime} read</span>
     </div>
 
-    <h1
-      class="font-display font-semibold tracking-tight m-0 mb-6 leading-tight"
-      style="font-size: clamp(32px,5vw,52px)"
-    >
-      {article?.title}
-    </h1>
+    <h1 class="t-h1 m-0 mb-6">{article?.title}</h1>
+    <p class="t-lead m-0 mb-10">{article?.excerpt}</p>
 
-    <div class="my-10 p-8 rounded-lg border border-line text-center" style="background: var(--bg-sunken)">
-      <p class="font-mono text-[10px] text-fg-subtle uppercase tracking-wider mb-3">Full article</p>
-      <p class="text-fg-muted leading-relaxed max-w-[50ch] mx-auto">
+    <div class="panel p-8 md:p-10 text-center">
+      <p class="eyebrow mb-3">Full article</p>
+      <p class="t-body max-w-[50ch] mx-auto m-0">
         The full version of this article lives elsewhere. When it&apos;s published, it will be linked from here.
       </p>
-      <p class="font-mono text-[11px] text-fg-subtle mt-3">{article?.excerpt}</p>
     </div>
   </article>
 </BaseLayout>

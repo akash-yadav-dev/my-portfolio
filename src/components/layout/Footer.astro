@@ -2,11 +2,11 @@
 import { content } from '../../data/content'
 ---
 
-<footer class="flex flex-wrap justify-between gap-4 py-10 mt-8 border-t border-line font-mono text-[11px] text-fg-muted">
-  <span>{content.footer.credit}</span>
-  <nav class="flex gap-5">
+<footer class="flex flex-wrap justify-between items-center gap-4 py-10 mt-8 divider">
+  <span class="t-meta">{content.footer.credit}</span>
+  <nav class="flex flex-wrap gap-x-6 gap-y-2" aria-label="Footer">
     {content.footer.links.map((link) => (
-      <a href={link.href} class="hover:text-fg transition-colors duration-100">
+      <a href={link.href} class="t-meta inline-flex items-center min-h-[32px] text-fg-muted hover:text-fg transition-colors duration-150">
         {link.label}
       </a>
     ))}

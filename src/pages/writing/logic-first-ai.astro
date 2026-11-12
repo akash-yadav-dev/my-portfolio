@@ -12,17 +12,14 @@ import SectionAnchor from '../../components/article/SectionAnchor.astro'
   title="Logic-First AI: A Hypothesis for Lightweight, High-Reasoning Systems"
   description="Can we build AI systems that reason well without being large, by separating the logic of reasoning from the storage of knowledge?"
 >
-  <article class="py-16 pb-32 max-w-[100ch]">
+  <article class="prose-article pt-12 md:pt-16 pb-20 md:pb-28 max-w-[72ch]">
     <!-- Back link -->
-    <a
-      href="/writing"
-      class="inline-flex items-center gap-1.5 font-mono text-[11px] text-fg-muted mb-10 hover:text-accent transition-colors duration-100"
-    >
-      ← All writing
+    <a href="/writing" class="back-link mb-10">
+      <span aria-hidden="true">←</span> All writing
     </a>
 
     <!-- Meta -->
-    <div class="flex items-center gap-4 font-mono text-[10px] text-fg-subtle uppercase tracking-[0.12em] mb-6">
+    <div class="flex flex-wrap items-center gap-3 t-meta mb-5">
       <span>May 2026</span>
       <span>·</span>
       <span>18 min read</span>
@@ -31,10 +28,7 @@ import SectionAnchor from '../../components/article/SectionAnchor.astro'
     </div>
 
     <!-- Title -->
-    <h1
-      class="font-display font-semibold tracking-tight m-0 mb-6 leading-tight"
-      style="font-size: clamp(32px,5vw,52px)"
-    >
+    <h1 class="t-h1 m-0 mb-6">
       Logic-First AI: A Hypothesis for Lightweight, High-Reasoning Systems
     </h1>
 
@@ -46,43 +40,43 @@ import SectionAnchor from '../../components/article/SectionAnchor.astro'
     </Callout>
 
     <!-- TOC -->
-    <nav class="my-10 p-6 rounded-lg border border-line text-sm" style="background: var(--bg-sunken)">
-      <p class="font-mono text-[10px] text-fg-subtle uppercase tracking-wider mb-4">Contents</p>
-      <ol class="space-y-1.5 list-none m-0 p-0">
-        <li><a href="#background" class="text-fg-muted hover:text-accent transition-colors duration-100 font-mono text-[12px]">1. Background &amp; Motivation</a></li>
-        <li><a href="#hypothesis" class="text-fg-muted hover:text-accent transition-colors duration-100 font-mono text-[12px]">2. Core Hypothesis</a></li>
-        <li><a href="#brain" class="text-fg-muted hover:text-accent transition-colors duration-100 font-mono text-[12px]">3. The Human Brain Analogy</a></li>
-        <li><a href="#challenges" class="text-fg-muted hover:text-accent transition-colors duration-100 font-mono text-[12px]">4. Key Challenges</a></li>
-        <li><a href="#prior-work" class="text-fg-muted hover:text-accent transition-colors duration-100 font-mono text-[12px]">5. Existing Work &amp; Related Research</a></li>
-        <li><a href="#architecture" class="text-fg-muted hover:text-accent transition-colors duration-100 font-mono text-[12px]">6. Proposed System Architecture</a></li>
-        <li><a href="#novel" class="text-fg-muted hover:text-accent transition-colors duration-100 font-mono text-[12px]">7. What Makes This Novel</a></li>
-        <li><a href="#roadmap" class="text-fg-muted hover:text-accent transition-colors duration-100 font-mono text-[12px]">8. If You Want to Pursue This Field</a></li>
-        <li><a href="#glossary" class="text-fg-muted hover:text-accent transition-colors duration-100 font-mono text-[12px]">9. Glossary of Terms</a></li>
+    <nav class="panel my-10 p-6 md:p-8" aria-label="Contents">
+      <p class="eyebrow mb-4">Contents</p>
+      <ol class="grid gap-1 list-none m-0 p-0 sm:grid-cols-2 sm:gap-x-8">
+        <li><a href="#background" class="inline-flex min-h-[32px] items-center text-[14.5px] text-fg-muted hover:text-accent transition-colors duration-150">1. Background &amp; Motivation</a></li>
+        <li><a href="#hypothesis" class="inline-flex min-h-[32px] items-center text-[14.5px] text-fg-muted hover:text-accent transition-colors duration-150">2. Core Hypothesis</a></li>
+        <li><a href="#brain" class="inline-flex min-h-[32px] items-center text-[14.5px] text-fg-muted hover:text-accent transition-colors duration-150">3. The Human Brain Analogy</a></li>
+        <li><a href="#challenges" class="inline-flex min-h-[32px] items-center text-[14.5px] text-fg-muted hover:text-accent transition-colors duration-150">4. Key Challenges</a></li>
+        <li><a href="#prior-work" class="inline-flex min-h-[32px] items-center text-[14.5px] text-fg-muted hover:text-accent transition-colors duration-150">5. Existing Work &amp; Related Research</a></li>
+        <li><a href="#architecture" class="inline-flex min-h-[32px] items-center text-[14.5px] text-fg-muted hover:text-accent transition-colors duration-150">6. Proposed System Architecture</a></li>
+        <li><a href="#novel" class="inline-flex min-h-[32px] items-center text-[14.5px] text-fg-muted hover:text-accent transition-colors duration-150">7. What Makes This Novel</a></li>
+        <li><a href="#roadmap" class="inline-flex min-h-[32px] items-center text-[14.5px] text-fg-muted hover:text-accent transition-colors duration-150">8. If You Want to Pursue This Field</a></li>
+        <li><a href="#glossary" class="inline-flex min-h-[32px] items-center text-[14.5px] text-fg-muted hover:text-accent transition-colors duration-150">9. Glossary of Terms</a></li>
       </ol>
     </nav>
 
     <!-- Section 1 -->
     <SectionAnchor id="background" n="01" label="Background &amp; Motivation" />
-    <h2 class="font-display font-semibold text-2xl tracking-tight mt-0 mb-4">
+    <h2 class="mt-0 mb-4">
       The Problem with Current AI
     </h2>
-    <p class="text-fg-muted leading-relaxed mb-4">
+    <p class="text-fg-muted leading-[1.75] mb-4">
       Large Language Models like GPT-4 and Claude are remarkably capable, but they are built on a
       fundamentally inefficient principle: <strong class="text-fg font-semibold">everything is stored together</strong>.
     </p>
-    <ul class="text-fg-muted leading-relaxed mb-6 space-y-1 pl-5 list-disc">
+    <ul class="text-fg-muted leading-[1.75] mb-6 space-y-1 pl-5 list-disc">
       <li>Factual knowledge (Paris is the capital of France)</li>
       <li>Reasoning ability (how to solve a multi-step problem)</li>
       <li>Language patterns (how sentences are structured)</li>
       <li>Common sense (that fire is hot)</li>
     </ul>
-    <p class="text-fg-muted leading-relaxed mb-6">
+    <p class="text-fg-muted leading-[1.75] mb-6">
       All of these are compressed into billions of parameters inside a single neural network. To
       answer even a simple question, the entire model must activate — billions of calculations,
       requiring expensive GPUs, costing enormous amounts of power and money.
     </p>
 
-    <h2 class="font-display font-semibold text-2xl tracking-tight mt-10 mb-4">
+    <h2 class="mt-12 mb-4">
       The Scale Problem
     </h2>
     <Table
@@ -94,7 +88,7 @@ import SectionAnchor from '../../components/article/SectionAnchor.astro'
         ['Phi-3 Mini', '3.8B', '~2.3 GB', '~$0.0001 / query'],
       ]}
     />
-    <p class="text-fg-muted leading-relaxed">
+    <p class="text-fg-muted leading-[1.75]">
       The gap between small and large models is not just cost — it is{' '}
       <strong class="text-fg font-semibold">access</strong>. When reasoning requires a
       trillion-parameter model, only large corporations can afford to run it.
@@ -107,16 +101,16 @@ import SectionAnchor from '../../components/article/SectionAnchor.astro'
 
     <!-- Section 2 -->
     <SectionAnchor id="hypothesis" n="02" label="Core Hypothesis" />
-    <div class="p-6 rounded-lg border border-line mb-8" style="background: var(--bg-elev)">
-      <p class="font-mono text-[10px] text-fg-subtle uppercase tracking-wider mb-3">Statement</p>
-      <p class="text-fg leading-relaxed text-base">
+    <div class="card p-6 md:p-8 mb-8">
+      <p class="eyebrow mb-3">Statement</p>
+      <p class="text-fg font-display text-[19px] leading-[1.55] m-0">
         A modular AI system that encodes reasoning as explicit logic rules — and uses small neural
         models only for knowledge retrieval — can match or exceed the reasoning quality of large
         monolithic LLMs, at a fraction of the compute cost.
       </p>
     </div>
 
-    <h2 class="font-display font-semibold text-2xl tracking-tight mt-10 mb-6">
+    <h2 class="mt-12 mb-6">
       Three Sub-Hypotheses
     </h2>
     <div class="space-y-5">
@@ -124,28 +118,28 @@ import SectionAnchor from '../../components/article/SectionAnchor.astro'
         <div class="w-1 flex-shrink-0 rounded-full mt-1" style="background: var(--accent)"></div>
         <div>
           <p class="font-semibold text-fg mb-1">H1 — Separation of concerns reduces size</p>
-          <p class="text-fg-muted leading-relaxed">If reasoning logic is encoded symbolically (as rules, graphs, or formal constraints) rather than learned implicitly through data, the neural component only needs to store facts — not reasoning patterns. This dramatically reduces the required model size.</p>
+          <p class="text-fg-muted leading-[1.75]">If reasoning logic is encoded symbolically (as rules, graphs, or formal constraints) rather than learned implicitly through data, the neural component only needs to store facts — not reasoning patterns. This dramatically reduces the required model size.</p>
         </div>
       </div>
       <div class="flex gap-4">
         <div class="w-1 flex-shrink-0 rounded-full mt-1" style="background: var(--accent)"></div>
         <div>
           <p class="font-semibold text-fg mb-1">H2 — Logic-first enables self-evaluation</p>
-          <p class="text-fg-muted leading-relaxed">A system that reasons through explicit steps can check its own work without a separate verifier model. If a conclusion violates a rule it derived itself, it can detect and correct the error before outputting — reducing hallucination.</p>
+          <p class="text-fg-muted leading-[1.75]">A system that reasons through explicit steps can check its own work without a separate verifier model. If a conclusion violates a rule it derived itself, it can detect and correct the error before outputting — reducing hallucination.</p>
         </div>
       </div>
       <div class="flex gap-4">
         <div class="w-1 flex-shrink-0 rounded-full mt-1" style="background: var(--accent)"></div>
         <div>
           <p class="font-semibold text-fg mb-1">H3 — Domain specialisation multiplies both effects</p>
-          <p class="text-fg-muted leading-relaxed">A system focused on one domain (e.g. personal schedule management, medical diagnosis, legal reasoning) requires far fewer rules and far less factual knowledge than a general system. Narrowing the domain makes both the logic engine and the knowledge model dramatically smaller.</p>
+          <p class="text-fg-muted leading-[1.75]">A system focused on one domain (e.g. personal schedule management, medical diagnosis, legal reasoning) requires far fewer rules and far less factual knowledge than a general system. Narrowing the domain makes both the logic engine and the knowledge model dramatically smaller.</p>
         </div>
       </div>
     </div>
 
     <!-- Section 3 -->
     <SectionAnchor id="brain" n="03" label="The Human Brain Analogy" />
-    <p class="text-fg-muted leading-relaxed mb-6">
+    <p class="text-fg-muted leading-[1.75] mb-6">
       The human brain already implements this separation. It did not evolve a single giant region
       that handles everything — it evolved specialised modules that cooperate.
     </p>
@@ -346,59 +340,59 @@ import SectionAnchor from '../../components/article/SectionAnchor.astro'
     <SectionAnchor id="prior-work" n="05" label="Existing Work &amp; Related Research" />
 
     <div class="space-y-6 mb-10">
-      <div class="rounded-lg border border-line overflow-hidden">
-        <div class="px-5 py-3 flex items-center justify-between" style="background: var(--bg-elev); border-bottom: 1px solid var(--line)">
+      <div class="card overflow-hidden">
+        <div class="px-5 py-3 flex items-center justify-between gap-3 divider-b">
           <span class="font-semibold text-fg">AlphaGeometry</span>
-          <span class="font-mono text-[10px] text-fg-subtle">Google DeepMind, 2024</span>
+          <span class="font-mono text-[11.5px] text-fg-subtle">Google DeepMind, 2024</span>
         </div>
         <div class="px-5 py-4">
-          <p class="text-fg-muted leading-relaxed mb-3">Combines a symbolic deduction engine with a small language model. The logic engine handles 99% of reasoning; the LLM only suggests new constructs. Solved International Mathematical Olympiad geometry problems at gold-medal level.</p>
+          <p class="text-fg-muted leading-[1.75] mb-3">Combines a symbolic deduction engine with a small language model. The logic engine handles 99% of reasoning; the LLM only suggests new constructs. Solved International Mathematical Olympiad geometry problems at gold-medal level.</p>
           <p class="font-mono text-[11px] text-accent">→ Proves that logic-first with a small neural component works at world-class level in a narrow domain.</p>
         </div>
       </div>
-      <div class="rounded-lg border border-line overflow-hidden">
-        <div class="px-5 py-3 flex items-center justify-between" style="background: var(--bg-elev); border-bottom: 1px solid var(--line)">
+      <div class="card overflow-hidden">
+        <div class="px-5 py-3 flex items-center justify-between gap-3 divider-b">
           <span class="font-semibold text-fg">AlphaProof</span>
-          <span class="font-mono text-[10px] text-fg-subtle">Google DeepMind, 2024</span>
+          <span class="font-mono text-[11.5px] text-fg-subtle">Google DeepMind, 2024</span>
         </div>
         <div class="px-5 py-4">
-          <p class="text-fg-muted leading-relaxed mb-3">Extends the same approach to formal mathematical proofs. Uses a proof assistant (Lean 4) as the logic layer.</p>
+          <p class="text-fg-muted leading-[1.75] mb-3">Extends the same approach to formal mathematical proofs. Uses a proof assistant (Lean 4) as the logic layer.</p>
           <p class="font-mono text-[11px] text-accent">→ Shows the approach generalises beyond geometry.</p>
         </div>
       </div>
-      <div class="rounded-lg border border-line overflow-hidden">
-        <div class="px-5 py-3 flex items-center justify-between" style="background: var(--bg-elev); border-bottom: 1px solid var(--line)">
+      <div class="card overflow-hidden">
+        <div class="px-5 py-3 flex items-center justify-between gap-3 divider-b">
           <span class="font-semibold text-fg">Neurosymbolic AI</span>
-          <span class="font-mono text-[10px] text-fg-subtle">MIT, IBM Research</span>
+          <span class="font-mono text-[11.5px] text-fg-subtle">MIT, IBM Research</span>
         </div>
         <div class="px-5 py-4">
-          <p class="text-fg-muted leading-relaxed mb-3">Formal research field combining neural perception with symbolic reasoning. IBM's Neuro-Symbolic Concept Learner learns visual concepts from 10x fewer examples.</p>
+          <p class="text-fg-muted leading-[1.75] mb-3">Formal research field combining neural perception with symbolic reasoning. IBM's Neuro-Symbolic Concept Learner learns visual concepts from 10x fewer examples.</p>
           <p class="font-mono text-[11px] text-accent">→ Shows data efficiency gains when logic is made explicit.</p>
         </div>
       </div>
-      <div class="rounded-lg border border-line overflow-hidden">
-        <div class="px-5 py-3 flex items-center justify-between" style="background: var(--bg-elev); border-bottom: 1px solid var(--line)">
+      <div class="card overflow-hidden">
+        <div class="px-5 py-3 flex items-center justify-between gap-3 divider-b">
           <span class="font-semibold text-fg">Chain-of-Thought + Process Reward Models</span>
-          <span class="font-mono text-[10px] text-fg-subtle">OpenAI o1/o3</span>
+          <span class="font-mono text-[11.5px] text-fg-subtle">OpenAI o1/o3</span>
         </div>
         <div class="px-5 py-4">
-          <p class="text-fg-muted leading-relaxed mb-3">Forces models to externalise reasoning steps before answering. A separate model checks each step for correctness.</p>
+          <p class="text-fg-muted leading-[1.75] mb-3">Forces models to externalise reasoning steps before answering. A separate model checks each step for correctness.</p>
           <p class="font-mono text-[11px] text-accent">→ Proves that self-evaluation improves reasoning — but still runs inside a large neural network rather than a dedicated logic engine.</p>
         </div>
       </div>
-      <div class="rounded-lg border border-line overflow-hidden">
-        <div class="px-5 py-3 flex items-center justify-between" style="background: var(--bg-elev); border-bottom: 1px solid var(--line)">
+      <div class="card overflow-hidden">
+        <div class="px-5 py-3 flex items-center justify-between gap-3 divider-b">
           <span class="font-semibold text-fg">Retrieval-Augmented Generation (RAG)</span>
-          <span class="font-mono text-[10px] text-fg-subtle"></span>
+          <span class="font-mono text-[11.5px] text-fg-subtle"></span>
         </div>
         <div class="px-5 py-4">
-          <p class="text-fg-muted leading-relaxed mb-3">Separates factual knowledge (external database) from reasoning (LLM). The LLM retrieves relevant facts on demand rather than storing everything.</p>
+          <p class="text-fg-muted leading-[1.75] mb-3">Separates factual knowledge (external database) from reasoning (LLM). The LLM retrieves relevant facts on demand rather than storing everything.</p>
           <p class="font-mono text-[11px] text-accent">→ Early proof that separation of knowledge from model reduces required model size without losing capability.</p>
         </div>
       </div>
     </div>
 
-    <h2 class="font-display font-semibold text-xl tracking-tight mb-4">
+    <h2 class="mb-4">
       Adjacent Research Fields
     </h2>
     <Table
@@ -464,7 +458,7 @@ import SectionAnchor from '../../components/article/SectionAnchor.astro'
 │ score   │     │ with context  │
 └─────────┘     └───────────────┘`} />
 
-    <h2 class="font-display font-semibold text-xl tracking-tight mb-4">
+    <h2 class="mb-4">
       Component Specifications (Minimal Viable Build)
     </h2>
     <Table
@@ -481,49 +475,49 @@ import SectionAnchor from '../../components/article/SectionAnchor.astro'
 
     <!-- Section 7 -->
     <SectionAnchor id="novel" n="07" label="What Makes This Novel" />
-    <p class="text-fg-muted leading-relaxed mb-6">
+    <p class="text-fg-muted leading-[1.75] mb-6">
       Current research has explored pieces of this idea. What is genuinely novel is the{' '}
       <strong class="text-fg font-semibold">combination</strong> of all of the following in a
       single personal system:
     </p>
     <div class="space-y-4 mb-8">
       <div class="flex gap-4 items-start">
-        <span class="flex-shrink-0 w-6 h-6 rounded-full font-mono text-[11px] font-medium flex items-center justify-center mt-0.5" style="background: var(--accent-soft); color: var(--accent-fg)">1</span>
+        <span class="flex-shrink-0 w-6 h-6 rounded-full font-mono text-[11px] font-medium flex items-center justify-center mt-0.5" style="background: var(--accent-soft); color: var(--accent)">1</span>
         <div>
           <span class="font-semibold text-fg">Personal behavioral data</span>
           <span class="text-fg-muted"> — Not the internet, not books, but one person's own actions, memories, and patterns as the knowledge source.</span>
         </div>
       </div>
       <div class="flex gap-4 items-start">
-        <span class="flex-shrink-0 w-6 h-6 rounded-full font-mono text-[11px] font-medium flex items-center justify-center mt-0.5" style="background: var(--accent-soft); color: var(--accent-fg)">2</span>
+        <span class="flex-shrink-0 w-6 h-6 rounded-full font-mono text-[11px] font-medium flex items-center justify-center mt-0.5" style="background: var(--accent-soft); color: var(--accent)">2</span>
         <div>
           <span class="font-semibold text-fg">Domain-specific logic engine</span>
           <span class="text-fg-muted"> — Not a general reasoner, but one designed deeply for a single domain (personal scheduling, health, finance, etc.)</span>
         </div>
       </div>
       <div class="flex gap-4 items-start">
-        <span class="flex-shrink-0 w-6 h-6 rounded-full font-mono text-[11px] font-medium flex items-center justify-center mt-0.5" style="background: var(--accent-soft); color: var(--accent-fg)">3</span>
+        <span class="flex-shrink-0 w-6 h-6 rounded-full font-mono text-[11px] font-medium flex items-center justify-center mt-0.5" style="background: var(--accent-soft); color: var(--accent)">3</span>
         <div>
           <span class="font-semibold text-fg">Cluster-based episodic memory</span>
           <span class="text-fg-muted"> — Knowledge organised the way humans naturally store memories: by event type and context, not by keyword.</span>
         </div>
       </div>
       <div class="flex gap-4 items-start">
-        <span class="flex-shrink-0 w-6 h-6 rounded-full font-mono text-[11px] font-medium flex items-center justify-center mt-0.5" style="background: var(--accent-soft); color: var(--accent-fg)">4</span>
+        <span class="flex-shrink-0 w-6 h-6 rounded-full font-mono text-[11px] font-medium flex items-center justify-center mt-0.5" style="background: var(--accent-soft); color: var(--accent)">4</span>
         <div>
           <span class="font-semibold text-fg">Probabilistic self-evaluation</span>
           <span class="text-fg-muted"> — The system tracks its own confidence and triggers re-reasoning when confidence drops below a threshold.</span>
         </div>
       </div>
       <div class="flex gap-4 items-start">
-        <span class="flex-shrink-0 w-6 h-6 rounded-full font-mono text-[11px] font-medium flex items-center justify-center mt-0.5" style="background: var(--accent-soft); color: var(--accent-fg)">5</span>
+        <span class="flex-shrink-0 w-6 h-6 rounded-full font-mono text-[11px] font-medium flex items-center justify-center mt-0.5" style="background: var(--accent-soft); color: var(--accent)">5</span>
         <div>
           <span class="font-semibold text-fg">Consumer hardware target</span>
           <span class="text-fg-muted"> — Explicitly designed to run on a laptop or phone, not a server cluster.</span>
         </div>
       </div>
     </div>
-    <div class="p-5 rounded-lg border border-line text-sm text-fg-muted leading-relaxed" style="background: var(--bg-sunken)">
+    <div class="panel p-6 text-[15px] text-fg-muted leading-[1.75]">
       No published system combines all five. AlphaGeometry has 1, 2, and 4 in a narrow math
       domain. RAG has parts of 1 and 3. MemGPT has parts of 1 and 3. The full combination is an
       open research opportunity.
@@ -535,14 +529,14 @@ import SectionAnchor from '../../components/article/SectionAnchor.astro'
     <div class="space-y-10">
       <div class="border-l-2 pl-6" style="border-color: var(--line-strong)">
         <div class="flex items-center gap-3 mb-4">
-          <span class="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full" style="background: var(--accent-soft); color: var(--accent-fg)">Stage 1</span>
+          <span class="font-mono text-[11.5px] uppercase tracking-wider px-2 py-0.5 rounded-full" style="background: var(--accent-soft); color: var(--accent)">Stage 1</span>
           <span class="font-semibold text-fg">Build foundational knowledge</span>
           <span class="font-mono text-[11px] text-fg-subtle">3–6 months</span>
         </div>
         <div class="space-y-4">
           <div>
             <p class="font-semibold text-fg-muted mb-1.5">Mathematics (essential basics only)</p>
-            <ul class="list-disc pl-5 space-y-1 text-fg-muted text-sm leading-relaxed">
+            <ul class="list-disc pl-5 space-y-1 text-fg-muted text-sm leading-[1.75]">
               <li>Linear algebra — vectors, matrices, dot products (Khan Academy: free)</li>
               <li>Probability — Bayes' theorem, conditional probability (Khan Academy: free)</li>
               <li>Logic — propositional logic, IF-THEN rules (any introductory logic textbook)</li>
@@ -550,7 +544,7 @@ import SectionAnchor from '../../components/article/SectionAnchor.astro'
           </div>
           <div>
             <p class="font-semibold text-fg-muted mb-1.5">Programming</p>
-            <ul class="list-disc pl-5 space-y-1 text-fg-muted text-sm leading-relaxed">
+            <ul class="list-disc pl-5 space-y-1 text-fg-muted text-sm leading-[1.75]">
               <li>Python — the universal language of AI research</li>
               <li>Focus on: lists, dictionaries, functions, and classes</li>
               <li>Libraries to learn early: numpy, pandas, sklearn</li>
@@ -558,7 +552,7 @@ import SectionAnchor from '../../components/article/SectionAnchor.astro'
           </div>
           <div>
             <p class="font-semibold text-fg-muted mb-1.5">AI Concepts</p>
-            <ul class="list-disc pl-5 space-y-1 text-fg-muted text-sm leading-relaxed">
+            <ul class="list-disc pl-5 space-y-1 text-fg-muted text-sm leading-[1.75]">
               <li>What is a neural network? (3Blue1Brown YouTube: free, visual, excellent)</li>
               <li>What is a transformer? (Andrej Karpathy's "Let's build GPT" on YouTube)</li>
               <li>What is a vector embedding? (Jay Alammar's blog: jalammar.github.io)</li>
@@ -568,14 +562,14 @@ import SectionAnchor from '../../components/article/SectionAnchor.astro'
       </div>
       <div class="border-l-2 pl-6" style="border-color: var(--line-strong)">
         <div class="flex items-center gap-3 mb-4">
-          <span class="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full" style="background: var(--accent-soft); color: var(--accent-fg)">Stage 2</span>
+          <span class="font-mono text-[11.5px] uppercase tracking-wider px-2 py-0.5 rounded-full" style="background: var(--accent-soft); color: var(--accent)">Stage 2</span>
           <span class="font-semibold text-fg">Build your first prototype</span>
           <span class="font-mono text-[11px] text-fg-subtle">Months 4–9</span>
         </div>
         <div class="space-y-4">
           <div>
             <p class="font-semibold text-fg-muted mb-1.5">Project 1: Personal memory system</p>
-            <ul class="list-disc pl-5 space-y-1 text-fg-muted text-sm leading-relaxed">
+            <ul class="list-disc pl-5 space-y-1 text-fg-muted text-sm leading-[1.75]">
               <li>Log your own activities as text for 2 weeks</li>
               <li>Embed them using sentence-transformers</li>
               <li>Store in ChromaDB</li>
@@ -584,7 +578,7 @@ import SectionAnchor from '../../components/article/SectionAnchor.astro'
           </div>
           <div>
             <p class="font-semibold text-fg-muted mb-1.5">Project 2: Simple rule engine</p>
-            <ul class="list-disc pl-5 space-y-1 text-fg-muted text-sm leading-relaxed">
+            <ul class="list-disc pl-5 space-y-1 text-fg-muted text-sm leading-[1.75]">
               <li>Write 10 IF-THEN rules about your own life in plain Python</li>
               <li>Example: if time == "morning" and day == "weekday": suggest("check email")</li>
               <li>Connect it to your memory system from Project 1</li>
@@ -592,7 +586,7 @@ import SectionAnchor from '../../components/article/SectionAnchor.astro'
           </div>
           <div>
             <p class="font-semibold text-fg-muted mb-1.5">Project 3: Add a small LLM</p>
-            <ul class="list-disc pl-5 space-y-1 text-fg-muted text-sm leading-relaxed">
+            <ul class="list-disc pl-5 space-y-1 text-fg-muted text-sm leading-[1.75]">
               <li>Install ollama and run gemma:2b locally</li>
               <li>Connect it to your rule engine for questions your rules cannot answer</li>
               <li>This teaches: LLM integration, prompt design, and where rules break down</li>
@@ -602,14 +596,14 @@ import SectionAnchor from '../../components/article/SectionAnchor.astro'
       </div>
       <div class="border-l-2 pl-6" style="border-color: var(--line-strong)">
         <div class="flex items-center gap-3 mb-4">
-          <span class="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full" style="background: var(--accent-soft); color: var(--accent-fg)">Stage 3</span>
+          <span class="font-mono text-[11.5px] uppercase tracking-wider px-2 py-0.5 rounded-full" style="background: var(--accent-soft); color: var(--accent)">Stage 3</span>
           <span class="font-semibold text-fg">Go deeper into the research</span>
           <span class="font-mono text-[11px] text-fg-subtle">Months 8–18</span>
         </div>
         <div class="space-y-4">
           <div>
             <p class="font-semibold text-fg-muted mb-1.5">Key papers to read (in this order)</p>
-            <ul class="list-disc pl-5 space-y-1 text-fg-muted text-sm leading-relaxed">
+            <ul class="list-disc pl-5 space-y-1 text-fg-muted text-sm leading-[1.75]">
               <li>Attention Is All You Need (Vaswani et al., 2017) — the transformer paper</li>
               <li>Retrieval-Augmented Generation (Lewis et al., 2020)</li>
               <li>Chain-of-Thought Prompting (Wei et al., 2022)</li>
@@ -619,7 +613,7 @@ import SectionAnchor from '../../components/article/SectionAnchor.astro'
           </div>
           <div>
             <p class="font-semibold text-fg-muted mb-1.5">Communities to join</p>
-            <ul class="list-disc pl-5 space-y-1 text-fg-muted text-sm leading-relaxed">
+            <ul class="list-disc pl-5 space-y-1 text-fg-muted text-sm leading-[1.75]">
               <li>Hugging Face forums (huggingface.co/forums)</li>
               <li>r/MachineLearning and r/LocalLLaMA on Reddit</li>
               <li>EleutherAI Discord (open AI research community)</li>
@@ -630,14 +624,14 @@ import SectionAnchor from '../../components/article/SectionAnchor.astro'
       </div>
       <div class="border-l-2 pl-6" style="border-color: var(--line-strong)">
         <div class="flex items-center gap-3 mb-4">
-          <span class="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full" style="background: var(--accent-soft); color: var(--accent-fg)">Stage 4</span>
+          <span class="font-mono text-[11.5px] uppercase tracking-wider px-2 py-0.5 rounded-full" style="background: var(--accent-soft); color: var(--accent)">Stage 4</span>
           <span class="font-semibold text-fg">Formalise your hypothesis</span>
           <span class="font-mono text-[11px] text-fg-subtle">Months 12–24</span>
         </div>
         <div class="space-y-4">
           <div>
             <p class="font-semibold text-fg-muted mb-1.5">Write a technical report</p>
-            <ul class="list-disc pl-5 space-y-1 text-fg-muted text-sm leading-relaxed">
+            <ul class="list-disc pl-5 space-y-1 text-fg-muted text-sm leading-[1.75]">
               <li>State your hypothesis clearly (one sentence)</li>
               <li>Describe what exists (prior work)</li>
               <li>Describe what is missing (your contribution)</li>
@@ -646,7 +640,7 @@ import SectionAnchor from '../../components/article/SectionAnchor.astro'
           </div>
           <div>
             <p class="font-semibold text-fg-muted mb-1.5">Consider publishing</p>
-            <ul class="list-disc pl-5 space-y-1 text-fg-muted text-sm leading-relaxed">
+            <ul class="list-disc pl-5 space-y-1 text-fg-muted text-sm leading-[1.75]">
               <li>arXiv preprint — free, no peer review, immediate visibility</li>
               <li>Workshop papers at NeurIPS, ICML, or ACL — lower bar than full conference papers</li>
               <li>Blog posts on Hugging Face or Substack — builds audience before formal publication</li>
@@ -656,7 +650,7 @@ import SectionAnchor from '../../components/article/SectionAnchor.astro'
       </div>
     </div>
 
-    <h2 class="font-display font-semibold text-xl tracking-tight mt-12 mb-5">
+    <h2 class="mt-12 mb-5">
       Realistic Timeline Summary
     </h2>
     <Table
@@ -703,7 +697,7 @@ import SectionAnchor from '../../components/article/SectionAnchor.astro'
     />
 
     <!-- Footer note -->
-    <div class="mt-16 pt-8 border-t border-line font-mono text-[11px] text-fg-subtle leading-relaxed">
+    <div class="mt-16 pt-8 divider t-meta leading-[1.75]">
       <p>
         Document prepared based on independent research exploring logic-first AI architecture as
         an alternative to data-heavy monolithic LLMs. The hypothesis is original formulation;

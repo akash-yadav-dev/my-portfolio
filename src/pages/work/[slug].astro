@@ -29,49 +29,38 @@ const statusLabel: Record<string, string> = {
 ---
 
 <BaseLayout title={project.name} description={project.summary}>
-  <section class="py-16 pb-16">
-    <a
-      href="/work"
-      class="inline-flex items-center gap-1.5 font-mono text-[11px] text-fg-muted mb-8 hover:text-accent transition-colors duration-100"
-    >
-      ← All projects
+  <section class="pt-12 md:pt-16 pb-20 md:pb-28">
+    <a href="/work" class="back-link mb-10">
+      <span aria-hidden="true">←</span> All projects
     </a>
 
-    <div class="flex gap-2 flex-wrap mb-3">
+    <div class="flex gap-2 flex-wrap mb-5">
       <Badge status={project.status} />
     </div>
 
-    <h1
-      class="font-display font-semibold m-0 mb-4"
-      style="font-size: clamp(40px,6vw,68px); line-height: 1.02; letter-spacing: -0.02em"
-    >
-      {project.name}
-    </h1>
-
-    <p class="text-fg-muted leading-[1.5] mb-8 max-w-[58ch]" style="font-size: clamp(17px,1.6vw,21px)">
-      {project.tagline}
-    </p>
+    <h1 class="t-display m-0 mb-5">{project.name}</h1>
+    <p class="t-lead max-w-[58ch] m-0 mb-10">{project.tagline}</p>
 
     {project.visual ? (
-      <div class="mb-8 rounded-2xl overflow-hidden shadow-md bg-bg-sunken">
+      <div class="mb-12 rounded-2xl overflow-hidden shadow-md bg-bg-sunken">
         <img
           src={project.visual.src}
           alt={project.visual.alt}
-          width="1400"
-          height="840"
+          width="1265"
+          height="791"
           class="w-full h-auto object-cover"
         />
       </div>
     ) : (
-      <div class="mb-8 rounded-2xl panel grid place-items-center text-center aspect-[16/8] px-6">
+      <div class="mb-12 panel grid place-items-center text-center aspect-[16/8] px-6">
         <div>
           <span
-            class="inline-grid place-items-center w-14 h-14 rounded-lg font-display font-semibold text-xl mb-4"
+            class="inline-grid place-items-center w-14 h-14 rounded-xl font-display font-semibold text-xl mb-4"
             style="background: var(--accent-soft); color: var(--accent)"
           >
             {project.name.slice(0, 2)}
           </span>
-          <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-fg-subtle">
+          <p class="eyebrow m-0">
             {project.status === 'corporate'
               ? 'Corporate platform, internal product'
               : 'In active development'}
@@ -80,51 +69,52 @@ const statusLabel: Record<string, string> = {
       </div>
     )}
 
-    <!-- Meta strip -->
-    <dl class="grid grid-cols-2 md:grid-cols-4 gap-5 py-5 border-t border-b border-line mb-10 font-mono text-[11px]">
-      <div>
-        <dt class="text-fg-subtle uppercase tracking-[0.12em] text-[10px] mb-1">Year</dt>
-        <dd class="m-0 text-fg">{project.year}</dd>
-      </div>
-      <div>
-        <dt class="text-fg-subtle uppercase tracking-[0.12em] text-[10px] mb-1">Status</dt>
-        <dd class="m-0 text-fg">{statusLabel[project.status]}</dd>
-      </div>
-      <div>
-        <dt class="text-fg-subtle uppercase tracking-[0.12em] text-[10px] mb-1">Stack</dt>
-        <dd class="m-0 text-fg">{project.stack.join(', ')}</dd>
-      </div>
-      <div>
-        <dt class="text-fg-subtle uppercase tracking-[0.12em] text-[10px] mb-1">Role</dt>
-        <dd class="m-0 text-fg">Design + engineering</dd>
-      </div>
-    </dl>
-
-    <!-- Body -->
-    <div class="max-w-[70ch]">
-      {paragraphs.map((para, i) => (
-        <p
-          class="leading-[1.55] mb-4"
-          style={`font-size: clamp(16px,1.5vw,19px); color: ${i === 0 ? 'var(--fg)' : 'var(--fg-muted)'}`}
-        >
-          {para}
-        </p>
-      ))}
-    </div>
-
-    <!-- Links -->
-    {project.links.length > 0 && project.status !== 'sunset' && (
-      <div class="flex gap-3 flex-wrap mt-8">
-        {project.links.map((link) => (
-          <a
-            href={link.href}
-            class="inline-flex items-center gap-2 px-4 py-2 rounded-full font-mono text-[10px] uppercase tracking-[0.06em] border border-line-strong hover:border-fg hover:bg-bg-sunken transition-all duration-200 group"
-          >
-            {link.label}
-            <span class="transition-transform duration-200 group-hover:translate-x-1">→</span>
-          </a>
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-10 lg:gap-16 items-start">
+      <!-- Body -->
+      <div class="max-w-[68ch]">
+        {paragraphs.map((para, i) => (
+          <p class:list={['m-0 mb-5', i === 0 ? 't-lead text-fg' : 't-body text-[16.5px] leading-[1.75]']}>
+            {para}
+          </p>
         ))}
+
+        {project.links.length > 0 && project.status !== 'sunset' && (
+          <div class="flex gap-3 flex-wrap mt-10">
+            {project.links.map((link, i) => (
+              <a href={link.href} class:list={['btn', i === 0 ? 'btn-primary' : 'btn-secondary']} rel="noopener">
+                {link.label}
+                <span class="btn-arrow" aria-hidden="true">→</span>
+              </a>
+            ))}
+          </div>
+        )}
       </div>
-    )}
+
+      <!-- Facts -->
+      <aside class="panel p-6" aria-label="Project facts">
+        <dl class="m-0 flex flex-col gap-5">
+          <div>
+            <dt class="eyebrow mb-1.5">Year</dt>
+            <dd class="m-0 text-fg text-[15px]">{project.year}</dd>
+          </div>
+          <div>
+            <dt class="eyebrow mb-1.5">Status</dt>
+            <dd class="m-0 text-fg text-[15px]">{statusLabel[project.status]}</dd>
+          </div>
+          <div>
+            <dt class="eyebrow mb-1.5">Role</dt>
+            <dd class="m-0 text-fg text-[15px]">Design + engineering</dd>
+          </div>
+          <div>
+            <dt class="eyebrow mb-2.5">Stack</dt>
+            <dd class="m-0">
+              <ul class="list-none m-0 p-0 flex flex-wrap gap-2">
+                {project.stack.map((t) => <li class="chip">{t}</li>)}
+              </ul>
+            </dd>
+          </div>
+        </dl>
+      </aside>
+    </div>
   </section>
 </BaseLayout>

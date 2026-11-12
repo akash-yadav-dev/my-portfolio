@@ -7,10 +7,10 @@ interface Props {
 const { n, title } = Astro.props
 ---
 
-<div class="my-10 rounded-lg border border-line overflow-hidden">
-  <div class="px-6 py-4 flex items-center gap-4" style="background: var(--bg-elev); border-bottom: 1px solid var(--line)">
-    <span class="font-mono text-[10px] text-fg-subtle uppercase tracking-wider">{n}</span>
-    <h3 class="font-display font-semibold text-lg m-0">{title}</h3>
+<div class="card my-8 overflow-hidden">
+  <div class="px-6 py-4 flex items-baseline gap-4 divider-b">
+    <span class="t-meta text-accent">{n}</span>
+    <h3 class="t-h3 text-[19px] m-0">{title}</h3>
   </div>
   <div class="px-6 py-5 space-y-4">
     <slot />
