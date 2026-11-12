@@ -17,6 +17,7 @@ repos:
     category: tool
     explored: true # kept in "Explorations"
   - repo: post-queue
+    status: sunset # backend taken down to save hosting cost; site no longer works
     category: product
     explored: true # kept in "Explorations"
   - repo: faqflow

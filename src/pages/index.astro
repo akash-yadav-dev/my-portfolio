@@ -11,6 +11,12 @@ import { content } from '../data/content'
 const featured = content.projects.slice(0, 3)
 const recentWriting = content.writing.slice(0, 3)
 const { process, services } = content
+
+const stack = [
+  { group: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'Redux', 'Tailwind CSS'] },
+  { group: 'Backend & data', items: ['Node.js', 'NestJS', 'Java', 'Spring Boot', 'PostgreSQL', 'MongoDB'] },
+  { group: 'AI & delivery', items: ['OpenAI API', 'RAG', 'MCP servers', 'Docker', 'GitHub Actions', 'Vercel'] },
+]
 ---
 
 <BaseLayout
@@ -20,7 +26,7 @@ const { process, services } = content
   <Hero />
 
   <!-- Featured Work -->
-  <section class="py-16 border-t border-line">
+  <section class="section">
     <FadeIn>
       <SectionHeader num="01" label="Selected Work" title="A few projects I've worked on." />
     </FadeIn>
@@ -33,107 +39,88 @@ const { process, services } = content
     </div>
     <FadeIn delay={0.15}>
       <div class="mt-10 flex justify-center">
-        <a
-          href="/work"
-          class="inline-flex items-center gap-2 px-6 py-3 rounded-md text-sm font-medium border border-line-strong transition-all duration-200 hover:border-fg hover:bg-bg-sunken group"
-        >
-          All projects
-          <span class="transition-transform duration-200 group-hover:translate-x-1 opacity-50">→</span>
+        <a href="/work" class="btn btn-secondary">
+          See all projects
+          <span class="btn-arrow text-fg-subtle" aria-hidden="true">→</span>
         </a>
       </div>
     </FadeIn>
   </section>
 
   <!-- Services -->
-  <section class="py-16 border-t border-line">
+  <section class="section">
     <FadeIn>
       <SectionHeader num="02" label={services.title} title="How I can help you." />
     </FadeIn>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {services.items.map((service, i) => (
-        <FadeIn delay={i * 0.06}>
-          <article class="lift-on-hover h-full p-6 rounded-lg border border-line transition-all duration-200 hover:border-line-strong">
-            <h3 class="font-display font-semibold tracking-snug mb-2" style="font-size: clamp(21px,2.4vw,26px)">{service.title}</h3>
-            <p class="text-fg-muted text-[15px] leading-relaxed">{service.body}</p>
+        <FadeIn delay={i * 0.06} class="h-full">
+          <article class="card h-full p-6 md:p-8">
+            <h3 class="t-h3 mb-3">{service.title}</h3>
+            <p class="t-body m-0">{service.body}</p>
           </article>
         </FadeIn>
       ))}
     </div>
   </section>
 
-  <!-- Process -->
-  <section class="py-16 border-t border-line">
+  <!-- Process: a recessed band so it reads as one group of steps -->
+  <section class="section">
     <FadeIn>
       <SectionHeader num="03" label={process.title} title="From idea to launch." />
     </FadeIn>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+    <ol class="panel list-none m-0 p-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
       {process.steps.map((step, i) => (
-        <FadeIn delay={i * 0.06}>
-          <article class="h-full p-6 rounded-lg border border-line bg-bg-sunken">
-            <p class="font-mono text-[11px] uppercase tracking-[0.12em] mb-3" style="color: var(--accent-dim)">0{i + 1}</p>
-            <h3 class="font-display text-2xl font-semibold tracking-snug mb-2">{step.title}</h3>
-            <p class="text-fg-muted text-sm leading-relaxed">{step.body}</p>
-          </article>
-        </FadeIn>
+        <li class="p-6 rounded-xl">
+          <p class="t-meta text-accent mb-4">Step 0{i + 1}</p>
+          <h3 class="t-h3 mb-2">{step.title}</h3>
+          <p class="t-body m-0">{step.body}</p>
+        </li>
       ))}
-    </div>
+    </ol>
   </section>
 
   <!-- Stack -->
-  <section class="py-16 border-t border-line">
+  <section class="section">
     <FadeIn>
       <SectionHeader num="04" label="Stack" title="What I use to build." />
     </FadeIn>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {[
-        { group: 'Frontend', items: ['React.js', 'Next.js', 'TypeScript', 'Tailwind CSS'] },
-        { group: 'Backend', items: ['NestJS', 'Go', 'Node.js', 'PostgreSQL'] },
-        { group: 'Infra & DevOps', items: ['Docker', 'Kubernetes', 'Redis', 'CI/CD'] },
-      ].map((col) => (
-        <div>
-          <div class="font-mono text-[11px] uppercase tracking-[0.12em] text-fg-subtle mb-3">{col.group}</div>
-          <div class="flex flex-wrap gap-2">
-            {col.items.map((tech) => (
-              <span
-                class="font-mono text-[12px] px-2.5 py-1 rounded-sm border"
-                style="background: var(--accent-soft); border-color: var(--accent-border); color: var(--accent)"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {stack.map((col) => (
+        <div class="card p-6">
+          <h3 class="eyebrow mb-4">{col.group}</h3>
+          <ul class="list-none m-0 p-0 flex flex-wrap gap-2">
+            {col.items.map((tech) => <li class="chip">{tech}</li>)}
+          </ul>
         </div>
       ))}
     </div>
   </section>
 
   <!-- Writing -->
-  <section class="py-16 border-t border-line">
+  <section class="section">
     <FadeIn>
       <SectionHeader num="05" label="Latest Writing" title="Things I write about." />
     </FadeIn>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       {recentWriting.map((article, i) => (
-        <FadeIn delay={i * 0.08}>
+        <FadeIn delay={i * 0.08} class="h-full">
           <WritingCard article={article} />
         </FadeIn>
       ))}
     </div>
     <FadeIn delay={0.3}>
-      <div class="mt-8">
-        <a
-          href="/writing"
-          class="inline-flex items-center gap-2 px-6 py-3 rounded-md text-sm font-medium border border-line-strong transition-all duration-200 hover:border-fg hover:bg-bg-sunken group"
-        >
-          All writing
-          <span class="transition-transform duration-200 group-hover:translate-x-1 opacity-50">→</span>
+      <div class="mt-10 flex justify-center">
+        <a href="/writing" class="btn btn-secondary">
+          See all writing
+          <span class="btn-arrow text-fg-subtle" aria-hidden="true">→</span>
         </a>
       </div>
     </FadeIn>
   </section>
 
   <!-- Contact CTA -->
-  <section class="py-16 border-t border-line">
+  <section class="section pt-0 md:pt-0">
     <FadeIn>
       <ContactBlock />
     </FadeIn>

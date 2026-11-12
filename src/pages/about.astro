@@ -14,7 +14,7 @@ const { about, skills, experience } = content
   description="About Akash Yadav — freelance full stack developer building websites and web apps. 4 years of experience, including AI-powered features. Based in Bangalore, open to remote work."
 >
   <!-- Page head -->
-  <section class="pt-16 pb-12">
+  <section class="pt-16 md:pt-24 pb-12">
     <div
       class:list={[
         content.profile.showPhoto
@@ -23,14 +23,8 @@ const { about, skills, experience } = content
       ]}
     >
       <div>
-        <div class="flex items-center gap-3 font-mono text-[11px] text-fg-muted uppercase tracking-[0.06em] mb-5">
-          <span class="w-6 h-px bg-accent"></span>
-          About
-        </div>
-        <h1
-          class="font-display font-semibold m-0"
-          style="font-size: clamp(34px,5vw,56px); line-height: 1.05; letter-spacing: -0.02em"
-        >
+        <div class="eyebrow eyebrow-rule mb-6">About</div>
+        <h1 class="t-display m-0">
           I build web apps
           <br />
           that people can rely on.
@@ -38,7 +32,7 @@ const { about, skills, experience } = content
       </div>
 
       {content.profile.showPhoto && (
-        <div class="w-[120px] h-[120px] rounded-full overflow-hidden border border-line bg-bg-sunken mx-0 lg:mx-auto">
+        <div class="w-[120px] h-[120px] rounded-full overflow-hidden bg-bg-sunken shadow-sm mx-0 lg:mx-auto">
           <img
             src={content.profile.photo}
             alt={`${content.profile.name} profile photo`}
@@ -52,77 +46,77 @@ const { about, skills, experience } = content
   </section>
 
   <!-- Bio + Skills -->
-  <section class="pb-16 border-t border-line pt-10">
-    <div class="grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-10 items-start">
+  <section class="pb-16 md:pb-24">
+    <div class="grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-10 lg:gap-16 items-start">
       <FadeIn>
         <div>
-          <p class="text-fg leading-relaxed mb-4" style="font-size: clamp(17px,1.6vw,20px)">
+          <p class="t-lead text-fg mb-6">
             I am a full stack developer with 4 years of experience building websites and web apps, and for the last year and a half I have been building AI features into them. I work end to end, from the database and APIs to the screens people use.
           </p>
-          <p class="text-fg-muted leading-relaxed mb-4" style="font-size: clamp(15px,1.4vw,18px)">
+          <p class="t-body text-[16px] mb-5">
             At izmo Ltd I work on a multi-brand website platform used by car dealerships across Europe. I started as an associate engineer and was promoted to a full stack software engineer in April 2026. I built an AI page builder for our CMS, where editors drag and drop pages and AI (OpenAI GPT-6 Luna) creates the page setup the backend needs. I am leading the move of old JSP and Razor pages to Next.js, and I build features with Java, Spring Boot, NestJS, React and Redux. Earlier I rebuilt the vehicle search pages end to end and raised their Lighthouse speed score from about 45 to over 80.
           </p>
-          <p class="text-fg-muted leading-relaxed mb-4" style="font-size: clamp(15px,1.4vw,18px)">
+          <p class="t-body text-[16px] mb-5">
             Outside of work I build and run my own products. BrowserZap lets AI agents like Claude Code work safely in your own Chrome. MRRdue helps subscription businesses recover failed payments, with an MCP server for AI assistants. AI Search Audit shows whether AI search engines can read a website. TryFreeCalculator and UnitConverterOne are free tools that show the formula behind every answer, and FAQFlow is an AI app for Shopify stores.
           </p>
-          <p class="text-fg-muted leading-relaxed mb-0" style="font-size: clamp(15px,1.4vw,18px)">
+          <p class="t-body text-[16px] mb-0">
             I am based in Bangalore and work with teams remotely. I enjoy projects where AI, speed and a clean user experience all matter, from SaaS products to large platforms that need to stay fast as they grow.
           </p>
         </div>
       </FadeIn>
 
       <FadeIn delay={0.1}>
-        <div class="p-6 rounded-lg border border-line" style="background: var(--bg-sunken)">
-          <h2 class="font-mono text-[11px] uppercase tracking-[0.12em] text-fg-muted mb-4">
+        <div class="panel p-6 md:p-8">
+          <h2 class="t-h3 text-[18px] mb-6">
             Tools I work with
           </h2>
-          <div class="flex flex-col gap-2">
+          <div class="flex flex-col gap-6">
             <div>
-              <div class="font-mono text-[11px] text-fg-muted mb-1">Frontend</div>
+              <h3 class="eyebrow mb-3">Frontend</h3>
               <div class="flex flex-wrap gap-2">
-                <span class="border border-line text-accent px-2.5 py-0.5 rounded-full text-[15px]">React.js</span>
-                <span class="border border-line text-accent px-2.5 py-0.5 rounded-full text-[15px]">Next.js</span>
-                <span class="border border-line text-accent px-2.5 py-0.5 rounded-full text-[15px]">TypeScript</span>
-                <span class="border border-line text-accent px-2.5 py-0.5 rounded-full text-[15px]">Redux</span>
-                <span class="border border-line text-accent px-2.5 py-0.5 rounded-full text-[15px]">Tailwind CSS</span>
+                <span class="chip">React.js</span>
+                <span class="chip">Next.js</span>
+                <span class="chip">TypeScript</span>
+                <span class="chip">Redux</span>
+                <span class="chip">Tailwind CSS</span>
               </div>
             </div>
             <div>
-              <div class="font-mono text-[11px] text-fg-muted mb-1 mt-3">Backend</div>
+              <h3 class="eyebrow mb-3">Backend</h3>
               <div class="flex flex-wrap gap-2">
-                <span class="border border-line text-accent px-2.5 py-0.5 rounded-full text-[15px]">Java</span>
-                <span class="border border-line text-accent px-2.5 py-0.5 rounded-full text-[15px]">Spring Boot</span>
-                <span class="border border-line text-accent px-2.5 py-0.5 rounded-full text-[15px]">NestJS</span>
-                <span class="border border-line text-accent px-2.5 py-0.5 rounded-full text-[15px]">Node.js</span>
-                <span class="border border-line text-accent px-2.5 py-0.5 rounded-full text-[15px]">Express</span>
-                <span class="border border-line text-accent px-2.5 py-0.5 rounded-full text-[15px]">Go</span>
+                <span class="chip">Java</span>
+                <span class="chip">Spring Boot</span>
+                <span class="chip">NestJS</span>
+                <span class="chip">Node.js</span>
+                <span class="chip">Express</span>
+                <span class="chip">Go</span>
               </div>
             </div>
             <div>
-              <div class="font-mono text-[11px] text-fg-muted mb-1 mt-3">Data</div>
+              <h3 class="eyebrow mb-3">Data</h3>
               <div class="flex flex-wrap gap-2">
-                <span class="border border-line text-accent px-2.5 py-0.5 rounded-full text-[15px]">PostgreSQL</span>
-                <span class="border border-line text-accent px-2.5 py-0.5 rounded-full text-[15px]">SQL Server</span>
-                <span class="border border-line text-accent px-2.5 py-0.5 rounded-full text-[15px]">MongoDB</span>
-                <span class="border border-line text-accent px-2.5 py-0.5 rounded-full text-[15px]">Prisma</span>
+                <span class="chip">PostgreSQL</span>
+                <span class="chip">SQL Server</span>
+                <span class="chip">MongoDB</span>
+                <span class="chip">Prisma</span>
               </div>
             </div>
             <div>
-              <div class="font-mono text-[11px] text-fg-muted mb-1 mt-3">AI</div>
+              <h3 class="eyebrow mb-3">AI</h3>
               <div class="flex flex-wrap gap-2">
-                <span class="border border-line text-accent px-2.5 py-0.5 rounded-full text-[15px]">OpenAI API</span>
-                <span class="border border-line text-accent px-2.5 py-0.5 rounded-full text-[15px]">RAG</span>
-                <span class="border border-line text-accent px-2.5 py-0.5 rounded-full text-[15px]">MCP servers</span>
-                <span class="border border-line text-accent px-2.5 py-0.5 rounded-full text-[15px]">AI agents</span>
+                <span class="chip">OpenAI API</span>
+                <span class="chip">RAG</span>
+                <span class="chip">MCP servers</span>
+                <span class="chip">AI agents</span>
               </div>
             </div>
             <div>
-              <div class="font-mono text-[11px] text-fg-muted mb-1 mt-3">DevOps</div>
+              <h3 class="eyebrow mb-3">DevOps</h3>
               <div class="flex flex-wrap gap-2">
-                <span class="border border-line text-accent px-2.5 py-0.5 rounded-full text-[15px]">Docker</span>
-                <span class="border border-line text-accent px-2.5 py-0.5 rounded-full text-[15px]">GitHub Actions</span>
-                <span class="border border-line text-accent px-2.5 py-0.5 rounded-full text-[15px]">Azure DevOps</span>
-                <span class="border border-line text-accent px-2.5 py-0.5 rounded-full text-[15px]">Vercel</span>
+                <span class="chip">Docker</span>
+                <span class="chip">GitHub Actions</span>
+                <span class="chip">Azure DevOps</span>
+                <span class="chip">Vercel</span>
               </div>
             </div>
           </div>
@@ -132,7 +126,7 @@ const { about, skills, experience } = content
   </section>
 
   <!-- Principles -->
-  <section class="py-16 border-t border-line">
+  <section class="section">
     <FadeIn>
       <SectionHeader num="01" label="Principles" title="How I work." />
     </FadeIn>
@@ -146,7 +140,7 @@ const { about, skills, experience } = content
   </section>
 
   <!-- Experience -->
-  <section class="py-16 border-t border-line">
+  <section class="section">
     <FadeIn>
       <SectionHeader num="02" label="Experience" title="Where I've worked." />
     </FadeIn>

@@ -4,10 +4,11 @@ import Badge from './Badge.astro'
 
 interface Props {
   project: Project
-  index: number
+  /** Position in the list (kept for callers; not displayed). */
+  index?: number
 }
 
-const { project, index } = Astro.props
+const { project } = Astro.props
 
 const placeholderLabel: Partial<Record<Project['status'], string>> = {
   corporate: 'Corporate platform, internal product',
@@ -15,15 +16,14 @@ const placeholderLabel: Partial<Record<Project['status'], string>> = {
   building: 'Interface live, more coming',
 }
 
-const idx = String(index + 1).padStart(2, '0')
 ---
 
 <a
   href={`/work/${project.slug}`}
-  class="lift-on-hover lift-lg group relative flex flex-col h-full rounded-xl overflow-hidden border border-line bg-bg transition-all duration-200 hover:border-line-strong hover:shadow-md cursor-pointer"
+  class="card card-interactive group relative flex flex-col h-full overflow-hidden"
 >
-  <!-- Screenshot or themed placeholder. rounded-t-xl keeps the image clipped on hover. -->
-  <div class="relative aspect-[16/10] overflow-hidden rounded-t-xl border-b border-line bg-bg-sunken [transform:translateZ(0)]">
+  <!-- Preview: recessed frame so the screenshot sits inside the card -->
+  <div class="relative aspect-[16/10] overflow-hidden bg-bg-sunken [transform:translateZ(0)]">
     {project.category === 'client' && (
       <span class="absolute top-3 left-3 z-10 rounded-full shadow-sm">
         <Badge category="client" />
@@ -36,23 +36,23 @@ const idx = String(index + 1).padStart(2, '0')
       <img
         src={project.visual.src}
         alt={project.visual.alt}
-        width="1280"
-        height="800"
+        width="1265"
+        height="791"
         loading="lazy"
-        class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.03]"
+        class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
       />
     ) : (
       <div class="w-full h-full grid place-items-center text-center px-4">
         <div>
           <span
-            class="inline-grid place-items-center w-11 h-11 rounded-md font-display font-semibold text-base mb-3"
+            class="inline-grid place-items-center w-12 h-12 rounded-xl font-display font-semibold text-base mb-3"
             style={project.status === 'corporate'
               ? 'background: var(--badge-corp-bg); color: var(--badge-corp-fg)'
-              : 'background: var(--accent-soft); color: var(--accent)'}
+              : 'background: var(--bg-elev); color: var(--fg-muted)'}
           >
             {project.name.slice(0, 2)}
           </span>
-          <p class="font-mono text-[10px] uppercase tracking-[0.1em] text-fg-subtle leading-relaxed">
+          <p class="t-meta uppercase tracking-[0.08em]">
             {placeholderLabel[project.status] ?? 'No public preview'}
           </p>
         </div>
@@ -61,24 +61,18 @@ const idx = String(index + 1).padStart(2, '0')
   </div>
 
   <!-- Content -->
-  <div class="flex flex-col flex-1 p-5">
+  <div class="flex flex-col flex-1 p-6">
     <div class="flex items-baseline gap-x-3 mb-2">
-      <span class="font-mono text-[12px] select-none" style="color: var(--accent-dim)">
-        {idx}
-      </span>
-      <h3
-        class="font-display font-semibold tracking-snug leading-tight transition-colors duration-150 group-hover:text-accent"
-        style="font-size: clamp(19px,2.2vw,23px)"
-      >
+      <h3 class="t-h3 transition-colors duration-150 group-hover:text-accent">
         {project.name}
       </h3>
-      <span class="font-mono text-[11px] text-fg-subtle ml-auto whitespace-nowrap">{project.year}</span>
+      <span class="t-meta ml-auto whitespace-nowrap">{project.year}</span>
     </div>
-    <p class="text-fg-muted text-[14.5px] leading-relaxed mb-4 line-clamp-3">
+    <p class="t-body text-[14.5px] mb-5 line-clamp-3">
       {project.summary}
     </p>
-    <div class="mt-auto flex gap-1.5 flex-wrap items-center">
-      {project.stack.slice(0, 3).map((tech) => <Badge>{tech}</Badge>)}
-    </div>
+    <ul class="mt-auto list-none m-0 p-0 flex gap-1.5 flex-wrap items-center" aria-label="Built with">
+      {project.stack.slice(0, 3).map((tech) => <li class="chip">{tech}</li>)}
+    </ul>
   </div>
 </a>

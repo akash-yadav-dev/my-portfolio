@@ -14,19 +14,27 @@
   --font-sans: var(--font-jakarta), "Plus Jakarta Sans", system-ui, sans-serif;
   --font-mono: var(--font-jetbrains-mono), "JetBrains Mono", ui-monospace, monospace;
 
-  /* Surfaces — soft tinted white */
-  --bg: #fcfcfb;
+  /* Surfaces — three levels, so hierarchy comes from depth, not borders.
+     page (bg) → raised card (bg-elev + shadow) → recessed panel (bg-sunken). */
+  --bg: #fafaf9;
   --bg-elev: #ffffff;
-  --bg-sunken: #f5f4f2;
+  --bg-sunken: #f3f2f0;
+  --bg-inverse: #1c1917;
 
-  /* Text — warm near-black */
-  --fg: #1e1b17;
-  --fg-muted: #53433e;
-  --fg-subtle: #75625c;
+  /* Text — neutral. Contrast on bg / elev / sunken:
+     fg 16.7 / 17.5 / 15.6 · muted 7.3 / 7.6 / 6.8 · subtle 5.6 / 5.8 / 5.2
+     fg: headings, key numbers · muted: body copy · subtle: labels, dates, meta only */
+  --fg: #1c1917;
+  --fg-muted: #57534e;
+  --fg-subtle: #6b645e;
+  /* On the inverse (dark) surface */
+  --fg-on-dark: #fafaf9;
+  --fg-on-dark-muted: #d6d3d1;
+  --accent-on-dark: #f0a98e;  /* 9.0:1 on --bg-inverse */
 
-  /* Borders — warm */
-  --line: #e7e5e2;
-  --line-strong: #d6d2ce;
+  /* Lines — only for dividers between list rows and form controls */
+  --line: #ebe8e4;
+  --line-strong: #d6d3d1;
 
   /* Single accent — warm terracotta / clay */
   --accent: #8c4a35;
@@ -47,12 +55,19 @@
   --badge-client-bg: #fbe9ef;  --badge-client-fg: #8c2a4f;  --badge-client-dot: #c0396b;
   --badge-muted-bg: #f0efed;   --badge-muted-fg: #55514c;   --badge-muted-dot: #8a857f;
 
-  --shadow-sm: 0 1px 2px rgb(64 38 28 / 0.05), 0 0 0 1px rgb(64 38 28 / 0.04);
-  --shadow-md: 0 4px 14px rgb(64 38 28 / 0.08), 0 0 0 1px rgb(64 38 28 / 0.04);
-  --shadow-lg: 0 24px 48px -12px rgb(64 38 28 / 0.2), 0 0 0 1px rgb(64 38 28 / 0.05);
+  /* Neutral shadows. The 1px ring gives cards an edge without a hard border. */
+  --shadow-sm: 0 1px 2px rgb(28 25 23 / 0.05), 0 0 0 1px rgb(28 25 23 / 0.05);
+  --shadow-md: 0 2px 4px rgb(28 25 23 / 0.04), 0 8px 20px -6px rgb(28 25 23 / 0.1), 0 0 0 1px rgb(28 25 23 / 0.05);
+  --shadow-lg: 0 24px 48px -12px rgb(28 25 23 / 0.18), 0 0 0 1px rgb(28 25 23 / 0.05);
+
+  /* Spacing rhythm (also used by the classes below):
+     gap between sections 96px (64px mobile) · section header → content 48px (40px mobile)
+     card padding 24px · gap between cards 24px · gap between related items 8–12px */
+  --space-section: 48px;      /* per side: two stacked sections = 96px gap */
+  --space-section-sm: 32px;   /* per side on mobile: 64px gap */
 
   /* Glass nav background */
-  --bg-glass: rgb(252 252 251 / 0.82);
+  --bg-glass: rgb(250 250 249 / 0.82);
   /* Accent glow for buttons */
   --accent-glow: 0 12px 24px -10px rgb(140 74 53 / 0.4);
 }
@@ -233,3 +248,203 @@ img {
 .syn-c { color: var(--fg-subtle); font-style: italic; }
 .syn-n { color: oklch(0.55 0.18 40); }
 .syn-f { color: oklch(0.5 0.18 250); }
+
+/* ══════════════════════════════════════════════════════════════
+   Design system — hierarchy through type, surface and space.
+   Rules:
+   1. Headings and key numbers use --fg. Body copy uses --fg-muted.
+      --fg-subtle is only for labels, dates and meta text.
+   2. The accent is only for actions: links, buttons, active states.
+   3. Cards are raised (white + soft shadow, no border). Secondary groups
+      are recessed panels (tinted fill, no border). Lines only divide rows.
+   4. Spacing follows one rhythm: section 96/64, header→content 48/40,
+      card padding 24, card gap 24, related items 8–12.
+   ══════════════════════════════════════════════════════════════ */
+@layer components {
+  /* ── Layout rhythm ── */
+  .section {
+    padding-block: var(--space-section-sm);
+  }
+  @media (min-width: 768px) {
+    .section {
+      padding-block: var(--space-section);
+    }
+  }
+  .section-head {
+    margin-bottom: 40px;
+  }
+  @media (min-width: 768px) {
+    .section-head {
+      margin-bottom: 48px;
+    }
+  }
+
+  /* ── Type scale ── */
+  .t-display {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(40px, 6vw, 64px);
+    line-height: 1.03;
+    letter-spacing: -0.025em;
+    color: var(--fg);
+  }
+  .t-h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--fg);
+  }
+  .t-h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(28px, 3.6vw, 40px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--fg);
+  }
+  .t-h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    color: var(--fg);
+  }
+  .t-lead {
+    font-size: clamp(17px, 1.5vw, 20px);
+    line-height: 1.6;
+    color: var(--fg-muted);
+  }
+  .t-body {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--fg-muted);
+  }
+  .t-meta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 1.4;
+    color: var(--fg-subtle);
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--fg-subtle);
+  }
+  .eyebrow-rule::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  /* ── Surfaces ── */
+  .card {
+    background: var(--bg-elev);
+    border-radius: 16px;
+    box-shadow: var(--shadow-sm);
+  }
+  .card-interactive {
+    transition: box-shadow 200ms ease, transform 200ms ease;
+  }
+  .card-interactive:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+  }
+  .card-interactive:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .card-interactive,
+    .card-interactive:hover {
+      transform: none;
+      transition: none;
+    }
+  }
+  .panel {
+    background: var(--bg-sunken);
+    border-radius: 16px;
+  }
+  .divider {
+    border-top: 1px solid var(--line);
+  }
+
+  /* ── Chips (tech tags) — quiet, no border ── */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    background: var(--bg-sunken);
+    color: var(--fg-muted);
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    line-height: 1.4;
+  }
+  .card .chip {
+    background: var(--bg-sunken);
+  }
+  .panel .chip {
+    background: var(--bg-elev);
+    box-shadow: 0 0 0 1px rgb(28 25 23 / 0.05);
+  }
+
+  /* ── Buttons ── */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 22px;
+    border-radius: 9999px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 150ms ease, box-shadow 150ms ease, color 150ms ease;
+  }
+  .btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--accent-fg);
+  }
+  .btn-primary:hover {
+    background: var(--accent-hover);
+  }
+  .btn-secondary {
+    background: var(--bg-elev);
+    color: var(--fg);
+    box-shadow: var(--shadow-sm);
+  }
+  .btn-secondary:hover {
+    box-shadow: var(--shadow-md);
+  }
+  .btn .btn-arrow {
+    transition: transform 150ms ease;
+  }
+  .btn:hover .btn-arrow {
+    transform: translateX(3px);
+  }
+
+  /* ── Text link (accent = action) ── */
+  .link {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--accent) 35%, transparent);
+    text-underline-offset: 4px;
+    transition: text-decoration-color 150ms ease;
+  }
+  .link:hover {
+    text-decoration-color: currentColor;
+  }
+}
