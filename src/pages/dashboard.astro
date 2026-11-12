@@ -7,36 +7,30 @@ import BaseLayout from '../layouts/BaseLayout.astro'
   description="Personal automation workspace"
   noindex
 >
-  <section class="pt-16 pb-12">
-    <div class="flex items-center gap-3 font-mono text-[11px] text-fg-muted uppercase tracking-[0.06em] mb-5">
-      <span class="w-6 h-px bg-accent"></span>
-      Personal · Private
-    </div>
-    <h1
-      class="font-display font-semibold m-0 mb-4"
-      style="font-size: clamp(34px,5vw,56px); line-height: 1.05; letter-spacing: -0.02em"
-    >
-      My automations.
-    </h1>
-    <p class="text-fg-muted leading-[1.6] max-w-[58ch]" style="font-size: clamp(16px,1.5vw,19px)">
+  <section class="pt-16 md:pt-24 pb-12">
+    <div class="eyebrow eyebrow-rule mb-6">Personal · Private</div>
+    <h1 class="t-display m-0 mb-5">My automations.</h1>
+    <p class="t-lead max-w-[58ch] m-0">
       A private workspace to track personal automation ideas and projects. Everything is stored
       locally in this browser — nothing leaves your machine.
     </p>
   </section>
 
-  <section class="pb-16 border-t border-line pt-10">
+  <section class="pb-16 md:pb-24">
     <!-- Add form -->
-    <form id="auto-form" class="flex flex-col sm:flex-row gap-3 mb-10">
+    <form id="auto-form" class="panel p-3 flex flex-col sm:flex-row gap-3 mb-8">
+      <label for="auto-title" class="sr-only">Automation idea</label>
       <input
         id="auto-title"
         type="text"
         placeholder="Automation idea… e.g. weekly portfolio sync"
-        class="flex-1 px-4 py-3 rounded-md border border-line-strong bg-bg-elev text-fg placeholder:text-fg-subtle font-mono text-sm focus:outline-none focus:border-accent"
+        class="flex-1 min-h-[44px] px-4 rounded-full border border-line bg-bg-elev text-fg placeholder:text-fg-subtle text-[15px] focus:outline-none focus:border-accent"
         required
       />
+      <label for="auto-status" class="sr-only">Status</label>
       <select
         id="auto-status"
-        class="px-4 py-3 rounded-md border border-line-strong bg-bg-elev text-fg font-mono text-sm focus:outline-none focus:border-accent"
+        class="min-h-[44px] px-4 rounded-full border border-line bg-bg-elev text-fg text-[15px] focus:outline-none focus:border-accent"
       >
         <option value="idea">💡 Idea</option>
         <option value="building">🔨 Building</option>
@@ -44,19 +38,18 @@ import BaseLayout from '../layouts/BaseLayout.astro'
       </select>
       <button
         type="submit"
-        class="px-6 py-3 rounded-md font-mono text-[11px] uppercase tracking-[0.06em] font-medium transition-all duration-200 hover:-translate-y-[1px]"
-        style="background: var(--accent); color: var(--accent-fg)"
+        class="btn btn-primary justify-center"
       >
         Add
       </button>
     </form>
 
     <!-- Filter tabs -->
-    <div id="auto-filters" class="flex gap-2 flex-wrap mb-6 font-mono text-[11px] uppercase tracking-[0.06em]">
-      <button data-filter="all" class="filter-chip px-3 py-1.5 rounded-full border border-line-strong text-fg-muted hover:text-fg transition-colors">All</button>
-      <button data-filter="idea" class="filter-chip px-3 py-1.5 rounded-full border border-line-strong text-fg-muted hover:text-fg transition-colors">💡 Ideas</button>
-      <button data-filter="building" class="filter-chip px-3 py-1.5 rounded-full border border-line-strong text-fg-muted hover:text-fg transition-colors">🔨 Building</button>
-      <button data-filter="done" class="filter-chip px-3 py-1.5 rounded-full border border-line-strong text-fg-muted hover:text-fg transition-colors">✅ Done</button>
+    <div id="auto-filters" class="flex gap-2 flex-wrap mb-6 font-mono text-[12px]">
+      <button data-filter="all" class="filter-chip min-h-[32px] px-3.5 rounded-full border border-line-strong text-fg-muted hover:text-fg transition-colors">All</button>
+      <button data-filter="idea" class="filter-chip min-h-[32px] px-3.5 rounded-full border border-line-strong text-fg-muted hover:text-fg transition-colors">💡 Ideas</button>
+      <button data-filter="building" class="filter-chip min-h-[32px] px-3.5 rounded-full border border-line-strong text-fg-muted hover:text-fg transition-colors">🔨 Building</button>
+      <button data-filter="done" class="filter-chip min-h-[32px] px-3.5 rounded-full border border-line-strong text-fg-muted hover:text-fg transition-colors">✅ Done</button>
     </div>
 
     <!-- List -->
@@ -115,7 +108,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
     for (const item of visible) {
       const li = document.createElement('li')
       li.className =
-        'flex items-center gap-3 px-5 py-4 rounded-lg border border-line bg-bg-elev transition-all duration-200 hover:border-line-strong'
+        'card flex flex-wrap items-center gap-3 px-5 py-4'
 
       const label = document.createElement('span')
       label.className =
@@ -126,7 +119,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
       label.style.background = 'var(--accent-soft)'
 
       const title = document.createElement('span')
-      title.className = 'flex-1 font-mono text-sm text-fg'
+      title.className = 'flex-1 min-w-[12ch] text-[15px] text-fg'
       title.textContent = item.title
       if (item.status === 'done') {
         title.style.textDecoration = 'line-through'
@@ -138,7 +131,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 
       if (item.status !== 'done') {
         const doneBtn = document.createElement('button')
-        doneBtn.className = 'px-3 py-1.5 rounded-full border border-line-strong font-mono text-[10px] uppercase tracking-[0.06em] text-fg-muted hover:text-fg transition-colors'
+        doneBtn.className = 'min-h-[32px] px-3 rounded-full border border-line-strong font-mono text-[11.5px] text-fg-muted hover:text-fg transition-colors'
         doneBtn.textContent = 'Done'
         doneBtn.addEventListener('click', () => {
           item.status = 'done'
@@ -148,7 +141,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
         actions.appendChild(doneBtn)
       } else {
         const reopenBtn = document.createElement('button')
-        reopenBtn.className = 'px-3 py-1.5 rounded-full border border-line-strong font-mono text-[10px] uppercase tracking-[0.06em] text-fg-muted hover:text-fg transition-colors'
+        reopenBtn.className = 'min-h-[32px] px-3 rounded-full border border-line-strong font-mono text-[11.5px] text-fg-muted hover:text-fg transition-colors'
         reopenBtn.textContent = 'Reopen'
         reopenBtn.addEventListener('click', () => {
           item.status = 'building'
@@ -159,7 +152,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
       }
 
       const delBtn = document.createElement('button')
-      delBtn.className = 'px-3 py-1.5 rounded-full border border-line-strong font-mono text-[10px] uppercase tracking-[0.06em] text-fg-muted hover:text-accent transition-colors'
+      delBtn.className = 'min-h-[32px] px-3 rounded-full border border-line-strong font-mono text-[11.5px] text-fg-muted hover:text-accent transition-colors'
       delBtn.textContent = '✕'
       delBtn.setAttribute('aria-label', 'Delete')
       delBtn.addEventListener('click', () => {

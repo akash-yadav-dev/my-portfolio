@@ -8,8 +8,7 @@ interface Props {
 const { id, n, label } = Astro.props
 ---
 
-<div id={id} class="flex items-center gap-3 font-mono text-[11px] text-fg-subtle uppercase tracking-wider mt-20 mb-5">
-  <span class="w-6 h-px" style="background: var(--accent)"></span>
+<div id={id} class="eyebrow eyebrow-rule mt-20 mb-5 scroll-mt-24">
   <span class="text-accent">{n}</span>
   <span>{label}</span>
 </div>

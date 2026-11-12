@@ -10,25 +10,19 @@ import { content } from '../data/content'
   description="Get in touch with Akash Yadav. Available for freelance and project work. Email is the fastest way to reach me."
 >
   <!-- Page head -->
-  <section class="pt-16 pb-12">
-    <div class="flex items-center gap-3 font-mono text-[11px] text-fg-muted uppercase tracking-[0.06em] mb-5">
-      <span class="w-6 h-px bg-accent"></span>
-      Contact · {content.profile.available}
-    </div>
-    <h1
-      class="font-display font-semibold m-0 mb-4"
-      style="font-size: clamp(34px,5vw,56px); line-height: 1.05; letter-spacing: -0.02em"
-    >
+  <section class="pt-16 md:pt-24 pb-12">
+    <div class="eyebrow eyebrow-rule mb-6">Contact · {content.profile.available}</div>
+    <h1 class="t-display m-0 mb-5">
       Start a project, ask a question,
-      <br />
+      <br class="hidden md:block" />
       or just say hello.
     </h1>
-    <p class="text-fg-muted leading-[1.6] max-w-[64ch]" style="font-size: clamp(16px,1.5vw,19px)">
+    <p class="t-lead max-w-[62ch] m-0">
       I usually take on projects that run from about four to twelve weeks, and I am also open to hourly or ongoing work for the right fit. I work best with teams building websites and apps, especially booking and ordering platforms. Email is the fastest way to reach me, and I reply within a day.
     </p>
   </section>
 
-  <section class="pb-16 border-t border-line pt-10">
+  <section class="pb-16 md:pb-24">
     <FadeIn>
       <ContactBlock />
     </FadeIn>
