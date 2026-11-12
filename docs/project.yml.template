@@ -1,0 +1,33 @@
+# project.yml — portfolio manifest
+# Copy this file to the root of a project repo, fill it in, and push.
+# The portfolio's weekly sync reads it and updates the site automatically.
+#
+# All fields are optional except `name` (falls back to the repo name).
+# Missing fields fall back to the repo's GitHub description/homepage.
+
+name: My Project            # Display name on the portfolio
+slug: my-project            # URL slug — defaults to a slugified repo name
+year: "2026 to now"         # Displayed next to the project name
+
+tagline: A one-line pitch.
+summary: A short paragraph shown on project cards.
+body: >
+  Long-form description for the project detail page.
+  Paragraphs are separated by a blank line.
+
+stack:
+  - TypeScript
+  - Next.js
+  - Tailwind CSS
+
+status: live                # live | beta | open-source | building | upcoming | corporate | acquired | sunset
+
+links:
+  - label: Live
+    href: https://example.com
+
+# Optional — a screenshot inside this repo (or any https URL).
+# The sync downloads it into the portfolio's public/uploads/{slug}.png.
+visual:
+  src: docs/screenshot.png
+  alt: A screenshot of my project

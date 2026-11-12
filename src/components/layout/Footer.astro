@@ -1,0 +1,14 @@
+---
+import { content } from '../../data/content'
+---
+
+<footer class="flex flex-wrap justify-between gap-4 py-10 mt-8 border-t border-line font-mono text-[11px] text-fg-muted">
+  <span>{content.footer.credit}</span>
+  <nav class="flex gap-5">
+    {content.footer.links.map((link) => (
+      <a href={link.href} class="hover:text-fg transition-colors duration-100">
+        {link.label}
+      </a>
+    ))}
+  </nav>
+</footer>

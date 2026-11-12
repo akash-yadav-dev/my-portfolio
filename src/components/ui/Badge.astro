@@ -1,0 +1,60 @@
+---
+import type { ProjectStatus, ProjectCategory } from '../../data/projects'
+
+interface Props {
+  status?: ProjectStatus
+  /** Show a category badge (e.g. "Client work") instead of a status badge. */
+  category?: ProjectCategory
+  className?: string
+}
+
+const { status, category, className } = Astro.props
+
+type Tone = 'live' | 'beta' | 'dev' | 'corp' | 'client' | 'muted'
+
+const statusConfig: Record<ProjectStatus, { label: string; tone: Tone }> = {
+  live: { label: 'Live', tone: 'live' },
+  beta: { label: 'Beta', tone: 'beta' },
+  'open-source': { label: 'Open source', tone: 'muted' },
+  building: { label: 'Building now', tone: 'dev' },
+  upcoming: { label: 'In development', tone: 'dev' },
+  corporate: { label: 'Corporate work', tone: 'corp' },
+  acquired: { label: 'Acquired', tone: 'muted' },
+  sunset: { label: 'Retired', tone: 'muted' },
+}
+
+const categoryConfig: Partial<Record<ProjectCategory, { label: string; tone: Tone }>> = {
+  client: { label: 'Client work', tone: 'client' },
+  corporate: { label: 'Corporate work', tone: 'corp' },
+}
+
+const cfg = category ? categoryConfig[category] : status ? statusConfig[status] : undefined
+const toneStyle = cfg
+  ? `background: var(--badge-${cfg.tone}-bg); color: var(--badge-${cfg.tone}-fg)`
+  : undefined
+const dotStyle = cfg ? `background: var(--badge-${cfg.tone}-dot)` : undefined
+---
+
+{
+  cfg ? (
+    <span
+      class:list={[
+        'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-mono text-[10px] font-medium tracking-[0.06em] uppercase',
+        className,
+      ]}
+      style={toneStyle}
+    >
+      <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style={dotStyle} aria-hidden="true"></span>
+      {cfg.label}
+    </span>
+  ) : (
+    <span
+      class:list={[
+        'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-mono text-[10px] tracking-[0.06em] uppercase border border-line-strong text-fg-muted',
+        className,
+      ]}
+    >
+      <slot />
+    </span>
+  )
+}

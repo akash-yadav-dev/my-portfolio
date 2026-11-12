@@ -1,0 +1,187 @@
+---
+import { content } from '../../data/content'
+
+// Active route: computed at build time per page via Astro.url.pathname.
+const pathname = Astro.url.pathname
+const isActive = (href: string) =>
+  href === '/' ? pathname === '/' : pathname.startsWith(href)
+---
+
+<header class="sticky top-4 z-50 max-w-site mx-auto px-6 md:px-10 lg:px-14 mt-5" style="position: sticky">
+  <div
+    class="header-shell flex items-center justify-between px-5 py-3 rounded-full border border-line"
+  >
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-3 font-mono text-[13px]">
+      <span
+        class="w-7 h-7 rounded-sm grid place-items-center overflow-hidden font-display font-semibold text-[11px]"
+        style="background: var(--accent); color: var(--accent-fg)"
+      >
+        {content.profile.initial}
+      </span>
+      <span class="text-fg font-medium">{content.profile.name}</span>
+    </a>
+
+    <!-- Primary nav — desktop -->
+    <nav class="hidden md:flex gap-6 font-mono text-[11px] text-fg-muted">
+      {content.nav.map((item) => (
+        <a
+          href={item.href}
+          class:list={[
+            'inline-flex items-center min-h-[32px] px-1 transition-colors duration-100 hover:text-fg',
+            isActive(item.href) ? 'text-fg' : '',
+          ]}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Right side -->
+    <div class="flex items-center gap-3">
+      <a
+        href="/contact"
+        class="lift-on-hover hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full font-mono text-[11px] uppercase tracking-[0.06em] font-medium transition-all duration-200"
+        style="background: var(--accent); color: var(--accent-fg)"
+      >
+        <span class="w-1.5 h-1.5 rounded-full bg-current opacity-90"></span>
+        Available
+      </a>
+
+      <!-- Hamburger — mobile -->
+      <button
+        id="menu-toggle"
+        class="md:hidden w-[34px] h-[34px] rounded-full border border-line-strong grid place-items-center text-fg"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg id="menu-icon-open" class="menu-icon-open" width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+          <rect y="3" width="16" height="1.5" rx="0.75" />
+          <rect y="7.25" width="16" height="1.5" rx="0.75" />
+          <rect y="11.5" width="16" height="1.5" rx="0.75" />
+        </svg>
+        <svg id="menu-icon-close" class="menu-icon-close" width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile menu -->
+<div id="menu-backdrop" class="menu-backdrop" hidden></div>
+<nav
+  id="mobile-menu"
+  class="mobile-menu fixed top-20 left-6 right-6 z-50 rounded-xl border border-line overflow-hidden md:hidden"
+  hidden
+  style="background: var(--bg-elev); box-shadow: var(--shadow-lg)"
+>
+  {content.nav.map((item) => (
+    <a
+      href={item.href}
+      class:list={[
+        'flex items-center justify-between px-5 py-4 font-mono text-sm border-b border-line last:border-0 transition-colors hover:text-fg',
+        isActive(item.href) ? 'text-fg' : 'text-fg-muted',
+      ]}
+    >
+      {item.label}
+      {isActive(item.href) && <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>}
+    </a>
+  ))}
+</nav>
+
+<style>
+  /* Glass bar + shadow state (was framer/React state: scrolled ? shadow-md : shadow-sm) */
+  .header-shell {
+    background: var(--bg-glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 200ms ease;
+  }
+  .header-shell.header-scrolled {
+    box-shadow: var(--shadow-md);
+  }
+
+  .menu-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    background: rgb(252 252 251 / 0.8);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    transition: opacity 200ms ease;
+  }
+  .menu-icon-close {
+    display: none;
+  }
+  .menu-icon-close.menu-visible {
+    display: block;
+  }
+  .menu-icon-open.menu-hidden {
+    display: none;
+  }
+  .mobile-menu {
+    transform: translateY(-8px);
+    opacity: 0;
+    transition: opacity 200ms ease, transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    pointer-events: none;
+  }
+  .mobile-menu.menu-open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+</style>
+
+<script>
+  const toggle = document.getElementById('menu-toggle') as HTMLButtonElement
+  const menu = document.getElementById('mobile-menu') as HTMLElement
+  const backdrop = document.getElementById('menu-backdrop') as HTMLElement
+  const iconOpen = document.getElementById('menu-icon-open') as HTMLElement
+  const iconClose = document.getElementById('menu-icon-close') as HTMLElement
+  const shell = document.querySelector('.header-shell') as HTMLElement
+
+  let open = false
+
+  const setOpen = (v: boolean) => {
+    open = v
+    toggle.setAttribute('aria-expanded', String(v))
+    toggle.setAttribute('aria-pressed', String(v))
+    menu.hidden = false
+    backdrop.hidden = false
+    requestAnimationFrame(() => {
+      menu.classList.toggle('menu-open', v)
+      backdrop.classList.toggle('menu-open', v)
+      if (!v) {
+        setTimeout(() => {
+          if (!open) {
+            menu.hidden = true
+            backdrop.hidden = true
+          }
+        }, 200)
+      }
+    })
+    iconOpen.classList.toggle('menu-hidden', v)
+    iconClose.classList.toggle('menu-visible', v)
+    document.body.style.overflow = v ? 'hidden' : ''
+  }
+
+  toggle.addEventListener('click', () => setOpen(!open))
+  backdrop.addEventListener('click', () => setOpen(false))
+  menu.addEventListener('click', (e) => {
+    if ((e.target as HTMLElement).tagName === 'A') setOpen(false)
+  })
+
+  // Close on route change (hash-less anchors won't navigate; menu closes via click handler)
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setOpen(false)
+  })
+
+  // Header shadow when scrolled
+  const onScroll = () => shell.classList.toggle('header-scrolled', window.scrollY > 20)
+  window.addEventListener('scroll', onScroll, { passive: true })
+  onScroll()
+</script>

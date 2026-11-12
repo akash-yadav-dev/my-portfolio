@@ -1,0 +1,194 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import WorkCard from '../../components/ui/WorkCard.astro'
+import FadeIn from '../../components/ui/FadeIn.astro'
+import { content } from '../../data/content'
+import { explorations } from '../../data/projects'
+import type { Project } from '../../data/projects'
+
+const projects = content.projects
+
+// Filter chips. Each project carries tags (category + status) that the chips match on.
+const tagsFor = (p: Project) => [p.category ?? 'product', p.status].join(' ')
+const filters = [
+  { id: 'all', label: 'All', match: (_p: Project) => true },
+  { id: 'live', label: 'Live', match: (p: Project) => p.status === 'live' },
+  { id: 'product', label: 'AI & SaaS products', match: (p: Project) => p.category === 'product' },
+  { id: 'tool', label: 'Free tools', match: (p: Project) => p.category === 'tool' },
+  { id: 'client', label: 'Client & corporate', match: (p: Project) => p.category === 'client' || p.category === 'corporate' },
+  { id: 'beta', label: 'In beta', match: (p: Project) => p.status === 'beta' || p.status === 'building' || p.status === 'upcoming' },
+]
+  .map((f) => ({ ...f, count: projects.filter(f.match).length }))
+  .filter((f) => f.count > 0)
+
+const liveCount = projects.filter((p) => p.status === 'live' && (p.category === 'product' || p.category === 'tool')).length
+---
+
+<BaseLayout title="Work" description="Live AI products, free tools, client sites and corporate work built by Akash Yadav.">
+  <!-- Page head -->
+  <section class="pt-16 pb-10">
+    <div class="flex items-center gap-3 font-mono text-[11px] text-fg-muted uppercase tracking-[0.06em] mb-5">
+      <span class="w-6 h-px bg-accent"></span>
+      Selected work · {projects.length} projects
+    </div>
+    <h1
+      class="font-display font-semibold m-0 mb-4"
+      style="font-size: clamp(40px,6vw,64px); line-height: 1.02; letter-spacing: -0.02em"
+    >
+      Projects I&apos;ve worked on.
+    </h1>
+    <p class="text-fg-muted leading-[1.6] max-w-[58ch]" style="font-size: clamp(16px,1.5vw,19px)">
+      AI products and free tools I build and run myself, a client site, and the platform from my day job.
+      Most are live, so you can try them. Click any project to read more about it.
+    </p>
+
+    <!-- Trust strip -->
+    <div class="flex flex-wrap items-center gap-x-8 gap-y-3 mt-8 pt-7 border-t border-line">
+      <span class="font-mono text-[11px] uppercase tracking-[0.06em] text-fg-subtle">
+        Proven track record
+      </span>
+      <span class="text-fg-muted text-[15px]">
+        <strong class="font-display font-semibold text-fg">4+ years</strong> building for the web
+      </span>
+      <span class="text-fg-muted text-[15px]">
+        <strong class="font-display font-semibold text-fg">45 to 80+</strong> speed score on big inventory pages
+      </span>
+      <span class="text-fg-muted text-[15px]">
+        <strong class="font-display font-semibold text-fg">{liveCount}</strong> live products you can try today
+      </span>
+    </div>
+  </section>
+
+  <!-- Filter -->
+  <section class="pb-6" aria-label="Filter projects">
+    <div class="flex flex-wrap items-center gap-2" role="group" aria-label="Show projects by type">
+      {filters.map((f, i) => (
+        <button
+          type="button"
+          class="filter-chip inline-flex items-center gap-2 min-h-[36px] px-4 rounded-full border border-line text-[14px] text-fg-muted transition-colors duration-150 hover:border-line-strong hover:text-fg"
+          data-filter={f.id}
+          aria-pressed={i === 0 ? 'true' : 'false'}
+        >
+          {f.label}
+          <span class="filter-count font-mono text-[11px] rounded-full px-1.5 py-0.5">{f.count}</span>
+        </button>
+      ))}
+    </div>
+    <p class="sr-only" aria-live="polite" data-filter-status></p>
+  </section>
+
+  <!-- Work grid -->
+  <section class="pb-16">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {projects.map((project, i) => (
+        <div class="h-full" data-filter-item data-tags={tagsFor(project)}>
+          <FadeIn delay={Math.min(i, 6) * 0.06} class="h-full">
+            <WorkCard project={project} index={i} />
+          </FadeIn>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  {explorations.length > 0 && (
+    <section class="py-14 border-t border-line" aria-labelledby="explorations-heading">
+      <div class="max-w-3xl mb-8">
+        <div class="flex items-center gap-3 font-mono text-[11px] text-fg-muted uppercase tracking-[0.06em] mb-4">
+          <span class="w-6 h-px bg-accent"></span>
+          Explorations
+        </div>
+        <h2
+          id="explorations-heading"
+          class="font-display font-semibold m-0 mb-3"
+          style="font-size: clamp(26px,3.4vw,36px); letter-spacing: -0.015em"
+        >
+          Things I explored along the way.
+        </h2>
+        <p class="text-fg-muted leading-relaxed">
+          Early products and experiments I built and then paused. Some are still online, so feel free to try them.
+        </p>
+      </div>
+      <ul class="list-none p-0 m-0 grid grid-cols-1 md:grid-cols-2 gap-4">
+        {explorations.map((p) => {
+          const live = p.links.find((l) => /^https?:/.test(l.href))
+          return (
+            <li class="flex flex-col gap-2 p-5 rounded-xl border border-line bg-bg-elev">
+              <div class="flex items-baseline gap-3">
+                <h3 class="font-display text-lg font-semibold tracking-snug m-0">{p.name}</h3>
+                <span class="font-mono text-[11px] text-fg-subtle ml-auto whitespace-nowrap">{p.year.replace(/\s+to now$/, '')}</span>
+              </div>
+              <p class="text-fg-muted text-[14.5px] leading-relaxed m-0">{p.tagline || p.summary}</p>
+              <div class="flex flex-wrap gap-x-5 gap-y-1 mt-1 text-[14px]">
+                <a href={`/work/${p.slug}`} class="inline-flex items-center min-h-[32px] text-accent hover:underline underline-offset-4">
+                  Read more<span class="sr-only"> about {p.name}</span>
+                </a>
+                {live && (
+                  <a
+                    href={live.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center min-h-[32px] text-accent hover:underline underline-offset-4"
+                  >
+                    Try it ↗<span class="sr-only"> (opens {p.name} in a new tab)</span>
+                  </a>
+                )}
+              </div>
+            </li>
+          )
+        })}
+      </ul>
+    </section>
+  )}
+</BaseLayout>
+
+<style>
+  .filter-chip .filter-count {
+    background: var(--bg-sunken);
+    color: var(--fg-muted);
+  }
+  .filter-chip[aria-pressed='true'] {
+    background: var(--fg);
+    border-color: var(--fg);
+    color: var(--bg);
+  }
+  .filter-chip[aria-pressed='true'] .filter-count {
+    background: rgb(255 255 255 / 0.18);
+    color: var(--bg);
+  }
+  .filter-chip:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+</style>
+
+<script>
+  function initWorkFilter() {
+    const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-filter]'))
+    const items = Array.from(document.querySelectorAll<HTMLElement>('[data-filter-item]'))
+    const status = document.querySelector<HTMLElement>('[data-filter-status]')
+    if (!chips.length) return
+
+    const matches = (tags: string, id: string) => {
+      const t = tags.split(' ')
+      if (id === 'all') return true
+      if (id === 'client') return t.includes('client') || t.includes('corporate')
+      if (id === 'beta') return t.includes('beta') || t.includes('building') || t.includes('upcoming')
+      return t.includes(id)
+    }
+
+    chips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        const id = chip.dataset.filter ?? 'all'
+        chips.forEach((c) => c.setAttribute('aria-pressed', String(c === chip)))
+        let shown = 0
+        items.forEach((item) => {
+          const on = matches(item.dataset.tags ?? '', id)
+          item.hidden = !on
+          if (on) shown++
+        })
+        if (status) status.textContent = `Showing ${shown} project${shown === 1 ? '' : 's'}`
+      })
+    })
+  }
+  initWorkFilter()
+</script>

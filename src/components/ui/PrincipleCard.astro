@@ -1,0 +1,15 @@
+---
+import type { Principle } from '../../data/content'
+
+interface Props {
+  principle: Principle
+}
+
+const { principle } = Astro.props
+---
+
+<div class="lift-on-hover group h-full p-6 border border-line rounded-lg transition-all duration-200 hover:border-line-strong hover:shadow-md bg-bg">
+  <div class="font-mono text-[11px] text-accent mb-3">{principle.n}</div>
+  <h3 class="font-display text-xl font-semibold tracking-snug mb-2">{principle.title}</h3>
+  <p class="text-fg-muted text-sm leading-relaxed">{principle.body}</p>
+</div>

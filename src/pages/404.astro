@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+---
+
+<BaseLayout title="404" description="Page not found">
+  <section class="py-20">
+    <div class="font-mono text-[11px] text-fg-muted uppercase tracking-[0.06em] mb-5 flex items-center gap-3">
+      <span class="w-6 h-px bg-accent"></span>
+      404
+    </div>
+    <h1
+      class="font-display font-semibold m-0 mb-4"
+      style="font-size: clamp(40px,6vw,64px); line-height: 1.02; letter-spacing: -0.02em"
+    >
+      No such page.
+    </h1>
+    <p class="text-fg-muted leading-[1.6] max-w-[50ch] mb-8" style="font-size: clamp(16px,1.5vw,19px)">
+      The page you&apos;re looking for doesn&apos;t exist or has been moved.
+    </p>
+    <a
+      href="/"
+      class="inline-flex items-center gap-2 px-6 py-3 rounded-md text-sm font-medium border border-line-strong transition-all duration-200 hover:border-fg hover:bg-bg-sunken group"
+    >
+      ← Back home
+    </a>
+  </section>
+</BaseLayout>

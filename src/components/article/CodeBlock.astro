@@ -1,0 +1,19 @@
+---
+interface Props {
+  code: string
+}
+
+const { code } = Astro.props
+---
+
+<div class="my-8 rounded-lg border border-line overflow-hidden">
+  <div class="px-4 py-2 flex gap-1.5" style="background: var(--bg-elev); border-bottom: 1px solid var(--line)">
+    <span class="w-2.5 h-2.5 rounded-full" style="background: var(--line-strong)"></span>
+    <span class="w-2.5 h-2.5 rounded-full" style="background: var(--line-strong)"></span>
+    <span class="w-2.5 h-2.5 rounded-full" style="background: var(--line-strong)"></span>
+  </div>
+  <pre
+    class="p-5 overflow-x-auto font-mono text-[12px] leading-relaxed text-fg-muted"
+    style="background: var(--bg-sunken)"
+  >{code}</pre>
+</div>

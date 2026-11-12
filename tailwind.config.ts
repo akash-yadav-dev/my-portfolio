@@ -1,7 +1,13 @@
 import type { Config } from 'tailwindcss'
 
+/**
+ * Astro template classes: Tailwind's default extractor handles the standard
+ * cases; we only need `.astro` added to the content globs. A custom extractor
+ * is NOT needed and can actually drop classes that appear only inside
+ * variants (e.g. hover:-translate-y-0.5 when the base never appears alone).
+ */
 const config: Config = {
-  content: ['./src/**/*.{js,ts,jsx,tsx}'],
+  content: ['./src/**/*.{astro,js,ts,jsx,tsx}'],
   darkMode: 'class',
   theme: {
     extend: {

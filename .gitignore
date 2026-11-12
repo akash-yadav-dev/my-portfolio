@@ -2,13 +2,18 @@
 # Node dependencies
 node_modules/
 
-# Next.js build artifacts
+# Astro build output
+dist/
+.output/
+
+# Next.js build artifacts (legacy)
 .next/
 out/
 
 # Build and cache outputs
 coverage/
 *.tsbuildinfo
+.astro/
 
 # Logs
 npm-debug.log*
@@ -28,3 +33,8 @@ pnpm-debug.log*
 Thumbs.db
 .vscode/
 .idea/
+
+# Local tool and session folders
+.commandcode/
+.playwright-mcp/
+preview.log

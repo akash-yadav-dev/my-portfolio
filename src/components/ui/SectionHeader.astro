@@ -1,0 +1,32 @@
+---
+interface Props {
+  num: string
+  label: string
+  title: string
+  desc?: string
+}
+
+const { num, label, title, desc } = Astro.props
+const lines = title.split('\n')
+---
+
+<div class="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-6 md:gap-12 mb-12 items-baseline">
+  <div class="font-mono text-[11px] text-fg-subtle tracking-[0.12em] uppercase">
+    <span class="text-accent font-medium">{num}</span>
+    <span class="mx-2">/</span>
+    {label}
+  </div>
+  <div>
+    <h2 class="font-display font-semibold m-0" style="font-size: clamp(28px,4vw,42px); letter-spacing: -0.02em; line-height: 1.05">
+      {
+        lines.map((line, i) => (
+          <span>
+            {line}
+            {i < lines.length - 1 && <br />}
+          </span>
+        ))
+      }
+    </h2>
+    {desc && <p class="text-fg-muted mt-3 max-w-[56ch] text-base">{desc}</p>}
+  </div>
+</div>

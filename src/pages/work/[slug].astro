@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import Badge from '../../components/ui/Badge.astro'
+import { allProjects as projects } from '../../data/projects'
+
+export function getStaticPaths() {
+  return projects.map((p) => ({ params: { slug: p.slug } }))
+}
+
+const { slug } = Astro.params
+const project = projects.find((p) => p.slug === slug)
+
+if (!project) {
+  return Astro.redirect('/404')
+}
+
+const paragraphs = project.body.split('\n\n')
+
+const statusLabel: Record<string, string> = {
+  live: 'Live in production',
+  beta: 'Live, in beta',
+  'open-source': 'Open source',
+  building: 'Building now',
+  upcoming: 'In development',
+  corporate: 'Corporate work',
+  acquired: 'Acquired',
+  sunset: 'Sunset',
+}
+---
+
+<BaseLayout title={project.name} description={project.summary}>
+  <section class="py-16 pb-16">
+    <a
+      href="/work"
+      class="inline-flex items-center gap-1.5 font-mono text-[11px] text-fg-muted mb-8 hover:text-accent transition-colors duration-100"
+    >
+      ← All projects
+    </a>
+
+    <div class="flex gap-2 flex-wrap mb-3">
+      <Badge status={project.status} />
+    </div>
+
+    <h1
+      class="font-display font-semibold m-0 mb-4"
+      style="font-size: clamp(40px,6vw,68px); line-height: 1.02; letter-spacing: -0.02em"
+    >
+      {project.name}
+    </h1>
+
+    <p class="text-fg-muted leading-[1.5] mb-8 max-w-[58ch]" style="font-size: clamp(17px,1.6vw,21px)">
+      {project.tagline}
+    </p>
+
+    {project.visual ? (
+      <div class="mb-8 rounded-xl overflow-hidden border border-line bg-bg-sunken">
+        <img
+          src={project.visual.src}
+          alt={project.visual.alt}
+          width="1400"
+          height="840"
+          class="w-full h-auto object-cover"
+        />
+      </div>
+    ) : (
+      <div class="mb-8 rounded-xl border border-line bg-bg-sunken grid place-items-center text-center aspect-[16/8] px-6">
+        <div>
+          <span
+            class="inline-grid place-items-center w-14 h-14 rounded-lg font-display font-semibold text-xl mb-4"
+            style="background: var(--accent-soft); color: var(--accent)"
+          >
+            {project.name.slice(0, 2)}
+          </span>
+          <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-fg-subtle">
+            {project.status === 'corporate'
+              ? 'Corporate platform, internal product'
+              : 'In active development'}
+          </p>
+        </div>
+      </div>
+    )}
+
+    <!-- Meta strip -->
+    <dl class="grid grid-cols-2 md:grid-cols-4 gap-5 py-5 border-t border-b border-line mb-10 font-mono text-[11px]">
+      <div>
+        <dt class="text-fg-subtle uppercase tracking-[0.12em] text-[10px] mb-1">Year</dt>
+        <dd class="m-0 text-fg">{project.year}</dd>
+      </div>
+      <div>
+        <dt class="text-fg-subtle uppercase tracking-[0.12em] text-[10px] mb-1">Status</dt>
+        <dd class="m-0 text-fg">{statusLabel[project.status]}</dd>
+      </div>
+      <div>
+        <dt class="text-fg-subtle uppercase tracking-[0.12em] text-[10px] mb-1">Stack</dt>
+        <dd class="m-0 text-fg">{project.stack.join(', ')}</dd>
+      </div>
+      <div>
+        <dt class="text-fg-subtle uppercase tracking-[0.12em] text-[10px] mb-1">Role</dt>
+        <dd class="m-0 text-fg">Design + engineering</dd>
+      </div>
+    </dl>
+
+    <!-- Body -->
+    <div class="max-w-[70ch]">
+      {paragraphs.map((para, i) => (
+        <p
+          class="leading-[1.55] mb-4"
+          style={`font-size: clamp(16px,1.5vw,19px); color: ${i === 0 ? 'var(--fg)' : 'var(--fg-muted)'}`}
+        >
+          {para}
+        </p>
+      ))}
+    </div>
+
+    <!-- Links -->
+    {project.links.length > 0 && (
+      <div class="flex gap-3 flex-wrap mt-8">
+        {project.links.map((link) => (
+          <a
+            href={link.href}
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full font-mono text-[10px] uppercase tracking-[0.06em] border border-line-strong hover:border-fg hover:bg-bg-sunken transition-all duration-200 group"
+          >
+            {link.label}
+            <span class="transition-transform duration-200 group-hover:translate-x-1">→</span>
+          </a>
+        ))}
+      </div>
+    )}
+  </section>
+</BaseLayout>
